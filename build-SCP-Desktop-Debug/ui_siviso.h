@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading UI file 'siviso.ui'
 **
-** Created by: Qt User Interface Compiler version 5.6.0
+** Created by: Qt User Interface Compiler version 5.2.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
+#ifndef UI_SIVISO_H
+#define UI_SIVISO_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -21,17 +21,19 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindow
+class Ui_siviso
 {
 public:
     QWidget *centralWidget;
@@ -77,7 +79,13 @@ public:
     QPushButton *nb;
     QPushButton *wf;
     QPushButton *bb;
+    QToolButton *toolButton;
     QFrame *frame_4;
+    QPlainTextEdit *textTestGrap;
+    QPlainTextEdit *textTestSend;
+    QPlainTextEdit *view;
+    QPushButton *pushButton_info;
+    QPushButton *pushButton_send;
     QFrame *frame_5;
     QLabel *DespTac;
     QFrame *frame_8;
@@ -101,12 +109,12 @@ public:
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
-    void setupUi(QMainWindow *MainWindow)
+    void setupUi(QMainWindow *siviso)
     {
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1024, 768);
-        centralWidget = new QWidget(MainWindow);
+        if (siviso->objectName().isEmpty())
+            siviso->setObjectName(QStringLiteral("siviso"));
+        siviso->resize(1024, 768);
+        centralWidget = new QWidget(siviso);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         frame_3 = new QFrame(centralWidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
@@ -281,11 +289,30 @@ public:
         bb->setObjectName(QStringLiteral("bb"));
         bb->setGeometry(QRect(15, 110, 51, 51));
         bb->setFont(font1);
+        toolButton = new QToolButton(frame_3);
+        toolButton->setObjectName(QStringLiteral("toolButton"));
+        toolButton->setGeometry(QRect(0, 0, 24, 25));
         frame_4 = new QFrame(centralWidget);
         frame_4->setObjectName(QStringLiteral("frame_4"));
         frame_4->setGeometry(QRect(10, 250, 481, 451));
         frame_4->setFrameShape(QFrame::StyledPanel);
         frame_4->setFrameShadow(QFrame::Raised);
+        textTestGrap = new QPlainTextEdit(frame_4);
+        textTestGrap->setObjectName(QStringLiteral("textTestGrap"));
+        textTestGrap->setGeometry(QRect(10, 10, 221, 301));
+        textTestSend = new QPlainTextEdit(frame_4);
+        textTestSend->setObjectName(QStringLiteral("textTestSend"));
+        textTestSend->setGeometry(QRect(250, 10, 221, 301));
+        view = new QPlainTextEdit(frame_4);
+        view->setObjectName(QStringLiteral("view"));
+        view->setEnabled(true);
+        view->setGeometry(QRect(230, 340, 241, 101));
+        pushButton_info = new QPushButton(frame_4);
+        pushButton_info->setObjectName(QStringLiteral("pushButton_info"));
+        pushButton_info->setGeometry(QRect(20, 360, 111, 27));
+        pushButton_send = new QPushButton(frame_4);
+        pushButton_send->setObjectName(QStringLiteral("pushButton_send"));
+        pushButton_send->setGeometry(QRect(30, 400, 93, 27));
         frame_5 = new QFrame(centralWidget);
         frame_5->setObjectName(QStringLiteral("frame_5"));
         frame_5->setGeometry(QRect(500, 250, 521, 451));
@@ -356,106 +383,109 @@ public:
         label_39 = new QLabel(frame_7);
         label_39->setObjectName(QStringLiteral("label_39"));
         label_39->setGeometry(QRect(10, 60, 47, 13));
-        MainWindow->setCentralWidget(centralWidget);
+        siviso->setCentralWidget(centralWidget);
         frame_3->raise();
         frame_4->raise();
         frame_5->raise();
         frame_12->raise();
         frame_7->raise();
         frame_8->raise();
-        menuBar = new QMenuBar(MainWindow);
+        menuBar = new QMenuBar(siviso);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1024, 25));
-        MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
+        siviso->setMenuBar(menuBar);
+        mainToolBar = new QToolBar(siviso);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
+        siviso->addToolBar(Qt::TopToolBarArea, mainToolBar);
+        statusBar = new QStatusBar(siviso);
         statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
+        siviso->setStatusBar(statusBar);
 
-        retranslateUi(MainWindow);
+        retranslateUi(siviso);
 
-        QMetaObject::connectSlotsByName(MainWindow);
+        QMetaObject::connectSlotsByName(siviso);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindow)
+    void retranslateUi(QMainWindow *siviso)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        siviso->setWindowTitle(QApplication::translate("siviso", "siviso", 0));
 #ifndef QT_NO_TOOLTIP
-        MainWindow->setToolTip(QString());
+        siviso->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_STATUSTIP
-        MainWindow->setStatusTip(QString());
+        siviso->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP
 #ifndef QT_NO_ACCESSIBILITY
-        MainWindow->setAccessibleName(QString());
+        siviso->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
 #ifndef QT_NO_ACCESSIBILITY
-        MainWindow->setAccessibleDescription(QString());
+        siviso->setAccessibleDescription(QString());
 #endif // QT_NO_ACCESSIBILITY
-        label_4->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Display time</span></p></body></html>", 0));
-        label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">bandwidth</span></p></body></html>", 0));
-        label->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Frecuencia</span></p></body></html>", 0));
+        label_4->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Display time</span></p></body></html>", 0));
+        label_2->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">bandwidth</span></p></body></html>", 0));
+        label->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Frecuencia</span></p></body></html>", 0));
 #ifndef QT_NO_ACCESSIBILITY
         bw->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
         bw->setSpecialValueText(QString());
-        label_3->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Integration time</span></p></body></html>", 0));
-        label_12->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Probabilidad<br/>de detecci\303\263n</span></p></body></html>", 0));
-        label_13->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Probabilidad<br/>de falsa alarma</span></p></body></html>", 0));
-        tipo_norte->setText(QApplication::translate("MainWindow", "Norte\n"
+        label_3->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Integration time</span></p></body></html>", 0));
+        label_12->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Probabilidad<br/>de detecci\303\263n</span></p></body></html>", 0));
+        label_13->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Probabilidad<br/>de falsa alarma</span></p></body></html>", 0));
+        tipo_norte->setText(QApplication::translate("siviso", "Norte\n"
 "Verdadero", 0));
-        label_15->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Escala PPI</span></p></body></html>", 0));
-        label_16->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Escala <br/>despliegue T\303\241ctico</span></p></body></html>", 0));
-        label_17->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Ganancia</span></p></body></html>", 0));
-        label_58->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Estado <br/>de la mar</span></p></body></html>", 0));
-        label_60->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">alternar Norte<br/>Verdadero/Relativo</span></p></body></html>", 0));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Origen", 0));
-        origen_target->setText(QApplication::translate("MainWindow", "Blanco", 0));
-        origen_buque->setText(QApplication::translate("MainWindow", "Buque", 0));
-        play->setText(QApplication::translate("MainWindow", "Play", 0));
-        rec->setText(QApplication::translate("MainWindow", "Rec", 0));
-        etiquetar_blanco->setText(QApplication::translate("MainWindow", "Etiquetar", 0));
+        label_15->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Escala PPI</span></p></body></html>", 0));
+        label_16->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Escala <br/>despliegue T\303\241ctico</span></p></body></html>", 0));
+        label_17->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Ganancia</span></p></body></html>", 0));
+        label_58->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Estado <br/>de la mar</span></p></body></html>", 0));
+        label_60->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">alternar Norte<br/>Verdadero/Relativo</span></p></body></html>", 0));
+        groupBox->setTitle(QApplication::translate("siviso", "Origen", 0));
+        origen_target->setText(QApplication::translate("siviso", "Blanco", 0));
+        origen_buque->setText(QApplication::translate("siviso", "Buque", 0));
+        play->setText(QApplication::translate("siviso", "Play", 0));
+        rec->setText(QApplication::translate("siviso", "Rec", 0));
+        etiquetar_blanco->setText(QApplication::translate("siviso", "Etiquetar", 0));
         Clasificar_blanco->clear();
         Clasificar_blanco->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "Desconocido", 0)
-         << QApplication::translate("MainWindow", "Amigo", 0)
-         << QApplication::translate("MainWindow", "Enemigo", 0)
-         << QApplication::translate("MainWindow", "Neutral", 0)
+         << QApplication::translate("siviso", "Desconocido", 0)
+         << QApplication::translate("siviso", "Amigo", 0)
+         << QApplication::translate("siviso", "Enemigo", 0)
+         << QApplication::translate("siviso", "Neutral", 0)
         );
-        label_5->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Clasificar</span></p></body></html>", 0));
-        label_6->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Blancos</span></p></body></html>", 0));
-        vol_dw->setText(QApplication::translate("MainWindow", "-", 0));
-        vol_up->setText(QApplication::translate("MainWindow", "+", 0));
-        label_57->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Volumen</span></p></body></html>", 0));
-        ppi->setText(QApplication::translate("MainWindow", "PPI", 0));
-        nb->setText(QApplication::translate("MainWindow", "Nb", 0));
-        wf->setText(QApplication::translate("MainWindow", "WF", 0));
-        bb->setText(QApplication::translate("MainWindow", "Bb", 0));
+        label_5->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Clasificar</span></p></body></html>", 0));
+        label_6->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Blancos</span></p></body></html>", 0));
+        vol_dw->setText(QApplication::translate("siviso", "-", 0));
+        vol_up->setText(QApplication::translate("siviso", "+", 0));
+        label_57->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Volumen</span></p></body></html>", 0));
+        ppi->setText(QApplication::translate("siviso", "PPI", 0));
+        nb->setText(QApplication::translate("siviso", "Nb", 0));
+        wf->setText(QApplication::translate("siviso", "WF", 0));
+        bb->setText(QApplication::translate("siviso", "Bb", 0));
+        toolButton->setText(QApplication::translate("siviso", "...", 0));
+        pushButton_info->setText(QApplication::translate("siviso", "ver info signal", 0));
+        pushButton_send->setText(QApplication::translate("siviso", "send", 0));
         DespTac->setText(QString());
-        label_24->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Plataforma</span></p></body></html>", 0));
-        label_25->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Nombre:</span></p></body></html>", 0));
-        label_26->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Profundidad:</span></p></body></html>", 0));
-        label_27->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Latitud:</span></p></body></html>", 0));
-        label_28->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Longitud:</span></p></body></html>", 0));
-        label_32->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Carga de la bateria:</span></p></body></html>", 0));
-        label_61->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">SIVISO<br/>ARMADA DE M\303\211XICO</span></p></body></html>", 0));
+        label_24->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Plataforma</span></p></body></html>", 0));
+        label_25->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Nombre:</span></p></body></html>", 0));
+        label_26->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Profundidad:</span></p></body></html>", 0));
+        label_27->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Latitud:</span></p></body></html>", 0));
+        label_28->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Longitud:</span></p></body></html>", 0));
+        label_32->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Carga de la bateria:</span></p></body></html>", 0));
+        label_61->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">SIVISO<br/>ARMADA DE M\303\211XICO</span></p></body></html>", 0));
         logo->setText(QString());
         logo_siviso->setText(QString());
-        label_33->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Blancos</span></p></body></html>", 0));
-        label_34->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">id blanco:</span></p></body></html>", 0));
-        label_36->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Etiqueta blanco:</span></p></body></html>", 0));
-        label_38->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Clasificaci\303\263n de blanco:</span></p></body></html>", 0));
-        label_39->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:6pt;\">Direcci\303\263n:</span></p></body></html>", 0));
+        label_33->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Blancos</span></p></body></html>", 0));
+        label_34->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">id blanco:</span></p></body></html>", 0));
+        label_36->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Etiqueta blanco:</span></p></body></html>", 0));
+        label_38->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Clasificaci\303\263n de blanco:</span></p></body></html>", 0));
+        label_39->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Direcci\303\263n:</span></p></body></html>", 0));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
+    class siviso: public Ui_siviso {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_MAINWINDOW_H
+#endif // UI_SIVISO_H

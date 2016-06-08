@@ -1,10 +1,11 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-05-26T10:50:26
+# Project created by QtCreator 2016-05-31T11:00:13
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
+QT       += network
 QT       += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -14,8 +15,22 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        siviso.cpp \
+    blanco.cpp \
+    ppi.cpp \
+    signal.cpp \
+    dbasepostgresql.cpp \
+    wconfig.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += siviso.h \
+    blanco.h \
+    ppi.h \
+    signal.h \
+    dbasepostgresql.h \
+    wconfig.h
 
-FORMS    += mainwindow.ui
+FORMS    += siviso.ui \
+    wconfig.ui
+
+RESOURCES += \
+    resource.qrc

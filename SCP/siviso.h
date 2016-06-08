@@ -1,38 +1,32 @@
-/*
- * #ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+/*#ifndef SIVISO_H
+#define SIVISO_H
 
 #include <QMainWindow>
-#include <QtSerialPort/QtSerialPort>
 
 namespace Ui {
-class MainWindow;
+class siviso;
 }
 
-class MainWindow : public QMainWindow
+class siviso : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit siviso(QWidget *parent = 0);
+    ~siviso();
 
-private:
-    Ui::MainWindow *ui;
-};
 
-#endif // MAINWINDOW_H
 */
-
 #ifndef SIVISO_H
 #define SIVISO_H
-/*
+
 #include <blanco.h>
 #include <ppi.h>
 #include <signal.h>
 #include <QDir>
 #include <QHostAddress>
 #include <QUdpSocket>
+#include <QSerialPort>
 
 //---------headers for the use of postgres
 #include<QtSql/QSql>
@@ -43,9 +37,9 @@ private:
 #include<QStandardItemModel>
 #include"dbasepostgresql.h"
 //---------finish declarations of the headers
-*/
+
 #include <QMainWindow>
-//#include "wconfig.h"
+#include "wconfig.h"
 
 
 #define DAY_STYLE 0
@@ -71,9 +65,12 @@ public:
     int numero;
     PPI *myppi;
     Signal *mysignal;
+    bool mycontrol;
 
-public slots:
+private slots:
+    void on_toolButton_clicked();
     void leerSocket();
+    void leerSerial();
 
 private slots:
 
@@ -93,9 +90,9 @@ private slots:
 
     void on_bw_valueChanged(double arg1);
 
-    void on_pushButton_clicked();
+    //void on_pushButton_clicked();
 
-    void on_it_valueChanged(double arg1);
+    //void on_it_valueChanged(double arg1);
 
     void on_edo_mar_valueChanged(int arg1);
 
@@ -113,9 +110,9 @@ private slots:
 
     void on_dt_valueChanged(double arg1);
 
-    void on_pushButton_2_clicked();
+    void on_pushButton_info_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_pushButton_send_clicked();
 
     void on_it_valueChanged(int arg1);
 
@@ -129,6 +126,7 @@ private:
     quint16 puertoPPI;
     quint16 puertoBTR;
     quint16 puertoLF;
+    QSerialPort *puerto;
 
     // For use the class dbasepostgresql by Misael M Del Valle
     DBasePostgreSQL* myDB;

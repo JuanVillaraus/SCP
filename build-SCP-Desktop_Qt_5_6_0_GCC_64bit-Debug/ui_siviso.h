@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'mainwindow.ui'
+** Form generated from reading UI file 'siviso.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
+#ifndef UI_SIVISO_H
+#define UI_SIVISO_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -28,6 +28,7 @@
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -82,8 +83,8 @@ public:
     QPlainTextEdit *textTestGrap;
     QPlainTextEdit *textTestSend;
     QPlainTextEdit *view;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *pushButton_info;
+    QPushButton *pushButton_send;
     QFrame *frame_5;
     QLabel *DespTac;
     QFrame *frame_8;
@@ -103,6 +104,7 @@ public:
     QLabel *label_36;
     QLabel *label_38;
     QLabel *label_39;
+    QToolButton *toolButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -137,7 +139,7 @@ public:
         label_2->setGeometry(QRect(260, 10, 51, 16));
         dt = new QSpinBox(frame_3);
         dt->setObjectName(QStringLiteral("dt"));
-        dt->setGeometry(QRect(440, 30, 51, 41));
+        dt->setGeometry(QRect(430, 30, 61, 41));
         QFont font1;
         font1.setPointSize(12);
         dt->setFont(font1);
@@ -302,12 +304,12 @@ public:
         view->setObjectName(QStringLiteral("view"));
         view->setEnabled(true);
         view->setGeometry(QRect(230, 340, 241, 101));
-        pushButton_2 = new QPushButton(frame_4);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(20, 360, 111, 27));
-        pushButton_3 = new QPushButton(frame_4);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(30, 400, 93, 27));
+        pushButton_info = new QPushButton(frame_4);
+        pushButton_info->setObjectName(QStringLiteral("pushButton_info"));
+        pushButton_info->setGeometry(QRect(20, 360, 111, 27));
+        pushButton_send = new QPushButton(frame_4);
+        pushButton_send->setObjectName(QStringLiteral("pushButton_send"));
+        pushButton_send->setGeometry(QRect(30, 400, 93, 27));
         frame_5 = new QFrame(centralWidget);
         frame_5->setObjectName(QStringLiteral("frame_5"));
         frame_5->setGeometry(QRect(500, 250, 521, 451));
@@ -378,6 +380,9 @@ public:
         label_39 = new QLabel(frame_7);
         label_39->setObjectName(QStringLiteral("label_39"));
         label_39->setGeometry(QRect(10, 60, 47, 13));
+        toolButton = new QToolButton(centralWidget);
+        toolButton->setObjectName(QStringLiteral("toolButton"));
+        toolButton->setGeometry(QRect(10, 710, 24, 25));
         siviso->setCentralWidget(centralWidget);
         frame_3->raise();
         frame_4->raise();
@@ -385,6 +390,7 @@ public:
         frame_12->raise();
         frame_7->raise();
         frame_8->raise();
+        toolButton->raise();
         menuBar = new QMenuBar(siviso);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1024, 25));
@@ -455,8 +461,8 @@ public:
         nb->setText(QApplication::translate("siviso", "Nb", 0));
         wf->setText(QApplication::translate("siviso", "WF", 0));
         bb->setText(QApplication::translate("siviso", "Bb", 0));
-        pushButton_2->setText(QApplication::translate("siviso", "ver info signal", 0));
-        pushButton_3->setText(QApplication::translate("siviso", "send", 0));
+        pushButton_info->setText(QApplication::translate("siviso", "ver info signal", 0));
+        pushButton_send->setText(QApplication::translate("siviso", "send", 0));
         DespTac->setText(QString());
         label_24->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Plataforma</span></p></body></html>", 0));
         label_25->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Nombre:</span></p></body></html>", 0));
@@ -472,6 +478,7 @@ public:
         label_36->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Etiqueta blanco:</span></p></body></html>", 0));
         label_38->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Clasificaci\303\263n de blanco:</span></p></body></html>", 0));
         label_39->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Direcci\303\263n:</span></p></body></html>", 0));
+        toolButton->setText(QApplication::translate("siviso", "...", 0));
     } // retranslateUi
 
 };
@@ -482,4 +489,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_MAINWINDOW_H
+#endif // UI_SIVISO_H

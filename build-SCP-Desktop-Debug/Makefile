@@ -46,10 +46,12 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../SCP/main.cpp \
-		../SCP/mainwindow.cpp moc_mainwindow.cpp
+		../SCP/siviso.cpp qrc_resource.cpp \
+		moc_siviso.cpp
 OBJECTS       = main.o \
-		mainwindow.o \
-		moc_mainwindow.o
+		siviso.o \
+		qrc_resource.o \
+		moc_siviso.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -107,6 +109,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../SCP/SCP.pro \
+		../SCP/resource.qrc \
 		../SCP/SCP.pro
 QMAKE_TARGET  = SCP
 DESTDIR       = #avoid trailing-slash linebreak
@@ -137,7 +140,7 @@ first: all
 
 all: Makefile $(TARGET)
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_siviso.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 	{ test -n "$(DESTDIR)" && DESTDIR="$(DESTDIR)" || DESTDIR=.; } && test $$(gdb --version | sed -e 's,[^0-9][^0-9]*\([0-9]\)\.\([0-9]\).*,\1\2,;q') -gt 72 && gdb --nx --batch --quiet -ex 'set confirm off' -ex "save gdb-index $$DESTDIR" -ex quit '$(TARGET)' && test -f $(TARGET).gdb-index && objcopy --add-section '.gdb_index=$(TARGET).gdb-index' --set-section-flags '.gdb_index=readonly' '$(TARGET)' '$(TARGET)' && rm -f $(TARGET).gdb-index || true
 
@@ -198,6 +201,7 @@ Makefile: ../SCP/SCP.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmak
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../SCP/SCP.pro \
+		../SCP/resource.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Core.prl
@@ -259,6 +263,7 @@ Makefile: ../SCP/SCP.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmak
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../SCP/SCP.pro:
+../SCP/resource.qrc:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Core.prl:
@@ -269,7 +274,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SCP1.0.0 || mkdir -p .tmp/SCP1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/SCP1.0.0/ && $(COPY_FILE) --parents ../SCP/mainwindow.h .tmp/SCP1.0.0/ && $(COPY_FILE) --parents ../SCP/main.cpp ../SCP/mainwindow.cpp .tmp/SCP1.0.0/ && $(COPY_FILE) --parents ../SCP/mainwindow.ui .tmp/SCP1.0.0/ && (cd `dirname .tmp/SCP1.0.0` && $(TAR) SCP1.0.0.tar SCP1.0.0 && $(COMPRESS) SCP1.0.0.tar) && $(MOVE) `dirname .tmp/SCP1.0.0`/SCP1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SCP1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/SCP1.0.0/ && $(COPY_FILE) --parents ../SCP/resource.qrc .tmp/SCP1.0.0/ && $(COPY_FILE) --parents ../SCP/siviso.h .tmp/SCP1.0.0/ && $(COPY_FILE) --parents ../SCP/main.cpp ../SCP/siviso.cpp .tmp/SCP1.0.0/ && $(COPY_FILE) --parents ../SCP/siviso.ui .tmp/SCP1.0.0/ && (cd `dirname .tmp/SCP1.0.0` && $(TAR) SCP1.0.0.tar SCP1.0.0 && $(COMPRESS) SCP1.0.0.tar) && $(MOVE) `dirname .tmp/SCP1.0.0`/SCP1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SCP1.0.0
 
 
 clean:compiler_clean 
@@ -290,12 +295,19 @@ mocables: compiler_moc_header_make_all compiler_moc_source_make_all
 
 check: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resource.cpp
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp
+	-$(DEL_FILE) qrc_resource.cpp
+qrc_resource.cpp: ../SCP/resource.qrc \
+		../SCP/resource/siviso.jpg \
+		../SCP/resource/logo.png \
+		../SCP/resource/costa.JPG
+	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resource ../SCP/resource.qrc -o qrc_resource.cpp
+
+compiler_moc_header_make_all: moc_siviso.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
+	-$(DEL_FILE) moc_siviso.cpp
+moc_siviso.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qwidget.h \
 		/usr/include/qt5/QtGui/qwindowdefs.h \
@@ -406,16 +418,16 @@ moc_mainwindow.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtWidgets/qtabwidget.h \
 		/usr/include/qt5/QtGui/qicon.h \
-		../SCP/mainwindow.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../SCP/mainwindow.h -o moc_mainwindow.cpp
+		../SCP/siviso.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../SCP/siviso.h -o moc_siviso.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_siviso.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
-ui_mainwindow.h: ../SCP/mainwindow.ui
-	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../SCP/mainwindow.ui -o ui_mainwindow.h
+	-$(DEL_FILE) ui_siviso.h
+ui_siviso.h: ../SCP/siviso.ui
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../SCP/siviso.ui -o ui_siviso.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -423,11 +435,11 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
-main.o: ../SCP/main.cpp ../SCP/mainwindow.h \
+main.o: ../SCP/main.cpp ../SCP/siviso.h \
 		/usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qwidget.h \
@@ -548,7 +560,7 @@ main.o: ../SCP/main.cpp ../SCP/mainwindow.h \
 		/usr/include/qt5/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SCP/main.cpp
 
-mainwindow.o: ../SCP/mainwindow.cpp ../SCP/mainwindow.h \
+siviso.o: ../SCP/siviso.cpp ../SCP/siviso.h \
 		/usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qwidget.h \
@@ -660,11 +672,14 @@ mainwindow.o: ../SCP/mainwindow.cpp ../SCP/mainwindow.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtWidgets/qtabwidget.h \
 		/usr/include/qt5/QtGui/qicon.h \
-		ui_mainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../SCP/mainwindow.cpp
+		ui_siviso.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o siviso.o ../SCP/siviso.cpp
 
-moc_mainwindow.o: moc_mainwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+qrc_resource.o: qrc_resource.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resource.o qrc_resource.cpp
+
+moc_siviso.o: moc_siviso.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_siviso.o moc_siviso.cpp
 
 ####### Install
 

@@ -1,17 +1,23 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+/*#include "siviso.h"
+#include "ui_siviso.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+siviso::siviso(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::siviso)
 {
     ui->setupUi(this);
+
+
 }
 
-MainWindow::~MainWindow()
+siviso::~siviso()
 {
     delete ui;
 }
+
+*/
+
+
 
 #include "siviso.h"
 #include "ui_siviso.h"
@@ -65,13 +71,32 @@ siviso::siviso(QWidget *parent) :
 
 }
 
-MainWindow::~MainWindow()
+siviso::~siviso()
 {
 
     delete ui;
 }
 
-void MainWindow::changeStyleSheet(int iStyle)
+void siviso::on_toolButton_clicked()
+{
+    if(mycontrol){
+        mycontrol=false;
+        ui->textTestSend->setVisible(false);
+        ui->textTestGrap->setVisible(false);
+        ui->view->setVisible(false);
+        ui->pushButton_info->setVisible(false);
+        ui->pushButton_send->setVisible(false);
+    }else{
+        mycontrol=true;
+        ui->textTestSend->setVisible(true);
+        ui->textTestGrap->setVisible(true);
+        ui->view->setVisible(true);
+        ui->pushButton_info->setVisible(true);
+        ui->pushButton_send->setVisible(true);
+    }
+}
+
+void siviso::changeStyleSheet(int iStyle)
 {
     QDir dir;
 
@@ -104,7 +129,7 @@ void MainWindow::changeStyleSheet(int iStyle)
     }
 }
 
-void MainWindow::leerSocket()
+void siviso::leerSocket()
 {
     while(udpsocket->hasPendingDatagrams())
     {
@@ -153,7 +178,17 @@ void MainWindow::leerSocket()
     }
 }
 
-void MainWindow::on_tipo_norte_clicked()
+void siviso::leerSerial()
+{
+    char buffer[101];
+    int nDatos;
+
+    nDatos = puerto->read(buffer,100);
+    buffer[nDatos] = '\0';
+    ui->textTestGrap->appendPlainText(buffer);
+}
+
+void siviso::on_tipo_norte_clicked()
 {
     //PPI *myppi = new PPI();
     ui->textTestGrap->appendPlainText("clic");
@@ -170,7 +205,7 @@ void MainWindow::on_tipo_norte_clicked()
 
 }
 
-void MainWindow::on_nb_clicked()
+void siviso::on_nb_clicked()
 {
     ui->textTestGrap->appendPlainText("despliega LOFAR");
     QString s = "LOFAR";
@@ -182,7 +217,7 @@ void MainWindow::on_nb_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
 }
 
-void MainWindow::on_bb_clicked()
+void siviso::on_bb_clicked()
 {
     ui->textTestGrap->appendPlainText("habilita los botones Waterfall y PPI");
     QString s = "END COMMUNICATION";
@@ -190,7 +225,7 @@ void MainWindow::on_bb_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
 }
 
-void MainWindow::on_wf_clicked()
+void siviso::on_wf_clicked()
 {
     ui->textTestGrap->appendPlainText("despliega Waterfall");
     QString s = "BTR";
@@ -202,7 +237,7 @@ void MainWindow::on_wf_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
 }
 
-void MainWindow::on_ppi_clicked()
+void siviso::on_ppi_clicked()
 {
     ui->textTestGrap->appendPlainText("despliega PPI");
     QString s = "VERSION";
@@ -214,17 +249,17 @@ void MainWindow::on_ppi_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
 }
 
-void MainWindow::on_origen_buque_clicked()
+void siviso::on_origen_buque_clicked()
 {
     ui->textTestGrap->appendPlainText("se cambio el origen a buque");
 }
 
-void MainWindow::on_origen_target_clicked()
+void siviso::on_origen_target_clicked()
 {
     ui->textTestGrap->appendPlainText("se cambio el origen a blanco");
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void siviso::on_pushButton_info_clicked()
 {
     ui->view->appendPlainText("info: ");
     QString s = mysignal->get_info_signal();
@@ -234,7 +269,7 @@ void MainWindow::on_pushButton_2_clicked()
     ui->view->appendPlainText("portLF " + QString("%1").arg(puertoLF));
 }
 
-void MainWindow::on_frecuencia_valueChanged(int value)
+void siviso::on_frecuencia_valueChanged(int value)
 {
     mysignal->set_frec(value);
 
@@ -243,7 +278,7 @@ void MainWindow::on_frecuencia_valueChanged(int value)
     ui->textTestGrap->appendPlainText(s);
 }
 
-void MainWindow::on_bw_valueChanged(double arg1)
+void siviso::on_bw_valueChanged(double arg1)
 {
     mysignal->set_bw(arg1);
 
@@ -252,16 +287,16 @@ void MainWindow::on_bw_valueChanged(double arg1)
     ui->textTestGrap->appendPlainText(s);
 }
 
-void MainWindow::on_it_valueChanged(double arg1)
+/*void siviso::on_it_valueChanged(double arg1)
 {
     mysignal->set_it(arg1);
 
     ui->textTestSend->appendPlainText("It: ");
     QString s = QString::number(arg1);
     ui->textTestSend->appendPlainText(s);
-}
+}*/
 
-void MainWindow::on_dt_valueChanged(double arg1)
+void siviso::on_dt_valueChanged(double arg1)
 {
     mysignal->set_dt(arg1);
 
@@ -270,7 +305,7 @@ void MainWindow::on_dt_valueChanged(double arg1)
     ui->textTestGrap->appendPlainText(s);
 }
 
-void MainWindow::on_edo_mar_valueChanged(int arg1)
+void siviso::on_edo_mar_valueChanged(int arg1)
 {
     mysignal->set_edo_mar(arg1);
 
@@ -279,7 +314,7 @@ void MainWindow::on_edo_mar_valueChanged(int arg1)
     ui->textTestSend->appendPlainText(s);
 }
 
-void MainWindow::on_prob_falsa_valueChanged(double arg1)
+void siviso::on_prob_falsa_valueChanged(double arg1)
 {
     mysignal->set_prob_falsa(arg1);
 
@@ -288,7 +323,7 @@ void MainWindow::on_prob_falsa_valueChanged(double arg1)
     ui->textTestSend->appendPlainText(s);
 }
 
-void MainWindow::on_prob_deteccion_valueChanged(double arg1)
+void siviso::on_prob_deteccion_valueChanged(double arg1)
 {
     mysignal->set_prob_deteccion(arg1);
 
@@ -297,21 +332,21 @@ void MainWindow::on_prob_deteccion_valueChanged(double arg1)
     ui->textTestSend->appendPlainText(s);
 }
 
-void MainWindow::on_escala_ppi_valueChanged(double arg1)
+void siviso::on_escala_ppi_valueChanged(double arg1)
 {
     ui->textTestGrap->appendPlainText("escala PPI: ");
     QString s = QString::number(arg1);
     ui->textTestGrap->appendPlainText(s);
 }
 
-void MainWindow::on_escala_despliegue_tactico_valueChanged(double arg1)
+void siviso::on_escala_despliegue_tactico_valueChanged(double arg1)
 {
     ui->textTestGrap->appendPlainText("desp_tact: ");
     QString s = QString::number(arg1);
     ui->textTestGrap->appendPlainText(s);
 }
 
-void MainWindow::on_gan_sen_valueChanged(int arg1)
+void siviso::on_gan_sen_valueChanged(int arg1)
 {
     mysignal->set_ganancia_sensor(arg1);
 
@@ -321,7 +356,7 @@ void MainWindow::on_gan_sen_valueChanged(int arg1)
 }
 
 //boton para enviar la informacion
-void MainWindow::on_pushButton_3_clicked()
+void siviso::on_pushButton_send_clicked()
 {
     //QString s = mysignal->send_to_sensor();               //guarda en la variable "s" lo que tiene en sensor
     QString s = "START COMMUNICATION";
@@ -331,13 +366,13 @@ void MainWindow::on_pushButton_3_clicked()
 
 
 
-void MainWindow::on_pushButton_clicked()
+/*void siviso::on_pushButton_clicked()
 {
 
 
-}
+}*/
 
-void MainWindow::on_it_valueChanged(int arg1)
+void siviso::on_it_valueChanged(int arg1)
 {
     mysignal->set_it(arg1);
 
