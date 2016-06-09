@@ -41,12 +41,23 @@ siviso::siviso(QWidget *parent) :
     udpsocket = new QUdpSocket(this);
     udpsocket->bind(localdir,puertolocal);
     connect(udpsocket,SIGNAL(readyRead()),this,SLOT(leerSocket()));
+    //connect(serialPort, SIGNAL(readyRead()),this,SLOT(leerSerial()));
 
-    direccionSPP= "192.168.1.177";                    //direccion del SPP
+    direccionSPP = "192.168.1.177";                   //direccion del SPP
     puertoSPP = 8888;                                 //puerto del SPP
     direccionApp = "192.168.1.178";                   //direccion que usaran las aplicaciones
     //udpsocket->writeDatagram(ui->view->text().toLatin1(),direccionPar,puertoPar); //visualiza la direcion IP y puerto del que envia
 
+    /*serialPort->setPortName("/dev/ttyS2");
+    if(serialPort->open(QIODevice::ReadWrite))
+        qDebug("Puerto serial abierto\n");
+    else
+        qDebug("Error de coexion con el puerto serial\n");
+    serialPort->setBaudRate(QSerialPort::Baud9600);
+    serialPort->setDataBits(QSerialPort::Data8);
+    serialPort->setStopBits(QSerialPort::OneStop);
+    serialPort->setParity(QSerialPort::NoParity);
+    serialPort->setFlowControl(QSerialPort::NoFlowControl);*/
 
 
     ui->textTestSend->appendPlainText("Esto se enviará al subsistema \n");
@@ -73,7 +84,8 @@ siviso::siviso(QWidget *parent) :
 
 siviso::~siviso()
 {
-
+    serialPort->close();
+    delete serialPort;
     delete ui;
 }
 
@@ -183,7 +195,7 @@ void siviso::leerSerial()
     char buffer[101];
     int nDatos;
 
-    nDatos = puerto->read(buffer,100);
+    nDatos = serialPort->read(buffer,100);
     buffer[nDatos] = '\0';
     ui->textTestGrap->appendPlainText(buffer);
 }
@@ -296,14 +308,14 @@ void siviso::on_bw_valueChanged(double arg1)
     ui->textTestSend->appendPlainText(s);
 }*/
 
-void siviso::on_dt_valueChanged(double arg1)
+/*void siviso::on_dt_valueChanged(double arg1)
 {
     mysignal->set_dt(arg1);
 
     ui->textTestGrap->appendPlainText("dt: ");
     QString s = QString::number(arg1);
     ui->textTestGrap->appendPlainText(s);
-}
+}*/
 
 void siviso::on_edo_mar_valueChanged(int arg1)
 {

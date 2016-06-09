@@ -108,7 +108,7 @@ private slots:
 
     void on_frecuencia_valueChanged(int value);
 
-    void on_dt_valueChanged(double arg1);
+    //void on_dt_valueChanged(double arg1);
 
     void on_pushButton_info_clicked();
 
@@ -126,7 +126,7 @@ private:
     quint16 puertoPPI;
     quint16 puertoBTR;
     quint16 puertoLF;
-    QSerialPort *puerto;
+    QSerialPort *serialPort;
 
     // For use the class dbasepostgresql by Misael M Del Valle
     DBasePostgreSQL* myDB;
