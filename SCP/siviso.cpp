@@ -41,23 +41,12 @@ siviso::siviso(QWidget *parent) :
     udpsocket = new QUdpSocket(this);
     udpsocket->bind(localdir,puertolocal);
     connect(udpsocket,SIGNAL(readyRead()),this,SLOT(leerSocket()));
-    //connect(serialPort, SIGNAL(readyRead()),this,SLOT(leerSerial()));
+    //connect(serialPort, SIGNAL(readyRead()),this,SLOT(leerSerial())); //Esta parte esta comentada porque en la computadora de desarrollo no tiene acceso a los puertos seriales y proboca crashed
 
     direccionSPP = "192.168.1.177";                   //direccion del SPP
     puertoSPP = 8888;                                 //puerto del SPP
     direccionApp = "192.168.1.178";                   //direccion que usaran las aplicaciones
     //udpsocket->writeDatagram(ui->view->text().toLatin1(),direccionPar,puertoPar); //visualiza la direcion IP y puerto del que envia
-
-    /*serialPort->setPortName("/dev/ttyS2");
-    if(serialPort->open(QIODevice::ReadWrite))
-        qDebug("Puerto serial abierto\n");
-    else
-        qDebug("Error de coexion con el puerto serial\n");
-    serialPort->setBaudRate(QSerialPort::Baud9600);
-    serialPort->setDataBits(QSerialPort::Data8);
-    serialPort->setStopBits(QSerialPort::OneStop);
-    serialPort->setParity(QSerialPort::NoParity);
-    serialPort->setFlowControl(QSerialPort::NoFlowControl);*/
 
 
     ui->textTestSend->appendPlainText("Esto se enviará al subsistema \n");
@@ -188,6 +177,21 @@ void siviso::leerSocket()
             ui->textTestGrap->appendPlainText(" paquete enviado ");
         }
     }
+}
+
+void siviso::on_btOpenPort_clicked()
+{
+    //Esta parte esta comentada porque en la computadora de desarrollo no tiene acceso a los puertos seriales y proboca crashed
+    /*serialPort->setPortName("/dev/ttyUSB1");
+    if(serialPort->open(QIODevice::ReadWrite))
+        qDebug("Puerto serial abierto\n");
+    else
+        qDebug("Error de coexion con el puerto serial\n");
+    serialPort->setBaudRate(QSerialPort::Baud9600);
+    serialPort->setDataBits(QSerialPort::Data8);
+    serialPort->setStopBits(QSerialPort::OneStop);
+    serialPort->setParity(QSerialPort::NoParity);
+    serialPort->setFlowControl(QSerialPort::NoFlowControl);*/
 }
 
 void siviso::leerSerial()
@@ -392,3 +396,5 @@ void siviso::on_it_valueChanged(int arg1)
     QString s = QString::number(arg1);
     ui->textTestSend->appendPlainText(s);
 }
+
+

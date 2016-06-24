@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../SCP/SCP/siviso.h"
+#include "../SCP/siviso.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_siviso_t {
-    QByteArrayData data[25];
-    char stringdata0[485];
+    QByteArrayData data[26];
+    char stringdata0[507];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -53,7 +53,8 @@ QT_MOC_LITERAL(20, 379, 26), // "on_frecuencia_valueChanged"
 QT_MOC_LITERAL(21, 406, 5), // "value"
 QT_MOC_LITERAL(22, 412, 26), // "on_pushButton_info_clicked"
 QT_MOC_LITERAL(23, 439, 26), // "on_pushButton_send_clicked"
-QT_MOC_LITERAL(24, 466, 18) // "on_it_valueChanged"
+QT_MOC_LITERAL(24, 466, 18), // "on_it_valueChanged"
+QT_MOC_LITERAL(25, 485, 21) // "on_btOpenPort_clicked"
 
     },
     "siviso\0on_toolButton_clicked\0\0leerSocket\0"
@@ -70,7 +71,7 @@ QT_MOC_LITERAL(24, 466, 18) // "on_it_valueChanged"
     "on_frecuencia_valueChanged\0value\0"
     "on_pushButton_info_clicked\0"
     "on_pushButton_send_clicked\0"
-    "on_it_valueChanged"
+    "on_it_valueChanged\0on_btOpenPort_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -80,7 +81,7 @@ static const uint qt_meta_data_siviso[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      21,   14, // methods
+      22,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -88,27 +89,28 @@ static const uint qt_meta_data_siviso[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  119,    2, 0x08 /* Private */,
-       3,    0,  120,    2, 0x08 /* Private */,
-       4,    0,  121,    2, 0x08 /* Private */,
-       5,    0,  122,    2, 0x08 /* Private */,
-       6,    0,  123,    2, 0x08 /* Private */,
-       7,    0,  124,    2, 0x08 /* Private */,
-       8,    0,  125,    2, 0x08 /* Private */,
-       9,    0,  126,    2, 0x08 /* Private */,
-      10,    0,  127,    2, 0x08 /* Private */,
-      11,    0,  128,    2, 0x08 /* Private */,
-      12,    1,  129,    2, 0x08 /* Private */,
-      14,    1,  132,    2, 0x08 /* Private */,
-      15,    1,  135,    2, 0x08 /* Private */,
-      16,    1,  138,    2, 0x08 /* Private */,
-      17,    1,  141,    2, 0x08 /* Private */,
-      18,    1,  144,    2, 0x08 /* Private */,
-      19,    1,  147,    2, 0x08 /* Private */,
-      20,    1,  150,    2, 0x08 /* Private */,
-      22,    0,  153,    2, 0x08 /* Private */,
-      23,    0,  154,    2, 0x08 /* Private */,
-      24,    1,  155,    2, 0x08 /* Private */,
+       1,    0,  124,    2, 0x08 /* Private */,
+       3,    0,  125,    2, 0x08 /* Private */,
+       4,    0,  126,    2, 0x08 /* Private */,
+       5,    0,  127,    2, 0x08 /* Private */,
+       6,    0,  128,    2, 0x08 /* Private */,
+       7,    0,  129,    2, 0x08 /* Private */,
+       8,    0,  130,    2, 0x08 /* Private */,
+       9,    0,  131,    2, 0x08 /* Private */,
+      10,    0,  132,    2, 0x08 /* Private */,
+      11,    0,  133,    2, 0x08 /* Private */,
+      12,    1,  134,    2, 0x08 /* Private */,
+      14,    1,  137,    2, 0x08 /* Private */,
+      15,    1,  140,    2, 0x08 /* Private */,
+      16,    1,  143,    2, 0x08 /* Private */,
+      17,    1,  146,    2, 0x08 /* Private */,
+      18,    1,  149,    2, 0x08 /* Private */,
+      19,    1,  152,    2, 0x08 /* Private */,
+      20,    1,  155,    2, 0x08 /* Private */,
+      22,    0,  158,    2, 0x08 /* Private */,
+      23,    0,  159,    2, 0x08 /* Private */,
+      24,    1,  160,    2, 0x08 /* Private */,
+      25,    0,  163,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -132,6 +134,7 @@ static const uint qt_meta_data_siviso[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -163,6 +166,7 @@ void siviso::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 18: _t->on_pushButton_info_clicked(); break;
         case 19: _t->on_pushButton_send_clicked(); break;
         case 20: _t->on_it_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 21: _t->on_btOpenPort_clicked(); break;
         default: ;
         }
     }
@@ -193,13 +197,13 @@ int siviso::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 21)
+        if (_id < 22)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 21;
+        _id -= 22;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 21)
+        if (_id < 22)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 21;
+        _id -= 22;
     }
     return _id;
 }

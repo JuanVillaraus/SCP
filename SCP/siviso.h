@@ -116,6 +116,8 @@ private slots:
 
     void on_it_valueChanged(int arg1);
 
+    void on_btOpenPort_clicked();
+
 private:
     Ui::siviso *ui;
 

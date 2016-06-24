@@ -85,6 +85,7 @@ public:
     QPlainTextEdit *view;
     QPushButton *pushButton_info;
     QPushButton *pushButton_send;
+    QPushButton *btOpenPort;
     QFrame *frame_5;
     QLabel *DespTac;
     QFrame *frame_8;
@@ -310,6 +311,9 @@ public:
         pushButton_send = new QPushButton(frame_4);
         pushButton_send->setObjectName(QStringLiteral("pushButton_send"));
         pushButton_send->setGeometry(QRect(30, 400, 93, 27));
+        btOpenPort = new QPushButton(frame_4);
+        btOpenPort->setObjectName(QStringLiteral("btOpenPort"));
+        btOpenPort->setGeometry(QRect(30, 320, 121, 27));
         frame_5 = new QFrame(centralWidget);
         frame_5->setObjectName(QStringLiteral("frame_5"));
         frame_5->setGeometry(QRect(500, 250, 521, 451));
@@ -463,6 +467,7 @@ public:
         bb->setText(QApplication::translate("siviso", "Bb", 0));
         pushButton_info->setText(QApplication::translate("siviso", "ver info signal", 0));
         pushButton_send->setText(QApplication::translate("siviso", "send", 0));
+        btOpenPort->setText(QApplication::translate("siviso", "open serialport", 0));
         DespTac->setText(QString());
         label_24->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Plataforma</span></p></body></html>", 0));
         label_25->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Nombre:</span></p></body></html>", 0));
