@@ -70,7 +70,8 @@ public:
 private slots:
     void on_toolButton_clicked();
     void leerSocket();
-    void leerSerial();
+    void leerSerialDB9();
+    void leerSerialUSB();
 
 private slots:
 
@@ -128,7 +129,8 @@ private:
     quint16 puertoPPI;
     quint16 puertoBTR;
     quint16 puertoLF;
-    QSerialPort *serialPort;
+    QSerialPort *serialPortDB9;
+    QSerialPort *serialPortUSB;
 
     // For use the class dbasepostgresql by Misael M Del Valle
     DBasePostgreSQL* myDB;

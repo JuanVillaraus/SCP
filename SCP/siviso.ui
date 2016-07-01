@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>768</height>
+    <height>771</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -703,6 +703,9 @@ Verdadero</string>
     </widget>
    </widget>
    <widget class="QFrame" name="frame_4">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -787,6 +790,19 @@ Verdadero</string>
      </property>
      <property name="text">
       <string>open serialport</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>430</y>
+       <width>24</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>...</string>
      </property>
     </widget>
    </widget>
@@ -1064,26 +1080,12 @@ Verdadero</string>
      </property>
     </widget>
    </widget>
-   <widget class="QToolButton" name="toolButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>710</y>
-      <width>24</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>...</string>
-    </property>
-   </widget>
    <zorder>frame_3</zorder>
-   <zorder>frame_4</zorder>
    <zorder>frame_5</zorder>
    <zorder>frame_12</zorder>
    <zorder>frame_7</zorder>
    <zorder>frame_8</zorder>
-   <zorder>toolButton</zorder>
+   <zorder>frame_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
