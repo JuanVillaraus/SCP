@@ -37,20 +37,22 @@ siviso::siviso(QWidget *parent) :
     ui->setupUi(this);
     myppi = new PPI();
     mysignal = new Signal();
+    proceso = new QProcess(this);
+    proceso2 = new QProcess(this);
 
     udpsocket = new QUdpSocket(this);
     udpsocket->bind(localdir,puertolocal);
     serialPortDB9 = new QSerialPort();
     serialPortUSB = new QSerialPort();
-    //connect(udpsocket,SIGNAL(readyRead()),this,SLOT(leerSocket()));
+    connect(udpsocket,SIGNAL(readyRead()),this,SLOT(leerSocket()));
     connect(serialPortDB9, SIGNAL(readyRead()),this,SLOT(leerSerialDB9())); //Esta parte esta comentada porque en la computadora de desarrollo no tiene acceso a los puertos seriales y proboca crashed
     connect(serialPortUSB, SIGNAL(readyRead()),this,SLOT(leerSerialUSB()));
 
-    /*direccionSPP = "192.168.1.177";                   //direccion del SPP
+    direccionSPP = "192.168.1.177";                   //direccion del SPP
     puertoSPP = 8888;                                 //puerto del SPP
     direccionApp = "192.168.1.178";                   //direccion que usaran las aplicaciones
     //udpsocket->writeDatagram(ui->view->text().toLatin1(),direccionPar,puertoPar); //visualiza la direcion IP y puerto del que envia
-    */
+
 
     ui->textTestSend->appendPlainText("Esto se enviará al subsistema \n");
 
@@ -255,6 +257,8 @@ void siviso::on_tipo_norte_clicked()
 
 void siviso::on_nb_clicked()
 {
+    proceso2->close();
+    proceso->start("java -jar Lofar.jar");
     ui->textTestGrap->appendPlainText("despliega LOFAR");
     QString s = "LOFAR";
     ui->view->appendPlainText("send: " + s);
@@ -275,6 +279,8 @@ void siviso::on_bb_clicked()
 
 void siviso::on_wf_clicked()
 {
+    proceso->close();
+    proceso2->start("java -jar BTR.jar");
     ui->textTestGrap->appendPlainText("despliega Waterfall");
     QString s = "BTR";
     ui->view->appendPlainText("send to SSPP: " + s);

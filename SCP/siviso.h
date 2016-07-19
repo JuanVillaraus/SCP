@@ -27,6 +27,7 @@ public:
 #include <QHostAddress>
 #include <QUdpSocket>
 #include <QSerialPort>
+#include <QProcess>
 
 //---------headers for the use of postgres
 #include<QtSql/QSql>
@@ -131,6 +132,8 @@ private:
     quint16 puertoLF;
     QSerialPort *serialPortDB9;
     QSerialPort *serialPortUSB;
+    QProcess *proceso;
+    QProcess *proceso2;
 
     // For use the class dbasepostgresql by Misael M Del Valle
     DBasePostgreSQL* myDB;
