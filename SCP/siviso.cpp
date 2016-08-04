@@ -216,6 +216,9 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->setStopBits(QSerialPort::OneStop);
     serialPortUSB->setParity(QSerialPort::NoParity);
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+
+    proceso->start("java -jar Lofar.jar");
+    proceso2->start("java -jar BTR.jar");
 }
 
 void siviso::leerSerialDB9()
@@ -257,8 +260,10 @@ void siviso::on_tipo_norte_clicked()
 
 void siviso::on_nb_clicked()
 {
-    proceso2->close();
-    proceso->start("java -jar Lofar.jar");
+    //proceso->close();
+    //proceso2->close();
+    //proceso->start("java -jar Lofar.jar");
+    //proceso->startDetached("java -jar Lofar.jar");
     ui->textTestGrap->appendPlainText("despliega LOFAR");
     QString s = "LOFAR";
     ui->view->appendPlainText("send: " + s);
@@ -279,8 +284,10 @@ void siviso::on_bb_clicked()
 
 void siviso::on_wf_clicked()
 {
-    proceso->close();
-    proceso2->start("java -jar BTR.jar");
+    //proceso->close();
+    //proceso2->close();
+    //proceso2->start("java -jar BTR.jar");
+    //proceso2->startDetached("java -jar BTR.jar");
     ui->textTestGrap->appendPlainText("despliega Waterfall");
     QString s = "BTR";
     ui->view->appendPlainText("send to SSPP: " + s);
