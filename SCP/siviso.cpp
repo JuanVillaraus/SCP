@@ -217,8 +217,8 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->setParity(QSerialPort::NoParity);
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
 
-    proceso->start("java -jar Lofar.jar");
-    proceso2->start("java -jar BTR.jar");
+    //proceso->start("java -jar Lofar.jar");
+    //proceso2->start("java -jar BTR.jar");
 }
 
 void siviso::leerSerialDB9()
@@ -424,7 +424,7 @@ void siviso::on_pushButton_send_clicked()
     ui->view->appendPlainText("send: " + s);
     udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
     serialPortDB9->write("s");
-    serialPortUSB->write("s");
+    serialPortUSB->write("START COMMUNICATION");
 }
 
 

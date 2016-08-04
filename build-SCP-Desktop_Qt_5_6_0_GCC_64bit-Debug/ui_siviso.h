@@ -298,14 +298,14 @@ public:
         frame_4->setFrameShadow(QFrame::Raised);
         textTestGrap = new QPlainTextEdit(frame_4);
         textTestGrap->setObjectName(QStringLiteral("textTestGrap"));
-        textTestGrap->setGeometry(QRect(10, 10, 221, 301));
+        textTestGrap->setGeometry(QRect(10, 10, 221, 281));
         textTestSend = new QPlainTextEdit(frame_4);
         textTestSend->setObjectName(QStringLiteral("textTestSend"));
-        textTestSend->setGeometry(QRect(250, 10, 221, 301));
+        textTestSend->setGeometry(QRect(250, 10, 221, 281));
         view = new QPlainTextEdit(frame_4);
         view->setObjectName(QStringLiteral("view"));
         view->setEnabled(true);
-        view->setGeometry(QRect(230, 340, 241, 101));
+        view->setGeometry(QRect(230, 300, 241, 141));
         pushButton_info = new QPushButton(frame_4);
         pushButton_info->setObjectName(QStringLiteral("pushButton_info"));
         pushButton_info->setGeometry(QRect(20, 360, 111, 27));
