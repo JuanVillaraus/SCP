@@ -64,6 +64,8 @@ public:
     void changeStyleSheet(int iStyle);
 
     int numero;
+    int numCatchSend;
+    QString catchSend;
     PPI *myppi;
     Signal *mysignal;
     bool mycontrol;

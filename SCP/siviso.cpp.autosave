@@ -249,11 +249,9 @@ void siviso::leerSerialUSB()
 
     //udpsocket->writeDatagram(buffer,direccionApp,puertoBTR);
 
-    int i;
     QString s;
     s=QString(buffer);
     ui->textTestGrap->appendPlainText(s.size()+"");
-
 
     catchSend += buffer;
     if(numCatchSend==11)
