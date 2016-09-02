@@ -228,7 +228,7 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
 
     proceso->startDetached("java -jar Lofar.jar");
-    //proceso2->startDetached("java -jar BTR.jar");
+    proceso2->startDetached("java -jar BTR.jar");
 }
 
 void siviso::leerSerialDB9()
