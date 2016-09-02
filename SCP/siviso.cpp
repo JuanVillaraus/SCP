@@ -87,6 +87,8 @@ siviso::~siviso()
     delete serialPortDB9;
     delete serialPortUSB;
     delete ui;
+    proceso->close();
+    proceso2->close();
 }
 
 void siviso::on_toolButton_clicked()
@@ -224,6 +226,9 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->setStopBits(QSerialPort::OneStop);
     serialPortUSB->setParity(QSerialPort::NoParity);
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+
+    proceso->startDetached("java -jar Lofar.jar");
+    //proceso2->startDetached("java -jar BTR.jar");
 }
 
 void siviso::leerSerialDB9()
@@ -242,27 +247,30 @@ void siviso::leerSerialUSB()
     char buffer[101];
     int nDatos;
     numCatchSend++;
+    serialPortUSB->flush();
     nDatos = serialPortUSB->read(buffer,100);
 
     buffer[nDatos] = '\0';
     ui->textTestSend->appendPlainText(buffer);
 
-    //udpsocket->writeDatagram(buffer,direccionApp,puertoBTR);
+    QString str;
+    str=QString(buffer);
+    int n =str.size();
+    ui->textTestGrap->appendPlainText(QString::number(n));
 
-    int i;
-    QString s;
-    s=QString(buffer);
-    ui->textTestGrap->appendPlainText(s.size()+"");
+    numCatchSend += n;
+    for(int x=0;x<str.size();x++){
+        catchSend += buffer[x];
+        if(str[x]==';'){
+            ui->textTestGrap->appendPlainText("aqui esta el fin, en: "+QString::number(x));
+            //udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
+            udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoLF);
 
+            numCatchSend = 0;
 
-    catchSend += buffer;
-    if(numCatchSend==11)
-    {
-        numCatchSend = 0;
-        //udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
-        ui->textTestGrap->appendPlainText(catchSend);
-        //ui->textTestSend->appendPlainText(catchSend);
-        catchSend="";
+            ui->textTestGrap->appendPlainText(catchSend);
+            catchSend="";
+        }
     }
 }
 
@@ -301,12 +309,14 @@ void siviso::on_nb_clicked()
 
 void siviso::on_bb_clicked()
 {
-    ui->textTestGrap->appendPlainText("habilita los botones Waterfall y PPI");
+    //ui->textTestGrap->appendPlainText("habilita los botones Waterfall y PPI");
     QString s = "START COMMUNICATION";
     ui->view->appendPlainText("send: " + s);
-    udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
-    serialPortUSB->write("START COMMUNICATION\n");
+    //udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
+    //serialPortUSB->write("START COMMUNICATION\n");
+    serialPortUSB->write("S");
 }
+
 
 void siviso::on_wf_clicked()
 {
@@ -336,8 +346,8 @@ void siviso::on_ppi_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     serialPortUSB->write("SPEED 1500\n");
 
-    proceso->start("java -jar Lofar.jar");
-    proceso2->start("java -jar BTR.jar");
+    //proceso->start("java -jar Lofar.jar");
+    //proceso2->start("java -jar BTR.jar");
 }
 
 void siviso::on_origen_buque_clicked()

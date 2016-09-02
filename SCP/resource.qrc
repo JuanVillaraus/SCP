@@ -3,5 +3,9 @@
         <file>resource/costa.JPG</file>
         <file>resource/logo.png</file>
         <file>resource/siviso.jpg</file>
+        <file>resource/gps.PNG</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>resource/gps.PNG</file>
     </qresource>
 </RCC>

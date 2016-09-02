@@ -834,7 +834,7 @@ Verdadero</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resource.qrc">:/new/prefix1/resource/costa.JPG</pixmap>
+      <pixmap resource="resource.qrc">:/new/prefix1/resource/gps.PNG</pixmap>
      </property>
     </widget>
    </widget>

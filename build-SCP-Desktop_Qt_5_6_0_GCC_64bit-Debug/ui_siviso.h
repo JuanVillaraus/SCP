@@ -326,7 +326,7 @@ public:
         DespTac = new QLabel(frame_5);
         DespTac->setObjectName(QStringLiteral("DespTac"));
         DespTac->setGeometry(QRect(-7, -4, 531, 461));
-        DespTac->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/resource/costa.JPG")));
+        DespTac->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/resource/gps.PNG")));
         frame_8 = new QFrame(centralWidget);
         frame_8->setObjectName(QStringLiteral("frame_8"));
         frame_8->setGeometry(QRect(870, 90, 141, 151));

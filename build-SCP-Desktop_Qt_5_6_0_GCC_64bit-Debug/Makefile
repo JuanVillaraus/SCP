@@ -553,9 +553,11 @@ compiler_rcc_make_all: qrc_resource.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resource.cpp
 qrc_resource.cpp: ../SCP/resource.qrc \
+		../SCP/resource/gps.PNG \
 		../SCP/resource/siviso.jpg \
 		../SCP/resource/costa.JPG \
-		../SCP/resource/logo.png
+		../SCP/resource/logo.png \
+		../SCP/resource/gps.PNG
 	/home/siviso/Qt5.6.0/5.6/gcc_64/bin/rcc -name resource ../SCP/resource.qrc -o qrc_resource.cpp
 
 compiler_moc_header_make_all: moc_siviso.cpp moc_dbasepostgresql.cpp moc_wconfig.cpp

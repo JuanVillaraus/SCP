@@ -34,3 +34,5 @@ FORMS    += siviso.ui \
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES +=
