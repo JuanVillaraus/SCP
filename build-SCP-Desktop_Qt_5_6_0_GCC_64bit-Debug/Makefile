@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_SERIALPORT_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_SERIALPORT_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++0x -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../SCP -I. -I../../Qt5.6.0/5.6/gcc_64/include -I../../Qt5.6.0/5.6/gcc_64/include/QtWidgets -I../../Qt5.6.0/5.6/gcc_64/include/QtGui -I../../Qt5.6.0/5.6/gcc_64/include/QtSql -I../../Qt5.6.0/5.6/gcc_64/include/QtNetwork -I../../Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I../../Qt5.6.0/5.6/gcc_64/include/QtCore -I. -I. -I../../Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../SCP -I. -I../../Qt5.6.0/5.6/gcc_64/include -I../../Qt5.6.0/5.6/gcc_64/include/QtMultimedia -I../../Qt5.6.0/5.6/gcc_64/include/QtWidgets -I../../Qt5.6.0/5.6/gcc_64/include/QtGui -I../../Qt5.6.0/5.6/gcc_64/include/QtSql -I../../Qt5.6.0/5.6/gcc_64/include/QtNetwork -I../../Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I../../Qt5.6.0/5.6/gcc_64/include/QtCore -I. -I. -I../../Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/siviso/Qt5.6.0/5.6/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = SCP1.0.0
 DISTDIR = /home/siviso/SCP/build-SCP-Desktop_Qt_5_6_0_GCC_64bit-Debug/.tmp/SCP1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-z,origin -Wl,-rpath,\$$ORIGIN -Wl,-rpath,/home/siviso/Qt5.6.0/5.6/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/siviso/Qt5.6.0/5.6/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Sql -lQt5Network -lQt5SerialPort -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/siviso/Qt5.6.0/5.6/gcc_64/lib -lQt5Multimedia -lQt5Widgets -lQt5Gui -lQt5Sql -lQt5Network -lQt5SerialPort -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -362,6 +362,7 @@ Makefile: ../SCP/SCP.pro ../../Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++/qmake.conf .
 		../../Qt5.6.0/5.6/gcc_64/mkspecs/features/lex.prf \
 		../SCP/SCP.pro \
 		../SCP/resource.qrc \
+		../../Qt5.6.0/5.6/gcc_64/lib/libQt5Multimedia.prl \
 		../../Qt5.6.0/5.6/gcc_64/lib/libQt5Widgets.prl \
 		../../Qt5.6.0/5.6/gcc_64/lib/libQt5Gui.prl \
 		../../Qt5.6.0/5.6/gcc_64/lib/libQt5Sql.prl \
@@ -505,6 +506,7 @@ Makefile: ../SCP/SCP.pro ../../Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++/qmake.conf .
 ../../Qt5.6.0/5.6/gcc_64/mkspecs/features/lex.prf:
 ../SCP/SCP.pro:
 ../SCP/resource.qrc:
+../../Qt5.6.0/5.6/gcc_64/lib/libQt5Multimedia.prl:
 ../../Qt5.6.0/5.6/gcc_64/lib/libQt5Widgets.prl:
 ../../Qt5.6.0/5.6/gcc_64/lib/libQt5Gui.prl:
 ../../Qt5.6.0/5.6/gcc_64/lib/libQt5Sql.prl:
@@ -705,7 +707,7 @@ moc_siviso.cpp: ../SCP/blanco.h \
 		../SCP/wconfig.h \
 		../../Qt5.6.0/5.6/gcc_64/include/QtWidgets/QWidget \
 		../SCP/siviso.h
-	/home/siviso/Qt5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/siviso/Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/siviso/SCP/SCP -I/home/siviso/Qt5.6.0/5.6/gcc_64/include -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtWidgets -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtGui -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSql -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtNetwork -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtCore -I. ../SCP/siviso.h -o moc_siviso.cpp
+	/home/siviso/Qt5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/siviso/Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/siviso/SCP/SCP -I/home/siviso/Qt5.6.0/5.6/gcc_64/include -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtMultimedia -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtWidgets -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtGui -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSql -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtNetwork -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtCore -I. ../SCP/siviso.h -o moc_siviso.cpp
 
 moc_dbasepostgresql.cpp: ../../Qt5.6.0/5.6/gcc_64/include/QtCore/QString \
 		../../Qt5.6.0/5.6/gcc_64/include/QtCore/qstring.h \
@@ -776,7 +778,7 @@ moc_dbasepostgresql.cpp: ../../Qt5.6.0/5.6/gcc_64/include/QtCore/QString \
 		../../Qt5.6.0/5.6/gcc_64/include/QtCore/qset.h \
 		../../Qt5.6.0/5.6/gcc_64/include/QtCore/qcontiguouscache.h \
 		../SCP/dbasepostgresql.h
-	/home/siviso/Qt5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/siviso/Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/siviso/SCP/SCP -I/home/siviso/Qt5.6.0/5.6/gcc_64/include -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtWidgets -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtGui -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSql -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtNetwork -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtCore -I. ../SCP/dbasepostgresql.h -o moc_dbasepostgresql.cpp
+	/home/siviso/Qt5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/siviso/Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/siviso/SCP/SCP -I/home/siviso/Qt5.6.0/5.6/gcc_64/include -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtMultimedia -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtWidgets -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtGui -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSql -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtNetwork -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtCore -I. ../SCP/dbasepostgresql.h -o moc_dbasepostgresql.cpp
 
 moc_wconfig.cpp: ../../Qt5.6.0/5.6/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.6.0/5.6/gcc_64/include/QtWidgets/qwidget.h \
@@ -883,7 +885,7 @@ moc_wconfig.cpp: ../../Qt5.6.0/5.6/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../SCP/wconfig.h
-	/home/siviso/Qt5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/siviso/Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/siviso/SCP/SCP -I/home/siviso/Qt5.6.0/5.6/gcc_64/include -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtWidgets -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtGui -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSql -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtNetwork -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtCore -I. ../SCP/wconfig.h -o moc_wconfig.cpp
+	/home/siviso/Qt5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/siviso/Qt5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/siviso/SCP/SCP -I/home/siviso/Qt5.6.0/5.6/gcc_64/include -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtMultimedia -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtWidgets -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtGui -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSql -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtNetwork -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtSerialPort -I/home/siviso/Qt5.6.0/5.6/gcc_64/include/QtCore -I. ../SCP/wconfig.h -o moc_wconfig.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

@@ -66,9 +66,12 @@ public:
     int numero;
     int numCatchSend;
     QString catchSend;
+    QString compGraf;
     PPI *myppi;
     Signal *mysignal;
-    bool mycontrol;
+    bool bToolButton;
+    bool bRec;
+    bool bPlay;
 
 private slots:
     void on_toolButton_clicked();
@@ -80,11 +83,11 @@ private slots:
 
     void on_tipo_norte_clicked();
 
-    void on_nb_clicked();
+    void on_lf_clicked();
 
     void on_bb_clicked();
 
-    void on_wf_clicked();
+    void on_btr_clicked();
 
     void on_ppi_clicked();
 
@@ -93,10 +96,6 @@ private slots:
     void on_origen_target_clicked();
 
     void on_bw_valueChanged(double arg1);
-
-    //void on_pushButton_clicked();
-
-    //void on_it_valueChanged(double arg1);
 
     void on_edo_mar_valueChanged(int arg1);
 
@@ -112,8 +111,6 @@ private slots:
 
     void on_frecuencia_valueChanged(int value);
 
-    //void on_dt_valueChanged(double arg1);
-
     void on_pushButton_info_clicked();
 
     void on_pushButton_send_clicked();
@@ -121,6 +118,10 @@ private slots:
     void on_it_valueChanged(int arg1);
 
     void on_btOpenPort_clicked();
+
+    void on_rec_clicked();
+
+    void on_play_clicked();
 
 private:
     Ui::siviso *ui;

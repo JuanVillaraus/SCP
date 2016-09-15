@@ -647,7 +647,7 @@ Verdadero</string>
       <string>PPI</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="nb">
+    <widget class="QPushButton" name="lf">
      <property name="geometry">
       <rect>
        <x>75</x>
@@ -662,10 +662,10 @@ Verdadero</string>
       </font>
      </property>
      <property name="text">
-      <string>Nb</string>
+      <string>LF</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="wf">
+    <widget class="QPushButton" name="btr">
      <property name="geometry">
       <rect>
        <x>15</x>
@@ -680,7 +680,7 @@ Verdadero</string>
       </font>
      </property>
      <property name="text">
-      <string>WF</string>
+      <string>BTR</string>
      </property>
     </widget>
     <widget class="QPushButton" name="bb">
