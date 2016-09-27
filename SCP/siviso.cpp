@@ -92,6 +92,7 @@ siviso::~siviso()
     delete ui;
     proceso->close();
     proceso2->close();
+    proceso3->close();
 }
 
 void siviso::on_toolButton_clicked()
@@ -182,6 +183,8 @@ void siviso::leerSocket()
             puertoBTR = senderPort;
         if(info == "runLF")
             puertoLF = senderPort;
+        if(info == "runREC")
+            puertoREC = senderPort;
         //puertoPar = senderPort;
         if(puertoSPP == senderPort){
              udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoBTR);
@@ -329,6 +332,7 @@ void siviso::on_bb_clicked()
     //serialPortUSB->write("S");
     proceso->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
+    //proceso3->startDetached("java -jar Rec.jar");
 }
 
 
@@ -351,14 +355,14 @@ void siviso::on_btr_clicked()
 
 void siviso::on_ppi_clicked()
 {
-    ui->textTestGrap->appendPlainText("despliega PPI");
-    QString s = "SPEED 1500";
-    ui->view->appendPlainText("send: " + s);
-    udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
-    s = "BTR_OFF";
-    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
-    s = "LF_OFF";
-    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    //ui->textTestGrap->appendPlainText("despliega PPI");
+    //QString s = "SPEED 1500";
+    //ui->view->appendPlainText("send: " + s);
+    //udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
+    //s = "BTR_OFF";
+    //udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    //s = "LF_OFF";
+    //udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     //serialPortUSB->write("SPEED 1500\n");
     serialPortUSB->write("END COMMUNICATION\n");
 
@@ -460,7 +464,7 @@ void siviso::on_escala_despliegue_tactico_valueChanged(double arg1)
 {
     ui->textTestGrap->appendPlainText("desp_tact: ");
     QString s = QString::number(arg1);
-    ui->textTestGrap->appendPlainText(s);
+    ui->textTestGrap->appendPlainText(s);\
 }
 
 void siviso::on_gan_sen_valueChanged(int arg1)
@@ -470,6 +474,8 @@ void siviso::on_gan_sen_valueChanged(int arg1)
     ui->textTestSend->appendPlainText("ganancia_sensor: ");
     QString s = QString::number(arg1);
     ui->textTestSend->appendPlainText(s);
+    QByteArray ba ="GAIN "+s.toLatin1()+"\n";
+    serialPortUSB->write(ba);
 }
 
 //boton para enviar la informacion
@@ -504,12 +510,18 @@ void siviso::on_it_valueChanged(int arg1)
 
 void siviso::on_rec_clicked()
 {
+    QString s;
     if(bRec){
         bRec=false;
         ui->rec->setText("Stop");
+        s = "REC_ON";
+        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoREC);
+
     }else{
         bRec=true;
         ui->rec->setText("Rec");
+        s = "REC_OFF";
+        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoREC);
     }
 }
 
@@ -518,9 +530,12 @@ void siviso::on_play_clicked()
     if(bPlay){
         bPlay=false;
         ui->play->setText("Stop");
+        proceso3->startDetached("pactl load-module module-loopback");
+        //proceso3->startDetached("java -jar recSound.jar");
         //QSound::play("2016-09-14_14:27:16.wav");
     }else{
         bPlay=true;
         ui->play->setText("Play");
+        proceso3->startDetached("pactl unload-module module-loopback");
     }
 }

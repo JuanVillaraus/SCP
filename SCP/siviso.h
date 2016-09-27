@@ -133,10 +133,12 @@ private:
     quint16 puertoPPI;
     quint16 puertoBTR;
     quint16 puertoLF;
+    quint16 puertoREC;
     QSerialPort *serialPortDB9;
     QSerialPort *serialPortUSB;
     QProcess *proceso;
     QProcess *proceso2;
+    QProcess *proceso3;
 
     // For use the class dbasepostgresql by Misael M Del Valle
     DBasePostgreSQL* myDB;

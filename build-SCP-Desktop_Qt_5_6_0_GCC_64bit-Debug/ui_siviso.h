@@ -204,8 +204,9 @@ public:
         gan_sen->setObjectName(QStringLiteral("gan_sen"));
         gan_sen->setGeometry(QRect(610, 110, 81, 41));
         gan_sen->setFont(font1);
-        gan_sen->setMaximum(12);
-        gan_sen->setSingleStep(3);
+        gan_sen->setMinimum(3);
+        gan_sen->setMaximum(62);
+        gan_sen->setSingleStep(1);
         label_17 = new QLabel(frame_3);
         label_17->setObjectName(QStringLiteral("label_17"));
         label_17->setGeometry(QRect(606, 90, 81, 20));
