@@ -27,7 +27,7 @@ siviso::~siviso()
 #include <QtCore>
 #include <QtGui>
 
-#define localdir QHostAddress("192.168.1.178")        //de donde nos comunicamos
+//#define localdir QHostAddress("192.168.1.178")        //de donde nos comunicamos
 #define puertolocal 5002
 
 siviso::siviso(QWidget *parent) :
@@ -37,14 +37,15 @@ siviso::siviso(QWidget *parent) :
     ui->setupUi(this);
     myppi = new PPI();
     mysignal = new Signal();
-    proceso = new QProcess(this);
+    proceso1 = new QProcess(this);
     proceso2 = new QProcess(this);
     numCatchSend = 0;
     catchSend = "";
     compGraf = "";
 
     udpsocket = new QUdpSocket(this);
-    udpsocket->bind(localdir,puertolocal);
+    //udpsocket->bind(localdir,puertolocal);
+    udpsocket->bind(QHostAddress::LocalHost, puertolocal);
     serialPortDB9 = new QSerialPort();
     serialPortUSB = new QSerialPort();
     connect(udpsocket,SIGNAL(readyRead()),this,SLOT(leerSocket()));
@@ -53,7 +54,8 @@ siviso::siviso(QWidget *parent) :
 
     direccionSPP = "192.168.1.177";                   //direccion del SPP
     puertoSPP = 8888;                                 //puerto del SPP
-    direccionApp = "192.168.1.178";                   //direccion que usaran las aplicaciones
+    //direccionApp = "192.168.1.178";                   //direccion que usaran las aplicaciones
+    direccionApp = "127.0.0.1";                   //direccion que usaran las aplicaciones
     //udpsocket->writeDatagram(ui->view->text().toLatin1(),direccionPar,puertoPar); //visualiza la direcion IP y puerto del que envia
 
 
@@ -90,9 +92,11 @@ siviso::~siviso()
     delete serialPortDB9;
     delete serialPortUSB;
     delete ui;
-    proceso->close();
+    proceso1->close();
     proceso2->close();
     proceso3->close();
+    QString s = "BTR_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
 }
 
 void siviso::on_toolButton_clicked()
@@ -330,7 +334,7 @@ void siviso::on_bb_clicked()
     //udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
     //serialPortUSB->write("START COMMUNICATION\n");
     //serialPortUSB->write("S");
-    proceso->startDetached("java -jar Lofar.jar");
+    proceso1->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
     //proceso3->startDetached("java -jar Rec.jar");
 }
@@ -356,13 +360,13 @@ void siviso::on_btr_clicked()
 void siviso::on_ppi_clicked()
 {
     //ui->textTestGrap->appendPlainText("despliega PPI");
-    //QString s = "SPEED 1500";
+    QString s;
     //ui->view->appendPlainText("send: " + s);
     //udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
-    //s = "BTR_OFF";
-    //udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
-    //s = "LF_OFF";
-    //udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    s = "BTR_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    s = "LF_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     //serialPortUSB->write("SPEED 1500\n");
     serialPortUSB->write("END COMMUNICATION\n");
 

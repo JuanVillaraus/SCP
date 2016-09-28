@@ -136,7 +136,7 @@ private:
     quint16 puertoREC;
     QSerialPort *serialPortDB9;
     QSerialPort *serialPortUSB;
-    QProcess *proceso;
+    QProcess *proceso1;
     QProcess *proceso2;
     QProcess *proceso3;
 
