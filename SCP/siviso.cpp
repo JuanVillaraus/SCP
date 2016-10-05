@@ -87,6 +87,11 @@ siviso::siviso(QWidget *parent) :
 
 siviso::~siviso()
 {
+    QString s = "BTR_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    s = "LF_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    serialPortUSB->write("END COMMUNICATION\n");
     serialPortDB9->close();
     serialPortUSB->close();
     delete serialPortDB9;
@@ -95,8 +100,6 @@ siviso::~siviso()
     proceso1->close();
     proceso2->close();
     proceso3->close();
-    QString s = "BTR_EXIT";
-    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
 }
 
 void siviso::on_toolButton_clicked()
@@ -311,11 +314,6 @@ void siviso::on_tipo_norte_clicked()
 
 void siviso::on_lf_clicked()
 {
-    //proceso->close();
-    //proceso2->close();
-    //proceso->start("java -jar Lofar.jar");
-    //proceso->startDetached("java -jar Lofar.jar");
-    ui->textTestGrap->appendPlainText("despliega LOFAR");
     QString s = "LOFAR";
     ui->view->appendPlainText("send: " + s);
     udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
@@ -342,11 +340,6 @@ void siviso::on_bb_clicked()
 
 void siviso::on_btr_clicked()
 {
-    //proceso->close();
-    //proceso2->close();
-    //proceso2->start("java -jar BTR.jar");
-    //proceso2->startDetached("java -jar BTR.jar");
-    ui->textTestGrap->appendPlainText("despliega Waterfall");
     QString s = "BTR";
     ui->view->appendPlainText("send to SSPP: " + s);
     udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
@@ -411,24 +404,6 @@ void siviso::on_bw_valueChanged(double arg1)
     QString s = QString::number(arg1);
     ui->textTestGrap->appendPlainText(s);
 }
-
-/*void siviso::on_it_valueChanged(double arg1)
-{
-    mysignal->set_it(arg1);
-
-    ui->textTestSend->appendPlainText("It: ");
-    QString s = QString::number(arg1);
-    ui->textTestSend->appendPlainText(s);
-}*/
-
-/*void siviso::on_dt_valueChanged(double arg1)
-{
-    mysignal->set_dt(arg1);
-
-    ui->textTestGrap->appendPlainText("dt: ");
-    QString s = QString::number(arg1);
-    ui->textTestGrap->appendPlainText(s);
-}*/
 
 void siviso::on_edo_mar_valueChanged(int arg1)
 {
