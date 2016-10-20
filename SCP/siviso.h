@@ -123,6 +123,10 @@ private slots:
 
     void on_play_clicked();
 
+    void on_setColorUp_valueChanged(int value);
+
+    void on_setColorDw_valueChanged(int value);
+
 private:
     Ui::siviso *ui;
 

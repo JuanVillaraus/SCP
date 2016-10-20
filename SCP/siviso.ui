@@ -711,7 +711,7 @@ Verdadero</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>250</y>
       <width>481</width>
       <height>451</height>
@@ -812,9 +812,9 @@ Verdadero</string>
    <widget class="QFrame" name="frame_5">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>520</x>
       <y>250</y>
-      <width>521</width>
+      <width>501</width>
       <height>451</height>
      </rect>
     </property>
@@ -827,9 +827,9 @@ Verdadero</string>
     <widget class="QLabel" name="DespTac">
      <property name="geometry">
       <rect>
-       <x>-7</x>
+       <x>3</x>
        <y>-4</y>
-       <width>531</width>
+       <width>521</width>
        <height>461</height>
       </rect>
      </property>
@@ -1083,12 +1083,49 @@ Verdadero</string>
      </property>
     </widget>
    </widget>
+   <widget class="QSlider" name="setColorDw">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>479</y>
+      <width>29</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="setColorUp">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>250</y>
+      <width>29</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="value">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
    <zorder>frame_3</zorder>
    <zorder>frame_5</zorder>
    <zorder>frame_12</zorder>
    <zorder>frame_7</zorder>
    <zorder>frame_8</zorder>
    <zorder>frame_4</zorder>
+   <zorder>setColorDw</zorder>
+   <zorder>setColorUp</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

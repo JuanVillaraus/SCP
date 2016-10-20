@@ -518,3 +518,35 @@ void siviso::on_play_clicked()
         proceso3->startDetached("pactl unload-module module-loopback");
     }
 }
+
+void siviso::on_setColorUp_valueChanged(int value)
+{
+    QString s;
+    if(compGraf=="BTR"){
+        s = "BTR_ColorUP:";
+        s += QString::number(value);
+        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    }
+    if(compGraf=="LF"){
+        s = "LF_ColorUP:";
+        s += QString::number(value);
+        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    }
+    ui->textTestGrap->appendPlainText(s);
+}
+
+void siviso::on_setColorDw_valueChanged(int value)
+{
+    QString s;
+    if(compGraf=="BTR"){
+        s = "BTR_ColorDW:";
+        s += QString::number(value);
+        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    }
+    if(compGraf=="LF"){
+        s = "LF_ColorDW:";
+        s += QString::number(value);
+        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    }
+    ui->textTestGrap->appendPlainText(s);
+}
