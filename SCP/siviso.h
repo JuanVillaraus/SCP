@@ -65,6 +65,8 @@ public:
 
     int numero;
     int numCatchSend;
+    int colorUp;
+    int colorDw;
     QString catchSend;
     QString compGraf;
     PPI *myppi;
@@ -85,7 +87,7 @@ private slots:
 
     void on_lf_clicked();
 
-    void on_bb_clicked();
+    //void on_bb_clicked();
 
     void on_btr_clicked();
 

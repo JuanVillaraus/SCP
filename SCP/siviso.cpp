@@ -70,7 +70,33 @@ siviso::siviso(QWidget *parent) :
     ui->prob_falsa->setValue(mysignal->get_prob_falsa());
     ui->prob_deteccion->setValue(mysignal->get_prob_deteccion());
     ui->edo_mar->setValue(mysignal->get_edo_mar());
+
+    bToolButton=false;
+    ui->textTestSend->setVisible(false);
+    ui->textTestGrap->setVisible(false);
+    ui->view->setVisible(false);
+    ui->pushButton_info->setVisible(false);
+    ui->pushButton_send->setVisible(false);
+
+    serialPortUSB->write("GAIN 3\n");
     
+    QFile file1("resource/colorUp.txt");
+    if(file1.open(QIODevice::WriteOnly)){
+        QTextStream stream(&file1);
+        stream<<"255";
+    } else {
+        qDebug();
+    }
+    file1.close();
+
+    QFile file2("resource/colorDw.txt");
+    if(file2.open(QIODevice::WriteOnly)){
+        QTextStream stream(&file2);
+        stream<<"0";
+    } else {
+        qDebug();
+    }
+    file2.close();
 
 
 //This use for TEST the class DBasePostgreSQL by Misael M Del Valle -- Status: Functional
@@ -111,7 +137,6 @@ void siviso::on_toolButton_clicked()
         ui->view->setVisible(false);
         ui->pushButton_info->setVisible(false);
         ui->pushButton_send->setVisible(false);
-        ui->btOpenPort->setVisible(false);
     }else{
         bToolButton=true;
         ui->textTestSend->setVisible(true);
@@ -119,7 +144,6 @@ void siviso::on_toolButton_clicked()
         ui->view->setVisible(true);
         ui->pushButton_info->setVisible(true);
         ui->pushButton_send->setVisible(true);
-        ui->btOpenPort->setVisible(true);
     }
 }
 
@@ -243,8 +267,12 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->write("START COMMUNICATION\n");
     serialPortUSB->write("SPEED 1500\n");
 
-    //proceso->startDetached("java -jar Lofar.jar");
-    //proceso2->startDetached("java -jar BTR.jar");
+    QString s = "BTR_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    s = "LF_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    proceso1->startDetached("java -jar Lofar.jar");
+    proceso2->startDetached("java -jar BTR.jar");
 }
 
 void siviso::leerSerialDB9()
@@ -312,6 +340,23 @@ void siviso::on_tipo_norte_clicked()
 
 }
 
+/*void siviso::on_bb_clicked()
+{
+    //ui->textTestGrap->appendPlainText("habilita los botones Waterfall y PPI");
+    //QString s = "START COMMUNICATION";
+    //ui->view->appendPlainText("send: " + s);
+    //udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
+    //serialPortUSB->write("START COMMUNICATION\n");
+    //serialPortUSB->write("S");
+    QString s = "BTR_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    s = "LF_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    proceso1->startDetached("java -jar Lofar.jar");
+    proceso2->startDetached("java -jar BTR.jar");
+    //proceso3->startDetached("java -jar Rec.jar");
+}*/
+
 void siviso::on_lf_clicked()
 {
     QString s = "LOFAR";
@@ -322,21 +367,9 @@ void siviso::on_lf_clicked()
     s = "BTR_OFF";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     compGraf="LF";
+    s = "LF_RP";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
 }
-
-void siviso::on_bb_clicked()
-{
-    //ui->textTestGrap->appendPlainText("habilita los botones Waterfall y PPI");
-    //QString s = "START COMMUNICATION";
-    //ui->view->appendPlainText("send: " + s);
-    //udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
-    //serialPortUSB->write("START COMMUNICATION\n");
-    //serialPortUSB->write("S");
-    proceso1->startDetached("java -jar Lofar.jar");
-    proceso2->startDetached("java -jar BTR.jar");
-    //proceso3->startDetached("java -jar Rec.jar");
-}
-
 
 void siviso::on_btr_clicked()
 {
@@ -348,6 +381,8 @@ void siviso::on_btr_clicked()
     s = "LF_OFF";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     compGraf="BTR";
+    s = "BTR_RP";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
 }
 
 void siviso::on_ppi_clicked()
@@ -521,32 +556,58 @@ void siviso::on_play_clicked()
 
 void siviso::on_setColorUp_valueChanged(int value)
 {
+    colorUp = value;
+    if(colorUp <= colorDw){
+        colorDw = colorUp-1;
+        ui->setColorDw->setValue(colorDw);
+    }
+
+    QFile file("resource/colorUp.txt");
+    if(file.open(QIODevice::WriteOnly)){
+        QTextStream stream(&file);
+        stream<<value;
+    } else {
+        qDebug();
+    }
+    file.close();
+
     QString s;
     if(compGraf=="BTR"){
-        s = "BTR_ColorUP:";
-        s += QString::number(value);
+        s = "BTR_RP";
         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     }
     if(compGraf=="LF"){
-        s = "LF_ColorUP:";
-        s += QString::number(value);
+        s = "LF_RP";
         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     }
-    ui->textTestGrap->appendPlainText(s);
+    //ui->textTestGrap->appendPlainText(QString::number(value));
 }
 
 void siviso::on_setColorDw_valueChanged(int value)
 {
+    colorDw = value;
+    if(colorDw >= colorUp){
+        colorUp = colorDw+1;
+        ui->setColorUp->setValue(colorUp);
+    }
+
+    QFile file("resource/colorDw.txt");
+    if(file.open(QIODevice::WriteOnly)){
+        QTextStream stream(&file);
+        stream<<value;
+    } else {
+        qDebug();
+    }
+    file.close();
+
     QString s;
     if(compGraf=="BTR"){
-        s = "BTR_ColorDW:";
-        s += QString::number(value);
+        s = "BTR_RP";
         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     }
     if(compGraf=="LF"){
-        s = "LF_ColorDW:";
-        s += QString::number(value);
+        s = "LF_RP";
         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     }
-    ui->textTestGrap->appendPlainText(s);
+    //ui->textTestGrap->appendPlainText(QString::number(value));
 }

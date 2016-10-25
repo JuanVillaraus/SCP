@@ -686,7 +686,7 @@ Verdadero</string>
       <string>BTR</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="bb">
+    <widget class="QPushButton" name="btOpenPort">
      <property name="geometry">
       <rect>
        <x>15</x>
@@ -701,7 +701,7 @@ Verdadero</string>
       </font>
      </property>
      <property name="text">
-      <string>Bb</string>
+      <string>Open</string>
      </property>
     </widget>
    </widget>
@@ -780,19 +780,6 @@ Verdadero</string>
      </property>
      <property name="text">
       <string>send</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="btOpenPort">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>320</y>
-       <width>121</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>open serialport</string>
      </property>
     </widget>
     <widget class="QToolButton" name="toolButton">
