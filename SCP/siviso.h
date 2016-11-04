@@ -68,12 +68,16 @@ public:
     int colorUp;
     int colorDw;
     QString catchSend;
+    QString catchHeader;
+    QString GPSt, GPSn, GPSw;
     QString compGraf;
     PPI *myppi;
     Signal *mysignal;
+    bool bCatchHeader;
     bool bToolButton;
     bool bRec;
     bool bPlay;
+    bool bGPSt, bGPSn, bGPSw;
 
 private slots:
     void on_toolButton_clicked();
