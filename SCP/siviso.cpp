@@ -47,9 +47,11 @@ siviso::siviso(QWidget *parent) :
     //udpsocket->bind(localdir,puertolocal);
     udpsocket->bind(QHostAddress::LocalHost, puertolocal);
     serialPortDB9 = new QSerialPort();
+    serialPortGPS = new QSerialPort();
     serialPortUSB = new QSerialPort();
     connect(udpsocket,SIGNAL(readyRead()),this,SLOT(leerSocket()));
-    connect(serialPortDB9, SIGNAL(readyRead()),this,SLOT(leerSerialDB9())); //Esta parte esta comentada porque en la computadora de desarrollo no tiene acceso a los puertos seriales y proboca crashed
+    connect(serialPortDB9, SIGNAL(readyRead()),this,SLOT(leerSerialDB9()));
+    connect(serialPortGPS, SIGNAL(readyRead()),this,SLOT(leerSerialGPS()));
     connect(serialPortUSB, SIGNAL(readyRead()),this,SLOT(leerSerialUSB()));
 
     direccionSPP = "192.168.1.177";                   //direccion del SPP
@@ -59,7 +61,7 @@ siviso::siviso(QWidget *parent) :
     //udpsocket->writeDatagram(ui->view->text().toLatin1(),direccionPar,puertoPar); //visualiza la direcion IP y puerto del que envia
 
 
-    ui->textTestSend->appendPlainText("Esto se enviará al subsistema \n");
+    ui->view->appendPlainText("Esto se enviará al subsistema \n");
 
     ui->frecuencia->setValue(mysignal->get_frec());
     ui->bw->setValue(mysignal->get_bw());
@@ -72,7 +74,7 @@ siviso::siviso(QWidget *parent) :
     ui->edo_mar->setValue(mysignal->get_edo_mar());
 
     bToolButton=false;
-    ui->textTestSend->setVisible(false);
+    ui->viewGPS->setVisible(false);
     ui->textTestGrap->setVisible(false);
     ui->view->setVisible(false);
     ui->pushButton_info->setVisible(false);
@@ -119,8 +121,10 @@ siviso::~siviso()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     serialPortUSB->write("END COMMUNICATION\n");
     serialPortDB9->close();
+    serialPortGPS->close();
     serialPortUSB->close();
     delete serialPortDB9;
+    delete serialPortGPS;
     delete serialPortUSB;
     delete ui;
     proceso1->close();
@@ -132,14 +136,14 @@ void siviso::on_toolButton_clicked()
 {
     if(bToolButton){
         bToolButton=false;
-        ui->textTestSend->setVisible(false);
+        ui->viewGPS->setVisible(false);
         ui->textTestGrap->setVisible(false);
         ui->view->setVisible(false);
         ui->pushButton_info->setVisible(false);
         ui->pushButton_send->setVisible(false);
     }else{
         bToolButton=true;
-        ui->textTestSend->setVisible(true);
+        ui->viewGPS->setVisible(true);
         ui->textTestGrap->setVisible(true);
         ui->view->setVisible(true);
         ui->pushButton_info->setVisible(true);
@@ -251,6 +255,19 @@ void siviso::on_btOpenPort_clicked()
     serialPortDB9->setParity(QSerialPort::NoParity);
     serialPortDB9->setFlowControl(QSerialPort::NoFlowControl);
 
+    serialPortGPS->setPortName("/dev/ttyS2");
+    if(serialPortGPS->open(QIODevice::ReadWrite))
+        ui->view->appendPlainText("Puerto serial abierto\n");
+        //qDebug("Puerto serial abierto\n");
+    else
+        ui->view->appendPlainText("Error de coexion con el puerto serial\n");
+        //qDebug("Error de coexion con el puerto serial\n");
+    serialPortGPS->setBaudRate(QSerialPort::Baud4800);
+    serialPortGPS->setDataBits(QSerialPort::Data8);
+    serialPortGPS->setStopBits(QSerialPort::OneStop);
+    serialPortGPS->setParity(QSerialPort::NoParity);
+    serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
+
     serialPortUSB->setPortName("/dev/ttyUSB1");
     if(serialPortUSB->open(QIODevice::ReadWrite))
         ui->view->appendPlainText("Puerto serial abierto\n");
@@ -286,6 +303,17 @@ void siviso::leerSerialDB9()
 
 }
 
+void siviso::leerSerialGPS()
+{
+    char buffer[101];
+    int nDatos;
+
+    nDatos = serialPortDB9->read(buffer,100);
+    buffer[nDatos] = '\0';
+    ui->textTestGrap->appendPlainText(buffer);
+
+}
+
 void siviso::leerSerialUSB()
 {
     char buffer[101];
@@ -295,7 +323,7 @@ void siviso::leerSerialUSB()
     nDatos = serialPortUSB->read(buffer,100);
 
     buffer[nDatos] = '\0';
-    ui->textTestSend->appendPlainText(buffer);
+    ui->view->appendPlainText(buffer);
 
     QString str;
     str=QString(buffer);
@@ -444,27 +472,27 @@ void siviso::on_edo_mar_valueChanged(int arg1)
 {
     mysignal->set_edo_mar(arg1);
 
-    ui->textTestSend->appendPlainText("edo_mar: ");
+    ui->view->appendPlainText("edo_mar: ");
     QString s = QString::number(arg1);
-    ui->textTestSend->appendPlainText(s);
+    ui->view->appendPlainText(s);
 }
 
 void siviso::on_prob_falsa_valueChanged(double arg1)
 {
     mysignal->set_prob_falsa(arg1);
 
-    ui->textTestSend->appendPlainText("prob_falsa: ");
+    ui->view->appendPlainText("prob_falsa: ");
     QString s = QString::number(arg1);
-    ui->textTestSend->appendPlainText(s);
+    ui->view->appendPlainText(s);
 }
 
 void siviso::on_prob_deteccion_valueChanged(double arg1)
 {
     mysignal->set_prob_deteccion(arg1);
 
-    ui->textTestSend->appendPlainText("prob_deteccion: ");
+    ui->view->appendPlainText("prob_deteccion: ");
     QString s = QString::number(arg1);
-    ui->textTestSend->appendPlainText(s);
+    ui->view->appendPlainText(s);
 }
 
 void siviso::on_escala_ppi_valueChanged(double arg1)
@@ -485,9 +513,9 @@ void siviso::on_gan_sen_valueChanged(int arg1)
 {
     mysignal->set_ganancia_sensor(arg1);
 
-    ui->textTestSend->appendPlainText("ganancia_sensor: ");
+    ui->view->appendPlainText("ganancia_sensor: ");
     QString s = QString::number(arg1);
-    ui->textTestSend->appendPlainText(s);
+    ui->view->appendPlainText(s);
     QByteArray ba ="GAIN "+s.toLatin1()+"\n";
     serialPortUSB->write(ba);
 }
@@ -515,9 +543,9 @@ void siviso::on_it_valueChanged(int arg1)
 {
     mysignal->set_it(arg1);
 
-    ui->textTestSend->appendPlainText("It: ");
+    ui->view->appendPlainText("It: ");
     QString s = QString::number(arg1);
-    ui->textTestSend->appendPlainText(s);
+    ui->view->appendPlainText(s);
 }
 
 

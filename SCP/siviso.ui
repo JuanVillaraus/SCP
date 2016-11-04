@@ -723,7 +723,7 @@ Verdadero</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPlainTextEdit" name="textTestGrap">
+    <widget class="QPlainTextEdit" name="view">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -733,7 +733,7 @@ Verdadero</string>
       </rect>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="textTestSend">
+    <widget class="QPlainTextEdit" name="textTestGrap">
      <property name="geometry">
       <rect>
        <x>250</x>
@@ -743,7 +743,7 @@ Verdadero</string>
       </rect>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="view">
+    <widget class="QPlainTextEdit" name="viewGPS">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -824,7 +824,7 @@ Verdadero</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resource.qrc">:/new/prefix1/resource/gps.PNG</pixmap>
+      <pixmap>:/new/prefix1/resource/gps.PNG</pixmap>
      </property>
     </widget>
    </widget>
@@ -963,7 +963,7 @@ Verdadero</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resource.qrc">:/new/prefix1/resource/logo.png</pixmap>
+      <pixmap>:/new/prefix1/resource/logo.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -982,7 +982,7 @@ Verdadero</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resource.qrc">:/new/prefix1/resource/siviso.jpg</pixmap>
+      <pixmap>:/new/prefix1/resource/siviso.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -1135,8 +1135,6 @@ Verdadero</string>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

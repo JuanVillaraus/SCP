@@ -79,6 +79,7 @@ private slots:
     void on_toolButton_clicked();
     void leerSocket();
     void leerSerialDB9();
+    void leerSerialGPS();
     void leerSerialUSB();
 
 private slots:
@@ -141,6 +142,7 @@ private:
     quint16 puertoLF;
     quint16 puertoREC;
     QSerialPort *serialPortDB9;
+    QSerialPort *serialPortGPS;
     QSerialPort *serialPortUSB;
     QProcess *proceso1;
     QProcess *proceso2;
