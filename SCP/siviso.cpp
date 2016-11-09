@@ -233,13 +233,6 @@ void siviso::leerSocket()
              udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoBTR);
              udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
         }
-        /*if(info == "BTR" || info == "LOFAR")
-            udpsocket->writeDatagram(info.toLatin1(),direccionSPP,puertoSPP);
-        if(puertoBTR == senderPort){
-            ui->textTestGrap->appendPlainText(" intento enviar ");
-            udpsocket->writeDatagram(info.toLatin1(),direccionSPP,puertoSPP);
-            ui->textTestGrap->appendPlainText(" paquete enviado ");
-        }*/
         if(info == "BTR")
             serialPortUSB->write("BTR\n");
         if(info == "LOFAR")
@@ -318,12 +311,12 @@ void siviso::leerSerialGPS()
 
     nDatos = serialPortDB9->read(buffer,100);
     buffer[nDatos] = '\0';
-    ui->viewGPS->appendPlainText(buffer);
+    //ui->viewGPS->appendPlainText(buffer);
 
     QString str;
     str=QString(buffer);
     int n =str.size();
-    ui->textTestGrap->appendPlainText(QString::number(n));
+    //ui->textTestGrap->appendPlainText(QString::number(n));
 
     numCatchSend += n;
     for(int x=0;x<str.size();x++){
@@ -348,44 +341,31 @@ void siviso::leerSerialGPS()
                 GPSt += str[x];
             } else {
                 ui->viewGPS->appendPlainText("Reloj del GPS: " + GPSt);
+                GPSt = "";
                 bGPSt = false;
                 bGPSn = true;
             }
         } else if(bGPSn){
             if(str[x]!='N'){
-                GPSn += str[x];
+                if(str[x]!=',')
+                    GPSn += str[x];
             } else {
                 ui->viewGPS->appendPlainText("GPS Longitud: " + GPSn);
+                GPSn = "";
                 bGPSn = false;
                 bGPSw = true;
             }
         } else if(bGPSw){
             if(str[x]!='W'){
-                GPSw += str[x];
+                if(str[x]!=',')
+                    GPSw += str[x];
             } else {
                 ui->viewGPS->appendPlainText("GPS Longitud: " + GPSw);
+                GPSw = "";
                 bGPSw = false;
             }
         }
-
-
-        /*if(str[x]=='1'||str[x]=='2'||str[x]=='3'||str[x]=='4'||str[x]=='5'||str[x]=='6'||str[x]=='7'||str[x]=='8'||str[x]=='9'||str[x]=='0'||str[x]==','||str[x]==';'){
-            catchSend += str[x];
-        }
-        if(str[x]==';'){
-            ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
-            if(compGraf=="BTR")
-                udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
-            if(compGraf=="LF")
-                udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoLF);
-
-            numCatchSend = 0;
-
-            ui->textTestGrap->appendPlainText(catchSend);
-            catchSend="";
-        }*/
     }
-
 }
 
 void siviso::leerSerialUSB()
@@ -397,12 +377,12 @@ void siviso::leerSerialUSB()
     nDatos = serialPortUSB->read(buffer,100);
 
     buffer[nDatos] = '\0';
-    ui->view->appendPlainText(buffer);
+    //ui->view->appendPlainText(buffer);
 
     QString str;
     str=QString(buffer);
     int n =str.size();
-    ui->textTestGrap->appendPlainText(QString::number(n));
+    //ui->textTestGrap->appendPlainText(QString::number(n));
 
 
     numCatchSend += n;
