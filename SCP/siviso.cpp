@@ -707,6 +707,8 @@ void siviso::on_closeJars_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     s = "LF_EXIT";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    s = "BTG_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
     //serialPortUSB->write("SPEED 1500\n");
     serialPortUSB->write("END COMMUNICATION\n");
 
