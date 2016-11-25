@@ -431,7 +431,6 @@ void siviso::on_tipo_norte_clicked()
         ui->tipo_norte->setText("Norte\nVerdadero");
         myppi->set_tipo_norte(true);
     }
-
 }
 
 void siviso::on_lf_clicked()
@@ -448,6 +447,8 @@ void siviso::on_lf_clicked()
     compGraf="LF";
     s = "LF_RP";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    ui->setColorUp->setVisible(true);
+    ui->setColorDw->setVisible(true);
 }
 
 void siviso::on_btr_clicked()
@@ -464,6 +465,8 @@ void siviso::on_btr_clicked()
     compGraf="BTR";
     s = "BTR_RP";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    ui->setColorUp->setVisible(true);
+    ui->setColorDw->setVisible(true);
 }
 
 void siviso::on_btg_clicked()
@@ -480,6 +483,8 @@ void siviso::on_btg_clicked()
     compGraf="BTG";
     s = "BTG_RP";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+    ui->setColorUp->setVisible(false);
+    ui->setColorDw->setVisible(false);
 }
 
 void siviso::on_origen_buque_clicked()

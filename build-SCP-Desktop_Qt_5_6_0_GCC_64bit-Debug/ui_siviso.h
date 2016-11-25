@@ -358,13 +358,13 @@ public:
         label_32->setGeometry(QRect(10, 120, 111, 16));
         gpsLat = new QLabel(frame_8);
         gpsLat->setObjectName(QStringLiteral("gpsLat"));
-        gpsLat->setGeometry(QRect(70, 70, 67, 17));
+        gpsLat->setGeometry(QRect(70, 72, 67, 17));
         QFont font2;
         font2.setPointSize(8);
         gpsLat->setFont(font2);
         gpsLong = new QLabel(frame_8);
         gpsLong->setObjectName(QStringLiteral("gpsLong"));
-        gpsLong->setGeometry(QRect(70, 100, 67, 17));
+        gpsLong->setGeometry(QRect(70, 96, 67, 17));
         gpsLong->setFont(font2);
         frame_12 = new QFrame(centralWidget);
         frame_12->setObjectName(QStringLiteral("frame_12"));
