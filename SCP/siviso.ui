@@ -632,29 +632,11 @@ Verdadero</string>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="ppi">
-     <property name="geometry">
-      <rect>
-       <x>75</x>
-       <y>170</y>
-       <width>51</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>PPI</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="lf">
      <property name="geometry">
       <rect>
        <x>75</x>
-       <y>110</y>
+       <y>170</y>
        <width>51</width>
        <height>51</height>
       </rect>
@@ -702,6 +684,24 @@ Verdadero</string>
      </property>
      <property name="text">
       <string>Open</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btg">
+     <property name="geometry">
+      <rect>
+       <x>77</x>
+       <y>110</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>BTG</string>
      </property>
     </widget>
    </widget>
@@ -793,6 +793,24 @@ Verdadero</string>
      </property>
      <property name="text">
       <string>...</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="closeJars">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>320</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>close Jars</string>
      </property>
     </widget>
    </widget>

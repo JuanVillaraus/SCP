@@ -96,7 +96,7 @@ private slots:
 
     void on_btr_clicked();
 
-    void on_ppi_clicked();
+    void on_closeJars_clicked();
 
     void on_origen_buque_clicked();
 
@@ -134,6 +134,8 @@ private slots:
 
     void on_setColorDw_valueChanged(int value);
 
+    void on_btg_clicked();
+
 private:
     Ui::siviso *ui;
 
@@ -141,7 +143,7 @@ private:
     QHostAddress direccionSPP;
     QHostAddress direccionApp;
     quint16 puertoSPP;
-    quint16 puertoPPI;
+    quint16 puertoBTG;
     quint16 puertoBTR;
     quint16 puertoLF;
     quint16 puertoREC;
