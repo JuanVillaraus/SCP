@@ -359,7 +359,7 @@ void siviso::leerSerialGPS()
                     GPSn += str[x];
             } else {
                 ui->viewGPS->appendPlainText("GPS Longitud: " + GPSn);
-                latlong = GPSn.toDouble()/100;
+                latlong = GPSn.toDouble()/-100;
                 ui->gpsLong->setNum(latlong);
                 GPSn = "";
                 bGPSn = false;
@@ -371,7 +371,7 @@ void siviso::leerSerialGPS()
                     GPSw += str[x];
             } else {
                 ui->viewGPS->appendPlainText("GPS Latitud: " + GPSw);
-                latlong = GPSw.toDouble()/-100;
+                latlong = GPSw.toDouble()/100;
                 ui->gpsLat->setNum(latlong);
                 GPSw = "";
                 bGPSw = false;
