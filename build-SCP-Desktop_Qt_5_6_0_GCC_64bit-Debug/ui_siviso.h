@@ -95,6 +95,8 @@ public:
     QLabel *label_27;
     QLabel *label_28;
     QLabel *label_32;
+    QLabel *gpsLat;
+    QLabel *gpsLong;
     QFrame *frame_12;
     QLabel *label_61;
     QLabel *logo;
@@ -349,6 +351,16 @@ public:
         label_32 = new QLabel(frame_8);
         label_32->setObjectName(QStringLiteral("label_32"));
         label_32->setGeometry(QRect(10, 120, 111, 16));
+        gpsLat = new QLabel(frame_8);
+        gpsLat->setObjectName(QStringLiteral("gpsLat"));
+        gpsLat->setGeometry(QRect(70, 70, 67, 17));
+        QFont font2;
+        font2.setPointSize(8);
+        gpsLat->setFont(font2);
+        gpsLong = new QLabel(frame_8);
+        gpsLong->setObjectName(QStringLiteral("gpsLong"));
+        gpsLong->setGeometry(QRect(70, 100, 67, 17));
+        gpsLong->setFont(font2);
         frame_12 = new QFrame(centralWidget);
         frame_12->setObjectName(QStringLiteral("frame_12"));
         frame_12->setGeometry(QRect(730, 10, 271, 71));
@@ -487,6 +499,8 @@ public:
         label_27->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Latitud:</span></p></body></html>", 0));
         label_28->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Longitud:</span></p></body></html>", 0));
         label_32->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Carga de la bateria:</span></p></body></html>", 0));
+        gpsLat->setText(QString());
+        gpsLong->setText(QString());
         label_61->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">SIVISO<br/>ARMADA DE M\303\211XICO</span></p></body></html>", 0));
         logo->setText(QString());
         logo_siviso->setText(QString());

@@ -245,10 +245,10 @@ void siviso::on_btOpenPort_clicked()
     //Esta parte esta comentada porque en la computadora de desarrollo no tiene acceso a los puertos seriales y proboca crashed
     serialPortDB9->setPortName("/dev/ttyS0");
     if(serialPortDB9->open(QIODevice::ReadWrite))
-        ui->view->appendPlainText("Puerto serial abierto\n");
+        ui->view->appendPlainText("Puerto serial db9 abierto\n");
         //qDebug("Puerto serial abierto\n");
     else
-        ui->view->appendPlainText("Error de coexion con el puerto serial\n");
+        ui->view->appendPlainText("Error de conexion con el puerto serial db9\n");
         //qDebug("Error de coexion con el puerto serial\n");
     serialPortDB9->setBaudRate(QSerialPort::Baud9600);
     serialPortDB9->setDataBits(QSerialPort::Data8);
@@ -258,10 +258,10 @@ void siviso::on_btOpenPort_clicked()
 
     serialPortGPS->setPortName("/dev/ttyS2");
     if(serialPortGPS->open(QIODevice::ReadWrite))
-        ui->view->appendPlainText("Puerto serial abierto\n");
+        ui->view->appendPlainText("Puerto serial GPS abierto\n");
         //qDebug("Puerto serial abierto\n");
     else
-        ui->view->appendPlainText("Error de coexion con el puerto serial\n");
+        ui->view->appendPlainText("Error de conexion con el puerto serial GPS\n");
         //qDebug("Error de coexion con el puerto serial\n");
     serialPortGPS->setBaudRate(QSerialPort::Baud4800);
     serialPortGPS->setDataBits(QSerialPort::Data8);
@@ -272,9 +272,9 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->setPortName("/dev/ttyUSB1");
     if(serialPortUSB->open(QIODevice::ReadWrite))
         ui->view->appendPlainText("Puerto serial abierto\n");
-        //qDebug("Puerto serial abierto\n");
+        //qDebug("Puerto serial abierto USB\n");
     else
-        ui->view->appendPlainText("Error de coexion con el puerto serial\n");
+        ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
         //qDebug("Error de coexion con el puerto serial\n");
     serialPortUSB->setBaudRate(QSerialPort::Baud115200);
     serialPortUSB->setDataBits(QSerialPort::Data8);
@@ -308,8 +308,9 @@ void siviso::leerSerialGPS()
 {
     char buffer[101];
     int nDatos;
+    double latlong;
 
-    nDatos = serialPortDB9->read(buffer,100);
+    nDatos = serialPortGPS->read(buffer,100);
     buffer[nDatos] = '\0';
     //ui->viewGPS->appendPlainText(buffer);
 
@@ -351,6 +352,8 @@ void siviso::leerSerialGPS()
                     GPSn += str[x];
             } else {
                 ui->viewGPS->appendPlainText("GPS Longitud: " + GPSn);
+                latlong = GPSn.toDouble()/100;
+                ui->gpsLong->setNum(latlong);
                 GPSn = "";
                 bGPSn = false;
                 bGPSw = true;
@@ -360,7 +363,9 @@ void siviso::leerSerialGPS()
                 if(str[x]!=',')
                     GPSw += str[x];
             } else {
-                ui->viewGPS->appendPlainText("GPS Longitud: " + GPSw);
+                ui->viewGPS->appendPlainText("GPS Latitud: " + GPSw);
+                latlong = GPSw.toDouble()/-100;
+                ui->gpsLat->setNum(latlong);
                 GPSw = "";
                 bGPSw = false;
             }
