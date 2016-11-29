@@ -136,6 +136,8 @@ private slots:
 
     void on_btg_clicked();
 
+    void on_openJars_clicked();
+
 private:
     Ui::siviso *ui;
 

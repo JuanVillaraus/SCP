@@ -87,6 +87,7 @@ public:
     QPushButton *pushButton_send;
     QToolButton *toolButton;
     QPushButton *closeJars;
+    QPushButton *openJars;
     QFrame *frame_5;
     QLabel *DespTac;
     QFrame *frame_8;
@@ -322,8 +323,12 @@ public:
         toolButton->setGeometry(QRect(0, 430, 24, 25));
         closeJars = new QPushButton(frame_4);
         closeJars->setObjectName(QStringLiteral("closeJars"));
-        closeJars->setGeometry(QRect(30, 320, 91, 31));
+        closeJars->setGeometry(QRect(120, 320, 91, 31));
         closeJars->setFont(font1);
+        openJars = new QPushButton(frame_4);
+        openJars->setObjectName(QStringLiteral("openJars"));
+        openJars->setGeometry(QRect(20, 320, 91, 31));
+        openJars->setFont(font1);
         frame_5 = new QFrame(centralWidget);
         frame_5->setObjectName(QStringLiteral("frame_5"));
         frame_5->setGeometry(QRect(520, 250, 501, 451));
@@ -498,6 +503,7 @@ public:
         pushButton_send->setText(QApplication::translate("siviso", "send", 0));
         toolButton->setText(QApplication::translate("siviso", "...", 0));
         closeJars->setText(QApplication::translate("siviso", "close Jars", 0));
+        openJars->setText(QApplication::translate("siviso", "open Jars", 0));
         DespTac->setText(QString());
         label_24->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Plataforma</span></p></body></html>", 0));
         label_25->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Nombre:</span></p></body></html>", 0));

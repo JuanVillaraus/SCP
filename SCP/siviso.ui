@@ -798,7 +798,7 @@ Verdadero</string>
     <widget class="QPushButton" name="closeJars">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>120</x>
        <y>320</y>
        <width>91</width>
        <height>31</height>
@@ -811,6 +811,24 @@ Verdadero</string>
      </property>
      <property name="text">
       <string>close Jars</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="openJars">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>320</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>open Jars</string>
      </property>
     </widget>
    </widget>

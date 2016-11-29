@@ -89,6 +89,7 @@ siviso::siviso(QWidget *parent) :
     ui->pushButton_info->setVisible(false);
     ui->pushButton_send->setVisible(false);
     ui->closeJars->setVisible(false);
+    ui->openJars->setVisible(false);
 
     serialPortUSB->write("GAIN 3\n");
     
@@ -109,6 +110,10 @@ siviso::siviso(QWidget *parent) :
         qDebug();
     }
     file2.close();
+
+    proceso1->startDetached("java -jar Lofar.jar");
+    proceso2->startDetached("java -jar BTR.jar");
+    proceso3->startDetached("java -jar Btg.jar");
 
 
 //This use for TEST the class DBasePostgreSQL by Misael M Del Valle -- Status: Functional
@@ -154,6 +159,7 @@ void siviso::on_toolButton_clicked()
         ui->pushButton_info->setVisible(false);
         ui->pushButton_send->setVisible(false);
         ui->closeJars->setVisible(false);
+        ui->openJars->setVisible(false);
     }else{
         bToolButton=true;
         ui->viewGPS->setVisible(true);
@@ -162,6 +168,7 @@ void siviso::on_toolButton_clicked()
         ui->pushButton_info->setVisible(true);
         ui->pushButton_send->setVisible(true);
         ui->closeJars->setVisible(true);
+        ui->openJars->setVisible(true);
     }
 }
 
@@ -226,12 +233,22 @@ void siviso::leerSocket()
         ui->textTestGrap->appendPlainText(info);
         //s = " ";
 
-        if(info == "runBTG")
+        QString s;
+        if(info == "runBTG"){
             puertoBTG = senderPort;
-        if(info == "runBTR")
+            s = "BTG_OFF";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+        }
+        if(info == "runBTR"){
             puertoBTR = senderPort;
-        if(info == "runLF")
+            s = "BTR_OFF";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+        }
+        if(info == "runLF"){
             puertoLF = senderPort;
+            s = "LF_OFF";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+        }
         if(info == "runREC")
             puertoREC = senderPort;
         //puertoPar = senderPort;
@@ -291,13 +308,11 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->write("START COMMUNICATION\n");
     serialPortUSB->write("SPEED 1500\n");
 
-    QString s = "BTR_EXIT";
+    /*QString s = "BTR_EXIT";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     s = "LF_EXIT";
-    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
-    proceso1->startDetached("java -jar Lofar.jar");
-    proceso2->startDetached("java -jar BTR.jar");
-    proceso3->startDetached("java -jar Btg.jar");
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);*/
+
 }
 
 void siviso::leerSerialDB9()
@@ -714,4 +729,19 @@ void siviso::on_closeJars_clicked()
 
     //proceso->start("java -jar Lofar.jar");
     //proceso2->start("java -jar BTR.jar");
+}
+
+void siviso::on_openJars_clicked()
+{
+    QString s;
+    s = "BTR_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    s = "LF_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    s = "BTG_EXIT";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+
+    proceso1->startDetached("java -jar Lofar.jar");
+    proceso2->startDetached("java -jar BTR.jar");
+    proceso3->startDetached("java -jar Btg.jar");
 }
