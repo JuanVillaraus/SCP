@@ -67,10 +67,12 @@ public:
     int numCatchSend;
     int colorUp;
     int colorDw;
+    int nBati;
     QString catchSend;
     QString catchHeader;
     QString GPSt, GPSn, GPSw;
     QString compGraf;
+    QString batiP, batiT, batiS;
     PPI *myppi;
     Signal *mysignal;
     bool bCatchHeader;
@@ -78,6 +80,7 @@ public:
     bool bRec;
     bool bPlay;
     bool bGPSt, bGPSn, bGPSw;
+    bool bDecimal;
 
 private slots:
     void on_toolButton_clicked();

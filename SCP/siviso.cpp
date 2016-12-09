@@ -324,6 +324,50 @@ void siviso::leerSerialDB9()
     buffer[nDatos] = '\0';
     ui->textTestGrap->appendPlainText(buffer);
 
+    QString str;
+    str=QString(buffer);
+    int n =str.size();
+    //ui->textTestGrap->appendPlainText(QString::number(n));
+
+    numCatchSend += n;
+    for(int x=0;x<str.size();x++){
+        if(str[x]!='#'){
+            catchSend = "";
+            nBati = 1;
+            batiP = "";
+            batiS = "";
+            batiT = "";
+            bDecimal = false;
+        }
+        if(str[x]=='.'){
+            bDecimal = true;
+        }else{
+            if(str[x]=='1'||str[x]=='2'||str[x]=='3'||str[x]=='4'||str[x]=='5'||str[x]=='6'||str[x]=='7'||str[x]=='8'||str[x]=='9'||str[x]=='0'){
+                if(!bDecimal){
+                    switch(nBati){
+                    case 1:
+                        batiT += str[x];
+                        break;
+                    case 2:
+                        batiP += str[x];
+                        break;
+                    case 3:
+                        batiS += str[x];
+                        break;
+                    }
+                }
+            }
+        }
+        if(str[x]=='T'||str[x]=='P'||str[x]=='C'){
+            bDecimal = false;
+            nBati++;
+        }
+        if(str[x]=='$'){
+            catchSend = batiP + "," + batiT + "," + batiS + ";";
+            ui->viewGPS->appendPlainText("esto enviaré a BTG: " + catchSend);
+            udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTG);
+        }
+    }
 }
 
 void siviso::leerSerialGPS()
