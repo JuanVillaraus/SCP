@@ -366,6 +366,8 @@ void siviso::leerSerialDB9()
             catchSend = batiP + "," + batiT + "," + batiS + ";";
             ui->viewGPS->appendPlainText("esto enviaré a BTG: " + catchSend);
             udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTG);
+            s = "RP";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
         }
     }
 }
