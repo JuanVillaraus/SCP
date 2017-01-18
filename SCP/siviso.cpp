@@ -360,6 +360,9 @@ void siviso::leerSerialDB9()
         if(str[x]=='$' && batiP != "" && batiT !="" && batiS != ""){
             d = batiP.toDouble();
             batiP = QString::number(d);
+            d = batiT.toDouble();
+            d *= 10;
+            batiT = QString::number(d);
             catchSend = batiP + "," + batiT + "," + batiS + ";";
             ui->viewGPS->appendPlainText("esto enviaré a BTG: " + catchSend);
             udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTG);
