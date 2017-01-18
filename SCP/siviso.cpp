@@ -361,26 +361,6 @@ void siviso::leerSerialDB9()
             d = batiP.toDouble();
             batiP = QString::number(d);
             catchSend = batiP + "," + batiT + "," + batiS + ";";
-            ui->viewGPS->appendPlainText("esto recibí a BTG: " + catchSend);
-            s="";
-            for(int x=0;x<batiP.size();x++)
-                if(batiP[x]=='.')
-                    for(int y=0;y<batiP.size();y++)
-                        s+=batiP[y];
-            batiP=s;
-            s="";
-            for(int x=0;x<batiT.size();x++)
-                if(batiT[x]=='.')
-                    for(int y=0;y<batiT.size();y++)
-                        s+=batiT[y];
-            batiT=s;
-            s="";
-            for(int x=0;x<batiS.size();x++)
-                if(batiS[x]=='.')
-                    for(int y=0;y<batiS.size();y++)
-                        s+=batiS[y];
-            batiS=s;
-            catchSend = batiP + "," + batiT + "," + batiS + ";";
             ui->viewGPS->appendPlainText("esto enviaré a BTG: " + catchSend);
             udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTG);
         }
@@ -424,7 +404,6 @@ void siviso::leerSerialGPS()
             if(str[x]!=','){
                 GPSt += str[x];
             } else {
-                ui->viewGPS->appendPlainText("Reloj del GPS: " + GPSt);
                 GPSt = "";
                 bGPSt = false;
                 bGPSn = true;
@@ -434,7 +413,6 @@ void siviso::leerSerialGPS()
                 if(str[x]!=',')
                     GPSn += str[x];
             } else {
-                ui->viewGPS->appendPlainText("GPS Longitud: " + GPSn);
                 latlong = GPSn.toDouble()/-100;
                 ui->gpsLong->setNum(latlong);
                 GPSn = "";
@@ -446,7 +424,6 @@ void siviso::leerSerialGPS()
                 if(str[x]!=',')
                     GPSw += str[x];
             } else {
-                ui->viewGPS->appendPlainText("GPS Latitud: " + GPSw);
                 latlong = GPSw.toDouble()/100;
                 ui->gpsLat->setNum(latlong);
                 GPSw = "";
