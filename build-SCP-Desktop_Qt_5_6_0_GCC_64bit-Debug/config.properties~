@@ -1,6 +1,8 @@
 #Tue Apr 12 08:46:23 CDT 2016
-dimensionX=475
-posicionY=290
-posicionX=13
 database=localhost
+posicionX=33
+posicionY=290
+dimensionX=475
 dimensionY=440
+nBTRCanal=11
+nLFCanal=62
