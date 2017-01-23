@@ -92,7 +92,9 @@ siviso::siviso(QWidget *parent) :
     ui->openJars->setVisible(false);
 
     serialPortUSB->write("GAIN 3\n");
-    
+
+    colorUp=255;
+    colorDw=0;
     QFile file1("resource/colorUp.txt");
     if(file1.open(QIODevice::WriteOnly)){
         QTextStream stream(&file1);
@@ -212,21 +214,7 @@ void siviso::leerSocket()
         QHostAddress sender;
         quint16 senderPort;
         udpsocket->readDatagram(datagram.data(),datagram.size(), &sender, &senderPort);
-        //ui->textTestGrap->appendPlainText(QString(datagram) + " (ip->" + sender.toString() + " ; port-> " + QString("%1").arg(senderPort) + " ) ");
         QString info = datagram.data();
-        /*QString s = " ";
-        if(info.data()[0]=='$')                       //verifica cabecera y parte elo paquete en secciones sepáradas ṕor punto y coma
-        for(int x=0;x<=info.size();x++)
-           {
-            if(info.data()[x]!=';')
-                s += info.data()[x];
-            else{
-                ui->textTestGrap->appendPlainText(s);
-                s = " ";
-            }
-        }
-        else
-            ui->textTestGrap->appendPlainText("ERROR: el mensaje no tiene cabecera");*/
         ui->textTestGrap->appendPlainText(" port-> " + QString("%1").arg(senderPort));
         ui->textTestGrap->appendPlainText(info);
         //s = " ";
@@ -267,14 +255,11 @@ void siviso::leerSocket()
 
 void siviso::on_btOpenPort_clicked()
 {
-    //Esta parte esta comentada porque en la computadora de desarrollo no tiene acceso a los puertos seriales y proboca crashed
     serialPortDB9->setPortName("/dev/ttyS0");
     if(serialPortDB9->open(QIODevice::ReadWrite))
         ui->view->appendPlainText("Puerto serial db9 abierto\n");
-        //qDebug("Puerto serial abierto\n");
     else
         ui->view->appendPlainText("Error de conexion con el puerto serial db9\n");
-        //qDebug("Error de coexion con el puerto serial\n");
     serialPortDB9->setBaudRate(QSerialPort::Baud9600);
     serialPortDB9->setDataBits(QSerialPort::Data8);
     serialPortDB9->setStopBits(QSerialPort::OneStop);
@@ -284,10 +269,8 @@ void siviso::on_btOpenPort_clicked()
     serialPortGPS->setPortName("/dev/ttyS2");
     if(serialPortGPS->open(QIODevice::ReadWrite))
         ui->view->appendPlainText("Puerto serial GPS abierto\n");
-        //qDebug("Puerto serial abierto\n");
     else
         ui->view->appendPlainText("Error de conexion con el puerto serial GPS\n");
-        //qDebug("Error de coexion con el puerto serial\n");
     serialPortGPS->setBaudRate(QSerialPort::Baud4800);
     serialPortGPS->setDataBits(QSerialPort::Data8);
     serialPortGPS->setStopBits(QSerialPort::OneStop);
@@ -297,10 +280,8 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->setPortName("/dev/ttyUSB1");
     if(serialPortUSB->open(QIODevice::ReadWrite))
         ui->view->appendPlainText("Puerto serial abierto\n");
-        //qDebug("Puerto serial abierto USB\n");
     else
         ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
-        //qDebug("Error de coexion con el puerto serial\n");
     serialPortUSB->setBaudRate(QSerialPort::Baud115200);
     serialPortUSB->setDataBits(QSerialPort::Data8);
     serialPortUSB->setStopBits(QSerialPort::OneStop);
@@ -309,12 +290,6 @@ void siviso::on_btOpenPort_clicked()
 
     serialPortUSB->write("START COMMUNICATION\n");
     serialPortUSB->write("SPEED 1500\n");
-
-    /*QString s = "BTR_EXIT";
-    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
-    s = "LF_EXIT";
-    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);*/
-
 }
 
 void siviso::leerSerialDB9()
@@ -636,14 +611,6 @@ void siviso::on_pushButton_send_clicked()
     serialPortDB9->write("s");
     //serialPortUSB->write("END COMMUNICATION\n");
 }
-
-
-
-/*void siviso::on_pushButton_clicked()
-{
-
-
-}*/
 
 void siviso::on_it_valueChanged(int arg1)
 {

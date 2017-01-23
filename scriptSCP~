@@ -1,0 +1,7 @@
+#!/bin/bash
+echo SSPP
+echo ..iniciando software de la consola portatil
+sleep 1s
+cd /home/siviso/repositorio/SCP/build-SCP-Desktop_Qt_5_6_0_GCC_64bit-Debug
+./SCP
+
