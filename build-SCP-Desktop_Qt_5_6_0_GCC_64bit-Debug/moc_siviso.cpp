@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_siviso_t {
-    QByteArrayData data[33];
-    char stringdata0[651];
+    QByteArrayData data[35];
+    char stringdata0[678];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -53,15 +53,17 @@ QT_MOC_LITERAL(20, 379, 23), // "on_gan_sen_valueChanged"
 QT_MOC_LITERAL(21, 403, 26), // "on_frecuencia_valueChanged"
 QT_MOC_LITERAL(22, 430, 5), // "value"
 QT_MOC_LITERAL(23, 436, 26), // "on_pushButton_info_clicked"
-QT_MOC_LITERAL(24, 463, 26), // "on_pushButton_send_clicked"
-QT_MOC_LITERAL(25, 490, 18), // "on_it_valueChanged"
-QT_MOC_LITERAL(26, 509, 21), // "on_btOpenPort_clicked"
-QT_MOC_LITERAL(27, 531, 14), // "on_rec_clicked"
-QT_MOC_LITERAL(28, 546, 15), // "on_play_clicked"
-QT_MOC_LITERAL(29, 562, 26), // "on_setColorUp_valueChanged"
-QT_MOC_LITERAL(30, 589, 26), // "on_setColorDw_valueChanged"
-QT_MOC_LITERAL(31, 616, 14), // "on_btg_clicked"
-QT_MOC_LITERAL(32, 631, 19) // "on_openJars_clicked"
+QT_MOC_LITERAL(24, 463, 18), // "on_it_valueChanged"
+QT_MOC_LITERAL(25, 482, 21), // "on_btOpenPort_clicked"
+QT_MOC_LITERAL(26, 504, 14), // "on_rec_clicked"
+QT_MOC_LITERAL(27, 519, 15), // "on_play_clicked"
+QT_MOC_LITERAL(28, 535, 26), // "on_setColorUp_valueChanged"
+QT_MOC_LITERAL(29, 562, 26), // "on_setColorDw_valueChanged"
+QT_MOC_LITERAL(30, 589, 14), // "on_btg_clicked"
+QT_MOC_LITERAL(31, 604, 19), // "on_openJars_clicked"
+QT_MOC_LITERAL(32, 624, 19), // "on_startCom_clicked"
+QT_MOC_LITERAL(33, 644, 17), // "on_endCom_clicked"
+QT_MOC_LITERAL(34, 662, 15) // "on_send_clicked"
 
     },
     "siviso\0on_toolButton_clicked\0\0leerSocket\0"
@@ -78,12 +80,12 @@ QT_MOC_LITERAL(32, 631, 19) // "on_openJars_clicked"
     "on_gan_sen_valueChanged\0"
     "on_frecuencia_valueChanged\0value\0"
     "on_pushButton_info_clicked\0"
-    "on_pushButton_send_clicked\0"
     "on_it_valueChanged\0on_btOpenPort_clicked\0"
     "on_rec_clicked\0on_play_clicked\0"
     "on_setColorUp_valueChanged\0"
     "on_setColorDw_valueChanged\0on_btg_clicked\0"
-    "on_openJars_clicked"
+    "on_openJars_clicked\0on_startCom_clicked\0"
+    "on_endCom_clicked\0on_send_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -93,7 +95,7 @@ static const uint qt_meta_data_siviso[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      29,   14, // methods
+      31,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -101,35 +103,37 @@ static const uint qt_meta_data_siviso[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  159,    2, 0x08 /* Private */,
-       3,    0,  160,    2, 0x08 /* Private */,
-       4,    0,  161,    2, 0x08 /* Private */,
-       5,    0,  162,    2, 0x08 /* Private */,
-       6,    0,  163,    2, 0x08 /* Private */,
-       7,    0,  164,    2, 0x08 /* Private */,
-       8,    0,  165,    2, 0x08 /* Private */,
-       9,    0,  166,    2, 0x08 /* Private */,
-      10,    0,  167,    2, 0x08 /* Private */,
-      11,    0,  168,    2, 0x08 /* Private */,
-      12,    0,  169,    2, 0x08 /* Private */,
-      13,    1,  170,    2, 0x08 /* Private */,
-      15,    1,  173,    2, 0x08 /* Private */,
-      16,    1,  176,    2, 0x08 /* Private */,
-      17,    1,  179,    2, 0x08 /* Private */,
-      18,    1,  182,    2, 0x08 /* Private */,
-      19,    1,  185,    2, 0x08 /* Private */,
-      20,    1,  188,    2, 0x08 /* Private */,
-      21,    1,  191,    2, 0x08 /* Private */,
-      23,    0,  194,    2, 0x08 /* Private */,
-      24,    0,  195,    2, 0x08 /* Private */,
-      25,    1,  196,    2, 0x08 /* Private */,
-      26,    0,  199,    2, 0x08 /* Private */,
-      27,    0,  200,    2, 0x08 /* Private */,
-      28,    0,  201,    2, 0x08 /* Private */,
-      29,    1,  202,    2, 0x08 /* Private */,
-      30,    1,  205,    2, 0x08 /* Private */,
-      31,    0,  208,    2, 0x08 /* Private */,
-      32,    0,  209,    2, 0x08 /* Private */,
+       1,    0,  169,    2, 0x08 /* Private */,
+       3,    0,  170,    2, 0x08 /* Private */,
+       4,    0,  171,    2, 0x08 /* Private */,
+       5,    0,  172,    2, 0x08 /* Private */,
+       6,    0,  173,    2, 0x08 /* Private */,
+       7,    0,  174,    2, 0x08 /* Private */,
+       8,    0,  175,    2, 0x08 /* Private */,
+       9,    0,  176,    2, 0x08 /* Private */,
+      10,    0,  177,    2, 0x08 /* Private */,
+      11,    0,  178,    2, 0x08 /* Private */,
+      12,    0,  179,    2, 0x08 /* Private */,
+      13,    1,  180,    2, 0x08 /* Private */,
+      15,    1,  183,    2, 0x08 /* Private */,
+      16,    1,  186,    2, 0x08 /* Private */,
+      17,    1,  189,    2, 0x08 /* Private */,
+      18,    1,  192,    2, 0x08 /* Private */,
+      19,    1,  195,    2, 0x08 /* Private */,
+      20,    1,  198,    2, 0x08 /* Private */,
+      21,    1,  201,    2, 0x08 /* Private */,
+      23,    0,  204,    2, 0x08 /* Private */,
+      24,    1,  205,    2, 0x08 /* Private */,
+      25,    0,  208,    2, 0x08 /* Private */,
+      26,    0,  209,    2, 0x08 /* Private */,
+      27,    0,  210,    2, 0x08 /* Private */,
+      28,    1,  211,    2, 0x08 /* Private */,
+      29,    1,  214,    2, 0x08 /* Private */,
+      30,    0,  217,    2, 0x08 /* Private */,
+      31,    0,  218,    2, 0x08 /* Private */,
+      32,    0,  219,    2, 0x08 /* Private */,
+      33,    0,  220,    2, 0x08 /* Private */,
+      34,    0,  221,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -152,13 +156,15 @@ static const uint qt_meta_data_siviso[] = {
     QMetaType::Void, QMetaType::Int,   14,
     QMetaType::Void, QMetaType::Int,   22,
     QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   14,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   22,
     QMetaType::Void, QMetaType::Int,   22,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -191,15 +197,17 @@ void siviso::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 17: _t->on_gan_sen_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 18: _t->on_frecuencia_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 19: _t->on_pushButton_info_clicked(); break;
-        case 20: _t->on_pushButton_send_clicked(); break;
-        case 21: _t->on_it_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 22: _t->on_btOpenPort_clicked(); break;
-        case 23: _t->on_rec_clicked(); break;
-        case 24: _t->on_play_clicked(); break;
-        case 25: _t->on_setColorUp_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 26: _t->on_setColorDw_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 27: _t->on_btg_clicked(); break;
-        case 28: _t->on_openJars_clicked(); break;
+        case 20: _t->on_it_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 21: _t->on_btOpenPort_clicked(); break;
+        case 22: _t->on_rec_clicked(); break;
+        case 23: _t->on_play_clicked(); break;
+        case 24: _t->on_setColorUp_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 25: _t->on_setColorDw_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 26: _t->on_btg_clicked(); break;
+        case 27: _t->on_openJars_clicked(); break;
+        case 28: _t->on_startCom_clicked(); break;
+        case 29: _t->on_endCom_clicked(); break;
+        case 30: _t->on_send_clicked(); break;
         default: ;
         }
     }
@@ -230,13 +238,13 @@ int siviso::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 29)
+        if (_id < 31)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 31;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 29)
+        if (_id < 31)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 29;
+        _id -= 31;
     }
     return _id;
 }

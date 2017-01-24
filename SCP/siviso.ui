@@ -743,24 +743,11 @@ Verdadero</string>
       </rect>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="viewGPS">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>300</y>
-       <width>241</width>
-       <height>141</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_info">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>360</y>
+       <y>400</y>
        <width>111</width>
        <height>27</height>
       </rect>
@@ -769,17 +756,17 @@ Verdadero</string>
       <string>ver info signal</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_send">
+    <widget class="QPushButton" name="startCom">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>400</y>
+       <x>20</x>
+       <y>360</y>
        <width>93</width>
        <height>27</height>
       </rect>
      </property>
      <property name="text">
-      <string>send</string>
+      <string>startCom</string>
      </property>
     </widget>
     <widget class="QToolButton" name="toolButton">
@@ -829,6 +816,42 @@ Verdadero</string>
      </property>
      <property name="text">
       <string>open Jars</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="send">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>350</y>
+       <width>99</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Enviar</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="textSend">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>320</y>
+       <width>221</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="endCom">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>360</y>
+       <width>93</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>endCom</string>
      </property>
     </widget>
    </widget>

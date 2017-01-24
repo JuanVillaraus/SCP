@@ -123,8 +123,6 @@ private slots:
 
     void on_pushButton_info_clicked();
 
-    void on_pushButton_send_clicked();
-
     void on_it_valueChanged(int arg1);
 
     void on_btOpenPort_clicked();
@@ -140,6 +138,12 @@ private slots:
     void on_btg_clicked();
 
     void on_openJars_clicked();
+
+    void on_startCom_clicked();
+
+    void on_endCom_clicked();
+
+    void on_send_clicked();
 
 private:
     Ui::siviso *ui;

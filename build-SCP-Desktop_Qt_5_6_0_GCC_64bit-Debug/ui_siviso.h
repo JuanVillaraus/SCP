@@ -19,6 +19,7 @@
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
@@ -82,12 +83,14 @@ public:
     QFrame *frame_4;
     QPlainTextEdit *view;
     QPlainTextEdit *textTestGrap;
-    QPlainTextEdit *viewGPS;
     QPushButton *pushButton_info;
-    QPushButton *pushButton_send;
+    QPushButton *startCom;
     QToolButton *toolButton;
     QPushButton *closeJars;
     QPushButton *openJars;
+    QPushButton *send;
+    QLineEdit *textSend;
+    QPushButton *endCom;
     QFrame *frame_5;
     QLabel *DespTac;
     QFrame *frame_8;
@@ -308,16 +311,12 @@ public:
         textTestGrap = new QPlainTextEdit(frame_4);
         textTestGrap->setObjectName(QStringLiteral("textTestGrap"));
         textTestGrap->setGeometry(QRect(250, 10, 221, 281));
-        viewGPS = new QPlainTextEdit(frame_4);
-        viewGPS->setObjectName(QStringLiteral("viewGPS"));
-        viewGPS->setEnabled(true);
-        viewGPS->setGeometry(QRect(230, 300, 241, 141));
         pushButton_info = new QPushButton(frame_4);
         pushButton_info->setObjectName(QStringLiteral("pushButton_info"));
-        pushButton_info->setGeometry(QRect(20, 360, 111, 27));
-        pushButton_send = new QPushButton(frame_4);
-        pushButton_send->setObjectName(QStringLiteral("pushButton_send"));
-        pushButton_send->setGeometry(QRect(30, 400, 93, 27));
+        pushButton_info->setGeometry(QRect(20, 400, 111, 27));
+        startCom = new QPushButton(frame_4);
+        startCom->setObjectName(QStringLiteral("startCom"));
+        startCom->setGeometry(QRect(20, 360, 93, 27));
         toolButton = new QToolButton(frame_4);
         toolButton->setObjectName(QStringLiteral("toolButton"));
         toolButton->setGeometry(QRect(0, 430, 24, 25));
@@ -329,6 +328,15 @@ public:
         openJars->setObjectName(QStringLiteral("openJars"));
         openJars->setGeometry(QRect(20, 320, 91, 31));
         openJars->setFont(font1);
+        send = new QPushButton(frame_4);
+        send->setObjectName(QStringLiteral("send"));
+        send->setGeometry(QRect(370, 350, 99, 27));
+        textSend = new QLineEdit(frame_4);
+        textSend->setObjectName(QStringLiteral("textSend"));
+        textSend->setGeometry(QRect(250, 320, 221, 27));
+        endCom = new QPushButton(frame_4);
+        endCom->setObjectName(QStringLiteral("endCom"));
+        endCom->setGeometry(QRect(120, 360, 93, 27));
         frame_5 = new QFrame(centralWidget);
         frame_5->setObjectName(QStringLiteral("frame_5"));
         frame_5->setGeometry(QRect(520, 250, 501, 451));
@@ -500,10 +508,12 @@ public:
         btOpenPort->setText(QApplication::translate("siviso", "Open", 0));
         btg->setText(QApplication::translate("siviso", "BTG", 0));
         pushButton_info->setText(QApplication::translate("siviso", "ver info signal", 0));
-        pushButton_send->setText(QApplication::translate("siviso", "send", 0));
+        startCom->setText(QApplication::translate("siviso", "startCom", 0));
         toolButton->setText(QApplication::translate("siviso", "...", 0));
         closeJars->setText(QApplication::translate("siviso", "close Jars", 0));
         openJars->setText(QApplication::translate("siviso", "open Jars", 0));
+        send->setText(QApplication::translate("siviso", "Enviar", 0));
+        endCom->setText(QApplication::translate("siviso", "endCom", 0));
         DespTac->setText(QString());
         label_24->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Plataforma</span></p></body></html>", 0));
         label_25->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Nombre:</span></p></body></html>", 0));

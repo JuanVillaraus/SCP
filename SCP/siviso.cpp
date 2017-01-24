@@ -83,13 +83,15 @@ siviso::siviso(QWidget *parent) :
     ui->edo_mar->setValue(mysignal->get_edo_mar());
 
     bToolButton=false;
-    ui->viewGPS->setVisible(false);
     ui->textTestGrap->setVisible(false);
     ui->view->setVisible(false);
     ui->pushButton_info->setVisible(false);
-    ui->pushButton_send->setVisible(false);
     ui->closeJars->setVisible(false);
     ui->openJars->setVisible(false);
+    ui->startCom->setVisible(false);
+    ui->endCom->setVisible(false);
+    ui->textSend->setVisible(false);
+    ui->send->setVisible(false);
 
     serialPortUSB->write("GAIN 3\n");
 
@@ -153,22 +155,26 @@ void siviso::on_toolButton_clicked()
 {
     if(bToolButton){
         bToolButton=false;
-        ui->viewGPS->setVisible(false);
         ui->textTestGrap->setVisible(false);
         ui->view->setVisible(false);
         ui->pushButton_info->setVisible(false);
-        ui->pushButton_send->setVisible(false);
         ui->closeJars->setVisible(false);
         ui->openJars->setVisible(false);
+        ui->startCom->setVisible(false);
+        ui->endCom->setVisible(false);
+        ui->textSend->setVisible(false);
+        ui->send->setVisible(false);
     }else{
         bToolButton=true;
-        ui->viewGPS->setVisible(true);
         ui->textTestGrap->setVisible(true);
         ui->view->setVisible(true);
         ui->pushButton_info->setVisible(true);
-        ui->pushButton_send->setVisible(true);
         ui->closeJars->setVisible(true);
         ui->openJars->setVisible(true);
+        ui->startCom->setVisible(true);
+        ui->endCom->setVisible(true);
+        ui->textSend->setVisible(true);
+        ui->send->setVisible(true);
     }
 }
 
@@ -339,7 +345,7 @@ void siviso::leerSerialDB9()
             d *= 10;
             batiT = QString::number(d);
             catchSend = batiP + "," + batiT + "," + batiS + ";";
-            ui->viewGPS->appendPlainText("esto enviaré a BTG: " + catchSend);
+            ui->textTestGrap->appendPlainText("esto enviaré a BTG: " + catchSend);
             udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTG);
             s = "RP";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
@@ -601,17 +607,6 @@ void siviso::on_gan_sen_valueChanged(int arg1)
     serialPortUSB->write(ba);
 }
 
-//boton para enviar la informacion
-void siviso::on_pushButton_send_clicked()
-{
-    //QString s = mysignal->send_to_sensor();               //guarda en la variable "s" lo que tiene en sensor
-    QString s = "END COMMUNICATION";
-    ui->view->appendPlainText("send: " + s);
-    udpsocket->writeDatagram(s.toLatin1(),direccionSPP,puertoSPP);
-    serialPortDB9->write("s");
-    //serialPortUSB->write("END COMMUNICATION\n");
-}
-
 void siviso::on_it_valueChanged(int arg1)
 {
     mysignal->set_it(arg1);
@@ -725,4 +720,23 @@ void siviso::on_openJars_clicked()
     proceso1->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
     proceso3->startDetached("java -jar Btg.jar");
+}
+
+void siviso::on_startCom_clicked()
+{
+    serialPortUSB->write("START COMMUNICATION P\n");
+    serialPortUSB->write("START COMMUNICATION A\n");
+}
+
+void siviso::on_endCom_clicked()
+{
+    serialPortUSB->write("END COMMUNICATION\n");
+}
+
+void siviso::on_send_clicked()
+{
+    QString s;
+    s = ui->textSend->text();
+    serialPortUSB->write(s.toLatin1());
+    ui->textSend->clear();
 }
