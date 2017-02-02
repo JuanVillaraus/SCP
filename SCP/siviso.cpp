@@ -34,6 +34,7 @@ siviso::siviso(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::siviso)
 {
+
     ui->setupUi(this);
     myppi = new PPI();
     mysignal = new Signal();
@@ -54,7 +55,8 @@ siviso::siviso(QWidget *parent) :
 
     udpsocket = new QUdpSocket(this);
     //udpsocket->bind(localdir,puertolocal);
-    udpsocket->bind(QHostAddress::LocalHost, puertolocal);
+    //udpsocket->bind(QHostAddress::LocalHost, puertolocal);
+    udpsocket->bind(5002, QUdpSocket::ShareAddress);
     serialPortDB9 = new QSerialPort();
     serialPortGPS = new QSerialPort();
     serialPortUSB = new QSerialPort();
@@ -258,6 +260,8 @@ void siviso::leerSocket()
             serialPortUSB->write("LOFAR\n");
     }
 }
+
+
 
 void siviso::on_btOpenPort_clicked()
 {
@@ -739,4 +743,6 @@ void siviso::on_send_clicked()
     s = ui->textSend->text();
     serialPortUSB->write(s.toLatin1());
     ui->textSend->clear();
+    QByteArray datagram = "Broadcast message " + s.toLatin1();
+    udpsocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, 5002);
 }

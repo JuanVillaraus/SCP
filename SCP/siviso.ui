@@ -723,137 +723,6 @@ Verdadero</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPlainTextEdit" name="view">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>221</width>
-       <height>281</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPlainTextEdit" name="textTestGrap">
-     <property name="geometry">
-      <rect>
-       <x>250</x>
-       <y>10</y>
-       <width>221</width>
-       <height>281</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_info">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>400</y>
-       <width>111</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>ver info signal</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="startCom">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>360</y>
-       <width>93</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>startCom</string>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="toolButton">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>430</y>
-       <width>24</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="closeJars">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>320</y>
-       <width>91</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>close Jars</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="openJars">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>320</y>
-       <width>91</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>open Jars</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="send">
-     <property name="geometry">
-      <rect>
-       <x>370</x>
-       <y>350</y>
-       <width>99</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Enviar</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="textSend">
-     <property name="geometry">
-      <rect>
-       <x>250</x>
-       <y>320</y>
-       <width>221</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="endCom">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>360</y>
-       <width>93</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>endCom</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QFrame" name="frame_5">
     <property name="geometry">
@@ -886,6 +755,136 @@ Verdadero</string>
       <pixmap resource="resource.qrc">:/new/prefix1/resource/gps.PNG</pixmap>
      </property>
     </widget>
+    <widget class="QPushButton" name="send">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>350</y>
+       <width>99</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Enviar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="closeJars">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>320</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>close Jars</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_info">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>400</y>
+       <width>91</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>info signal</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="view">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>221</width>
+       <height>281</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="textTestGrap">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>10</y>
+       <width>221</width>
+       <height>281</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="endCom">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>360</y>
+       <width>93</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>endCom</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="startCom">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>360</y>
+       <width>93</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>startCom</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="textSend">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>320</y>
+       <width>221</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="openJars">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>320</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>open Jars</string>
+     </property>
+    </widget>
+    <zorder>DespTac</zorder>
+    <zorder>textTestGrap</zorder>
+    <zorder>view</zorder>
+    <zorder>send</zorder>
+    <zorder>closeJars</zorder>
+    <zorder>pushButton_info</zorder>
+    <zorder>view</zorder>
+    <zorder>textTestGrap</zorder>
+    <zorder>endCom</zorder>
+    <zorder>startCom</zorder>
+    <zorder>textSend</zorder>
+    <zorder>openJars</zorder>
    </widget>
    <widget class="QFrame" name="frame_8">
     <property name="geometry">
@@ -1200,6 +1199,19 @@ Verdadero</string>
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>710</y>
+      <width>24</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+   </widget>
    <zorder>frame_3</zorder>
    <zorder>frame_5</zorder>
    <zorder>frame_12</zorder>
@@ -1208,6 +1220,8 @@ Verdadero</string>
    <zorder>frame_4</zorder>
    <zorder>setColorDw</zorder>
    <zorder>setColorUp</zorder>
+   <zorder>toolButton</zorder>
+   <zorder>toolButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
