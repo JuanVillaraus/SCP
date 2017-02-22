@@ -344,6 +344,7 @@ void siviso::leerSerialDB9()
         }
         if(str[x]=='$' && batiP != "" && batiT !="" && batiS != ""){
             d = batiP.toDouble();
+            d = d/.025;
             batiP = QString::number(d);
             d = batiT.toDouble();
             d *= 10;
