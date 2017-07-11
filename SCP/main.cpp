@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
             w.changeStyleSheet(DAY_STYLE);
 
     w.show();
+    w.setGeometry(0,0,1,1);
+    w.showMaximized();
 
     return a.exec();
 }

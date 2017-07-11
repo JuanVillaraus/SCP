@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>771</height>
+    <height>770</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -443,9 +443,9 @@ Verdadero</string>
     <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>90</x>
        <y>160</y>
-       <width>151</width>
+       <width>211</width>
        <height>61</height>
       </rect>
      </property>
@@ -458,27 +458,55 @@ Verdadero</string>
      <widget class="QPushButton" name="play">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>140</x>
         <y>20</y>
         <width>61</width>
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>7</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Play</string>
+       <string>Reproducir</string>
       </property>
      </widget>
      <widget class="QPushButton" name="rec">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>70</x>
         <y>20</y>
         <width>61</width>
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Rec</string>
+       <string>Grabar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btOpenPort">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Abrir</string>
       </property>
      </widget>
     </widget>
@@ -635,8 +663,8 @@ Verdadero</string>
     <widget class="QPushButton" name="lf">
      <property name="geometry">
       <rect>
-       <x>75</x>
-       <y>170</y>
+       <x>80</x>
+       <y>100</y>
        <width>51</width>
        <height>51</height>
       </rect>
@@ -653,8 +681,8 @@ Verdadero</string>
     <widget class="QPushButton" name="btr">
      <property name="geometry">
       <rect>
-       <x>15</x>
-       <y>170</y>
+       <x>20</x>
+       <y>100</y>
        <width>51</width>
        <height>51</height>
       </rect>
@@ -668,29 +696,11 @@ Verdadero</string>
       <string>BTR</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="btOpenPort">
-     <property name="geometry">
-      <rect>
-       <x>15</x>
-       <y>110</y>
-       <width>51</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Open</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="btg">
      <property name="geometry">
       <rect>
-       <x>77</x>
-       <y>110</y>
+       <x>20</x>
+       <y>170</y>
        <width>51</width>
        <height>51</height>
       </rect>
@@ -873,23 +883,194 @@ Verdadero</string>
       <string>open Jars</string>
      </property>
     </widget>
-    <zorder>DespTac</zorder>
-    <zorder>textTestGrap</zorder>
-    <zorder>view</zorder>
-    <zorder>send</zorder>
-    <zorder>closeJars</zorder>
-    <zorder>pushButton_info</zorder>
-    <zorder>view</zorder>
-    <zorder>textTestGrap</zorder>
-    <zorder>endCom</zorder>
-    <zorder>startCom</zorder>
-    <zorder>textSend</zorder>
-    <zorder>openJars</zorder>
+   </widget>
+   <widget class="QFrame" name="frame_12">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>10</y>
+      <width>271</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_61">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>30</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;SIVISO&lt;br/&gt;ARMADA DE MÉXICO&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="logo">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>6</y>
+       <width>61</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resource.qrc">:/new/prefix1/resource/logo.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="logo_siviso">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>4</y>
+       <width>51</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resource.qrc">:/new/prefix1/resource/siviso.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_7">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>90</y>
+      <width>141</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_33">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>10</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;Blancos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_34">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>23</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;id blanco:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_36">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>42</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Etiqueta blanco:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_38">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>63</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Clasificación de blanco:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QSlider" name="setColorDw">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>479</y>
+      <width>29</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="setColorUp">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>250</y>
+      <width>29</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="value">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>710</y>
+      <width>24</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
    </widget>
    <widget class="QFrame" name="frame_8">
     <property name="geometry">
      <rect>
-      <x>870</x>
+      <x>720</x>
       <y>90</y>
       <width>141</width>
       <height>151</height>
@@ -1016,212 +1197,15 @@ Verdadero</string>
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="frame_12">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>10</y>
-      <width>271</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="label_61">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>30</y>
-       <width>101</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;SIVISO&lt;br/&gt;ARMADA DE MÉXICO&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="logo">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>6</y>
-       <width>61</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="resource.qrc">:/new/prefix1/resource/logo.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="logo_siviso">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>4</y>
-       <width>51</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="resource.qrc">:/new/prefix1/resource/siviso.jpg</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="frame_7">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>90</y>
-      <width>141</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="label_33">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>10</y>
-       <width>61</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;Blancos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_34">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>47</width>
-       <height>13</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;id blanco:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_36">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>91</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Etiqueta blanco:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_38">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Clasificación de blanco:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_39">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>47</width>
-       <height>13</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Dirección:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QSlider" name="setColorDw">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>479</y>
-      <width>29</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>255</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QSlider" name="setColorUp">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>250</y>
-      <width>29</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>255</number>
-    </property>
-    <property name="value">
-     <number>255</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="toolButton">
-    <property name="geometry">
-     <rect>
-      <x>1000</x>
-      <y>710</y>
-      <width>24</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>...</string>
-    </property>
-   </widget>
    <zorder>frame_3</zorder>
    <zorder>frame_5</zorder>
    <zorder>frame_12</zorder>
    <zorder>frame_7</zorder>
-   <zorder>frame_8</zorder>
    <zorder>frame_4</zorder>
    <zorder>setColorDw</zorder>
    <zorder>setColorUp</zorder>
    <zorder>toolButton</zorder>
-   <zorder>toolButton</zorder>
+   <zorder>frame_8</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

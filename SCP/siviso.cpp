@@ -28,7 +28,7 @@ siviso::~siviso()
 #include <QtGui>
 
 //#define localdir QHostAddress("192.168.1.178")        //de donde nos comunicamos
-#define puertolocal 5002
+#define puertolocal 5001
 
 siviso::siviso(QWidget *parent) :
     QMainWindow(parent),
@@ -41,6 +41,9 @@ siviso::siviso(QWidget *parent) :
     proceso1 = new QProcess(this);
     proceso2 = new QProcess(this);
     proceso3 = new QProcess(this);
+    proceso4 = new QProcess(this);
+    proceso5 = new QProcess(this);
+    proceso6 = new QProcess(this);
     numCatchSend = 0;
     catchSend = "";
     catchHeader = "";
@@ -120,6 +123,27 @@ siviso::siviso(QWidget *parent) :
     proceso1->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
     proceso3->startDetached("java -jar Btg.jar");
+    //proceso3->startDetached("java -jar ConexionPP.jar");*/
+
+    //ui->btOpenPort->setVisible(false);
+    //ui->toolButton->setVisible(false);
+    serialPortUSB->setPortName("/dev/ttyUSB1");
+    if(serialPortUSB->open(QIODevice::ReadWrite))
+    {
+        ui->view->appendPlainText("Puerto serial abierto\n");
+
+        serialPortUSB->setBaudRate(QSerialPort::Baud115200);
+        serialPortUSB->setDataBits(QSerialPort::Data8);
+        serialPortUSB->setStopBits(QSerialPort::OneStop);
+        serialPortUSB->setParity(QSerialPort::NoParity);
+        serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+        serialPortUSB->write("START COMMUNICATION\n");
+        serialPortUSB->write("SPEED 1500\n");
+    }
+    else
+    {
+        ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
+    }
 
 
 //This use for TEST the class DBasePostgreSQL by Misael M Del Valle -- Status: Functional
@@ -140,6 +164,7 @@ siviso::~siviso()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
     serialPortUSB->write("END COMMUNICATION\n");
     serialPortDB9->close();
     serialPortGPS->close();
@@ -151,6 +176,9 @@ siviso::~siviso()
     proceso1->close();
     proceso2->close();
     proceso3->close();
+    proceso4->close();
+    proceso5->close();
+    proceso6->close();
 }
 
 void siviso::on_toolButton_clicked()
@@ -213,59 +241,13 @@ void siviso::changeStyleSheet(int iStyle)
     }
 }
 
-void siviso::leerSocket()
-{
-    while(udpsocket->hasPendingDatagrams())
-    {
-        QByteArray datagram;
-        datagram.resize(udpsocket->pendingDatagramSize());
-        QHostAddress sender;
-        quint16 senderPort;
-        udpsocket->readDatagram(datagram.data(),datagram.size(), &sender, &senderPort);
-        QString info = datagram.data();
-        ui->textTestGrap->appendPlainText(" port-> " + QString("%1").arg(senderPort));
-        ui->textTestGrap->appendPlainText(info);
-        //s = " ";
-
-        QString s;
-        if(info == "runBTG"){
-            puertoBTG = senderPort;
-            s = "OFF";
-            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
-        }
-        if(info == "runBTR"){
-            puertoBTR = senderPort;
-            s = "LONG";
-            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
-            s = "OFF";
-            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
-        }
-        if(info == "runLF"){
-            puertoLF = senderPort;
-            s = "LONG";
-            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
-            s = "OFF";
-            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
-        }
-        if(info == "runREC")
-            puertoREC = senderPort;
-        //puertoPar = senderPort;
-        if(puertoSPP == senderPort){
-             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoBTR);
-             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
-        }
-        if(info == "BTR")
-            serialPortUSB->write("BTR\n");
-        if(info == "LOFAR")
-            serialPortUSB->write("LOFAR\n");
-    }
-}
-
-
-
 void siviso::on_btOpenPort_clicked()
 {
-    serialPortDB9->setPortName("/dev/ttyS0");
+    proceso6->startDetached("nautilus /home/siviso/repositorio/SCP/build-SCP-Desktop_Qt_5_6_0_GCC_64bit-Debug/resource/audio/");
+
+
+
+    /*serialPortDB9->setPortName("/dev/ttyS0");
     if(serialPortDB9->open(QIODevice::ReadWrite))
         ui->view->appendPlainText("Puerto serial db9 abierto\n");
     else
@@ -299,7 +281,69 @@ void siviso::on_btOpenPort_clicked()
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
 
     serialPortUSB->write("START COMMUNICATION\n");
-    serialPortUSB->write("SPEED 1500\n");
+    serialPortUSB->write("SPEED 1500\n");*/
+}
+
+void siviso::leerSocket()
+{
+    while(udpsocket->hasPendingDatagrams())
+    {
+        QByteArray datagram;
+        datagram.resize(udpsocket->pendingDatagramSize());
+        QHostAddress sender;
+        quint16 senderPort;
+        udpsocket->readDatagram(datagram.data(),datagram.size(), &sender, &senderPort);
+        QString info = datagram.data();
+        ui->textTestGrap->appendPlainText(" port-> " + QString("%1").arg(senderPort));
+        ui->textTestGrap->appendPlainText(info);
+        //s = " ";
+
+        QString s;
+        if(info == "runBTG"){
+            puertoBTG = senderPort;
+            s = "OFF";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+        }else if(info == "runBTR"){
+            puertoBTR = senderPort;
+            s = "LONG";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+            s = "OFF";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+        }else if(info == "runLF"){
+            puertoLF = senderPort;
+            s = "LONG";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+            s = "OFF";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+        }else if(info == "runREC"){
+            puertoREC = senderPort;
+        } else if(puertoSPP == senderPort){
+            udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoBTR);
+            udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
+        } else if(info == "runConxPP"){
+            puertoComPP = senderPort;
+        }else if(info == "BTR"){
+            serialPortUSB->write("BTR\n");
+        }else if(info == "LOFAR"){
+            serialPortUSB->write("LOFAR\n");
+        } else if(info == "USB"){
+            serialPortUSB->setPortName("/dev/ttyUSB0");
+            if(serialPortUSB->open(QIODevice::ReadWrite)){
+                ui->view->appendPlainText("Puerto USB serial abierto\n");
+                s = "USB_UP";
+                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
+                serialPortUSB->setBaudRate(QSerialPort::Baud9600);
+                serialPortUSB->setDataBits(QSerialPort::Data8);
+                serialPortUSB->setStopBits(QSerialPort::OneStop);
+                serialPortUSB->setParity(QSerialPort::NoParity);
+                serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+            }else{
+                s = "USB_DW";
+                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
+                ui->view->appendPlainText("Error de coexion con el puerto USB serial\n");
+            }
+        }
+    }
 }
 
 void siviso::leerSerialDB9()
@@ -360,6 +404,7 @@ void siviso::leerSerialDB9()
 
 void siviso::leerSerialGPS()
 {
+
     char buffer[101];
     int nDatos;
     double latlong;
@@ -367,7 +412,6 @@ void siviso::leerSerialGPS()
     nDatos = serialPortGPS->read(buffer,100);
     buffer[nDatos] = '\0';
     //ui->viewGPS->appendPlainText(buffer);
-
     QString str;
     str=QString(buffer);
     int n =str.size();
@@ -376,6 +420,7 @@ void siviso::leerSerialGPS()
     numCatchSend += n;
     for(int x=0;x<str.size();x++){
         if(str[x]=='$'){
+
             bCatchHeader = true;
             catchHeader = "";
             GPSt = "";
@@ -384,17 +429,22 @@ void siviso::leerSerialGPS()
         }
         if(bCatchHeader){
             if(str[x]!=','){
+
                 catchHeader += str[x];
             } else {
+
                 bCatchHeader = false;
                 if(catchHeader == "$GPGGA"){
+
                     bGPSt = true;
                 }
             }
         } else if(bGPSt){
             if(str[x]!=','){
+
                 GPSt += str[x];
             } else {
+
                 GPSt = "";
                 bGPSt = false;
                 bGPSn = true;
@@ -404,6 +454,7 @@ void siviso::leerSerialGPS()
                 if(str[x]!=',')
                     GPSn += str[x];
             } else {
+
                 latlong = GPSn.toDouble()/-100;
                 ui->gpsLong->setNum(latlong);
                 GPSn = "";
@@ -415,6 +466,7 @@ void siviso::leerSerialGPS()
                 if(str[x]!=',')
                     GPSw += str[x];
             } else {
+
                 latlong = GPSw.toDouble()/100;
                 ui->gpsLat->setNum(latlong);
                 GPSw = "";
@@ -432,6 +484,9 @@ void siviso::leerSerialUSB()
     serialPortUSB->flush();
     nDatos = serialPortUSB->read(buffer,100);
 
+    QString sCom;
+    QString catchCmd;
+
     buffer[nDatos] = '\0';
     //ui->view->appendPlainText(buffer);
 
@@ -447,6 +502,9 @@ void siviso::leerSerialUSB()
             catchSend += str[x];
         }
         if(str[x]==';'){
+            sCom="INFO";
+            udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+            sCom="";
             ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
             if(compGraf=="BTR")
                 udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
@@ -457,6 +515,34 @@ void siviso::leerSerialUSB()
 
             ui->textTestGrap->appendPlainText(catchSend);
             catchSend="";
+        }
+        if(str[x]=='!'||str[x]=='A'||str[x]=='C'||str[x]=='E'||str[x]=='F'||str[x]=='H'||str[x]=='I'||str[x]=='K'||str[x]=='M'||str[x]=='N'||str[x]=='O'||str[x]=='P'||str[x]=='R'||str[x]=='S'||str[x]=='T'||str[x]=='U'){
+            if(str[x]!='!'){
+                catchCmd += str[x];
+            } else {
+                sCom="INFO";
+                udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                sCom="";
+                ui->textTestGrap->appendPlainText("comando: " + catchCmd);
+                if(catchCmd == "STARTOK"){
+                    sCom="CONX_UP";
+                    udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                    sCom="";
+                } else if(catchCmd == "OK"){
+                    sCom="CONF";
+                    udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                    sCom="";
+                } else if(catchCmd == "FINISHCOMMUNICATION"){
+                    sCom="CONX_DW";
+                    udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                    sCom="";
+                } else if(catchCmd == "COMMUNICATIONERRORP"){
+
+                } else if(catchCmd == "COMMUNICATIONERRORA"){
+
+                }
+                catchCmd = "";
+            }
         }
     }
 }
@@ -625,19 +711,25 @@ void siviso::on_it_valueChanged(int arg1)
 
 void siviso::on_rec_clicked()
 {
-    QString s;
+    //ui->rec->setText("Grabando");
+    //QThread::msleep(1000);// .sleep(12);
+    proceso4->startDetached("java -jar rec10s.jar");
+    //QThread::msleep(12000);// .sleep(12);
+    //ui->rec->setText("Grabar");
+
+    /*QString s;
     if(bRec){
         bRec=false;
-        ui->rec->setText("Stop");
+        ui->rec->setText("Alto");
         s = "REC_ON";
         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoREC);
 
     }else{
         bRec=true;
-        ui->rec->setText("Rec");
+        ui->rec->setText("Grab");
         s = "REC_OFF";
         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoREC);
-    }
+    }*/
 }
 
 void siviso::on_play_clicked()
@@ -712,6 +804,7 @@ void siviso::on_closeJars_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
 }
 
 void siviso::on_openJars_clicked()
