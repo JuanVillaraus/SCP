@@ -131,7 +131,7 @@ siviso::siviso(QWidget *parent) :
     //ui->toolButton->setVisible(false);
     ui->btg->setDisabled(true);
     serialPortUSB->setPortName("/dev/ttyUSB1");
-    if(serialPortUSB->open(QIODevice::ReadWrite))
+    /*if(serialPortUSB->open(QIODevice::ReadWrite))
     {
         ui->view->appendPlainText("Puerto serial abierto\n");
 
@@ -146,7 +146,7 @@ siviso::siviso(QWidget *parent) :
     else
     {
         ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
-    }
+    }*/
 
 
 //This use for TEST the class DBasePostgreSQL by Misael M Del Valle -- Status: Functional
@@ -346,6 +346,8 @@ void siviso::leerSocket()
                 serialPortUSB->setStopBits(QSerialPort::OneStop);
                 serialPortUSB->setParity(QSerialPort::NoParity);
                 serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+                serialPortUSB->write("START COMMUNICATION\n");
+                serialPortUSB->write("SPEED 1500\n");
             }else{
                 s = "USB_DW";
                 udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
