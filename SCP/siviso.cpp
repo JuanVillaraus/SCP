@@ -329,8 +329,8 @@ void siviso::leerSocket()
             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
         } else if(info == "runConxPP"){
             puertoComPP = senderPort;
-            //s = "runOK";
-            //udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
+            s = "runOK";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
         }else if(info == "BTR"){
             serialPortUSB->write("BTR\n");
         }else if(info == "LOFAR"){
