@@ -840,3 +840,42 @@ void siviso::on_send_clicked()
     QByteArray datagram = "Broadcast message " + s.toLatin1();
     udpsocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, 5002);
 }
+
+void siviso::on_OpenPort_clicked()
+{
+    serialPortDB9->setPortName("/dev/ttyS0");
+    if(serialPortDB9->open(QIODevice::ReadWrite))
+        ui->view->appendPlainText("Puerto serial db9 abierto\n");
+    else
+        ui->view->appendPlainText("Error de conexion con el puerto serial db9\n");
+    serialPortDB9->setBaudRate(QSerialPort::Baud9600);
+    serialPortDB9->setDataBits(QSerialPort::Data8);
+    serialPortDB9->setStopBits(QSerialPort::OneStop);
+    serialPortDB9->setParity(QSerialPort::NoParity);
+    serialPortDB9->setFlowControl(QSerialPort::NoFlowControl);
+
+    serialPortGPS->setPortName("/dev/ttyS2");
+    if(serialPortGPS->open(QIODevice::ReadWrite))
+        ui->view->appendPlainText("Puerto serial GPS abierto\n");
+    else
+        ui->view->appendPlainText("Error de conexion con el puerto serial GPS\n");
+    serialPortGPS->setBaudRate(QSerialPort::Baud4800);
+    serialPortGPS->setDataBits(QSerialPort::Data8);
+    serialPortGPS->setStopBits(QSerialPort::OneStop);
+    serialPortGPS->setParity(QSerialPort::NoParity);
+    serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
+
+    serialPortUSB->setPortName("/dev/ttyUSB1");
+    if(serialPortUSB->open(QIODevice::ReadWrite))
+        ui->view->appendPlainText("Puerto serial abierto\n");
+    else
+        ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
+    serialPortUSB->setBaudRate(QSerialPort::Baud115200);
+    serialPortUSB->setDataBits(QSerialPort::Data8);
+    serialPortUSB->setStopBits(QSerialPort::OneStop);
+    serialPortUSB->setParity(QSerialPort::NoParity);
+    serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+
+    serialPortUSB->write("START COMMUNICATION\n");
+    serialPortUSB->write("SPEED 1500\n");
+}
