@@ -494,7 +494,7 @@ void siviso::leerSerialUSB()
     QString catchCmd;
 
     buffer[nDatos] = '\0';
-    //ui->view->appendPlainText(buffer);
+    ui->view->appendPlainText(buffer);
 
     QString str;
     str=QString(buffer);
@@ -843,10 +843,10 @@ void siviso::on_send_clicked()
     s = ui->textSend->text();
     serialPortUSB->write(s.toLatin1());
     ui->textSend->clear();
-    QByteArray datagram = "Broadcast message " + s.toLatin1();
+    //QByteArray datagram = "Broadcast message " + s.toLatin1();
     s+="\n";
     serialPortUSB->write(s.toLatin1());
-    udpsocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, 5002);
+    //udpsocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, 5002);
 }
 
 void siviso::on_OpenPort_clicked()
@@ -894,7 +894,7 @@ void siviso::on_sendr_clicked()
     s = ui->textSend->text();
     serialPortUSB->write(s.toLatin1());
     ui->textSend->clear();
-    QByteArray datagram = "Broadcast message " + s.toLatin1();
+    //QByteArray datagram = "Broadcast message " + s.toLatin1();
     s+="\n\r";
     serialPortUSB->write(s.toLatin1());
 }
