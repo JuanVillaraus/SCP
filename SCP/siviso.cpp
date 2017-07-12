@@ -569,10 +569,10 @@ void siviso::leerSerialUSB()
                     sCom="CONF";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
                     sCom="";
-                } else if(catchCmd == "FINISHCOMMUNICATION"){
+                /*} else if(catchCmd == "FINISHCOMMUNICATION"){
                     sCom="CONX_DW";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
-                    sCom="";
+                    sCom="";*/
                 } else if(catchCmd == "VELOCIDADOK"){
                     sCom="CONX_UP";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
