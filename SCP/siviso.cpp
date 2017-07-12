@@ -122,10 +122,10 @@ siviso::siviso(QWidget *parent) :
     }
     file2.close();
 
-    proceso1->startDetached("java -jar Lofar.jar");
+    /*proceso1->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
     //proceso3->startDetached("java -jar Btg.jar");
-    proceso4->startDetached("java -jar ConexionPP.jar");
+    proceso4->startDetached("java -jar ConexionPP.jar");*/
 
     //ui->btOpenPort->setVisible(false);
     //ui->toolButton->setVisible(false);
@@ -329,31 +329,46 @@ void siviso::leerSocket()
             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
         } else if(info == "runConxPP"){
             puertoComPP = senderPort;
-            s = "runOK";
+            s = "CONX_DW";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
         }else if(info == "BTR"){
             serialPortUSB->write("BTR\n");
         }else if(info == "LOFAR"){
             serialPortUSB->write("LOFAR\n");
-        } else if(info == "USB"){
-            serialPortUSB->setPortName("/dev/ttyUSB0");
-            if(serialPortUSB->open(QIODevice::ReadWrite)){
-                ui->view->appendPlainText("Puerto USB serial abierto\n");
-                s = "USB_UP";
-                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
-                serialPortUSB->setBaudRate(QSerialPort::Baud9600);
-                serialPortUSB->setDataBits(QSerialPort::Data8);
-                serialPortUSB->setStopBits(QSerialPort::OneStop);
-                serialPortUSB->setParity(QSerialPort::NoParity);
-                serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
-                //serialPortUSB->write("START COMMUNICATION\n");
-                //serialPortUSB->write("SPEED 1500\n");
-            }else{
-                s = "USB_DW";
-                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
-                ui->view->appendPlainText("Error de coexion con el puerto USB serial\n");
-            }
-        }else if(info == "START"){
+        } else if(info == "CONX"){
+            serialPortDB9->setPortName("/dev/ttyS0");
+            if(serialPortDB9->open(QIODevice::ReadWrite))
+                ui->view->appendPlainText("Puerto serial db9 abierto\n");
+            else
+                ui->view->appendPlainText("Error de conexion con el puerto serial db9\n");
+            serialPortDB9->setBaudRate(QSerialPort::Baud9600);
+            serialPortDB9->setDataBits(QSerialPort::Data8);
+            serialPortDB9->setStopBits(QSerialPort::OneStop);
+            serialPortDB9->setParity(QSerialPort::NoParity);
+            serialPortDB9->setFlowControl(QSerialPort::NoFlowControl);
+
+            serialPortGPS->setPortName("/dev/ttyS2");
+            if(serialPortGPS->open(QIODevice::ReadWrite))
+                ui->view->appendPlainText("Puerto serial GPS abierto\n");
+            else
+                ui->view->appendPlainText("Error de conexion con el puerto serial GPS\n");
+            serialPortGPS->setBaudRate(QSerialPort::Baud4800);
+            serialPortGPS->setDataBits(QSerialPort::Data8);
+            serialPortGPS->setStopBits(QSerialPort::OneStop);
+            serialPortGPS->setParity(QSerialPort::NoParity);
+            serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
+
+            serialPortUSB->setPortName("/dev/ttyUSB1");
+            if(serialPortUSB->open(QIODevice::ReadWrite))
+                ui->view->appendPlainText("Puerto serial abierto\n");
+            else
+                ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
+            serialPortUSB->setBaudRate(QSerialPort::Baud115200);
+            serialPortUSB->setDataBits(QSerialPort::Data8);
+            serialPortUSB->setStopBits(QSerialPort::OneStop);
+            serialPortUSB->setParity(QSerialPort::NoParity);
+            serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+
             serialPortUSB->write("START COMMUNICATION\n");
             serialPortUSB->write("SPEED 1500\n");
         }
@@ -530,7 +545,7 @@ void siviso::leerSerialUSB()
             ui->textTestGrap->appendPlainText(catchSend);
             catchSend="";
         }
-        if(str[x]=='!'||str[x]=='A'||str[x]=='C'||str[x]=='E'||str[x]=='F'||str[x]=='H'||str[x]=='I'||str[x]=='K'||str[x]=='M'||str[x]=='N'||str[x]=='O'||str[x]=='P'||str[x]=='R'||str[x]=='S'||str[x]=='T'||str[x]=='U'){
+        if(str[x]=='!'||str[x]=='A'||str[x]=='C'||str[x]=='D'||str[x]=='E'||str[x]=='F'||str[x]=='H'||str[x]=='I'||str[x]=='K'||str[x]=='L'||str[x]=='M'||str[x]=='N'||str[x]=='O'||str[x]=='P'||str[x]=='R'||str[x]=='S'||str[x]=='T'||str[x]=='U'||str[x]=='V'){
             if(str[x]!='!'){
                 catchCmd += str[x];
             } else {
@@ -548,6 +563,10 @@ void siviso::leerSerialUSB()
                     sCom="";
                 } else if(catchCmd == "FINISHCOMMUNICATION"){
                     sCom="CONX_DW";
+                    udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                    sCom="";
+                } else if(catchCmd == "VELOCIDADOK"){
+                    sCom="CONX_UP";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
                     sCom="";
                 } else if(catchCmd == "COMMUNICATIONERRORP"){
