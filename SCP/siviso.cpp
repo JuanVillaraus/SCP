@@ -275,7 +275,21 @@ void siviso::changeStyleSheet(int iStyle)
 
 void siviso::on_btOpenPort_clicked()
 {
+    QString s = "OFF";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     proceso6->startDetached("nautilus /home/siviso/repositorio/SCP/build-SCP-Desktop_Qt_5_6_0_GCC_64bit-Debug/resource/audio/");
+
+    this->close();
+
+    //util = createUnoService("org.universolibre.util.EasyDev");
+    //archivo = util.getSelectedFiles("/home/mau/docs", False, Array("*.pdf", "PDF"));
+    //util.msgbox(archivo);
+
+    //QString nombreArchivo = QFileDialog::getOpenFileName(this, "Abrir Archivos", "/home", "Archivos PDF (*.pdf)");
+    //nombreArchivo.prepend("file:///");
+    //QDesktopServices::openUrl(QUrl(nombreArchivo));
 
 
 
