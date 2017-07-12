@@ -130,7 +130,32 @@ siviso::siviso(QWidget *parent) :
     //ui->btOpenPort->setVisible(false);
     //ui->toolButton->setVisible(false);
     ui->btg->setDisabled(true);
-    serialPortUSB->setPortName("/dev/ttyUSB1");
+
+
+    serialPortDB9->setPortName("/dev/ttyS0");
+    if(serialPortDB9->open(QIODevice::ReadWrite))
+        ui->view->appendPlainText("Puerto serial db9 abierto\n");
+    else
+        ui->view->appendPlainText("Error de conexion con el puerto serial db9\n");
+    serialPortDB9->setBaudRate(QSerialPort::Baud9600);
+    serialPortDB9->setDataBits(QSerialPort::Data8);
+    serialPortDB9->setStopBits(QSerialPort::OneStop);
+    serialPortDB9->setParity(QSerialPort::NoParity);
+    serialPortDB9->setFlowControl(QSerialPort::NoFlowControl);
+
+    serialPortGPS->setPortName("/dev/ttyS2");
+    if(serialPortGPS->open(QIODevice::ReadWrite))
+        ui->view->appendPlainText("Puerto serial GPS abierto\n");
+    else
+        ui->view->appendPlainText("Error de conexion con el puerto serial GPS\n");
+    serialPortGPS->setBaudRate(QSerialPort::Baud4800);
+    serialPortGPS->setDataBits(QSerialPort::Data8);
+    serialPortGPS->setStopBits(QSerialPort::OneStop);
+    serialPortGPS->setParity(QSerialPort::NoParity);
+    serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
+    serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+
+    //serialPortUSB->setPortName("/dev/ttyUSB1");
     /*if(serialPortUSB->open(QIODevice::ReadWrite))
     {
         ui->view->appendPlainText("Puerto serial abierto\n");
@@ -329,46 +354,29 @@ void siviso::leerSocket()
             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
         } else if(info == "runConxPP"){
             puertoComPP = senderPort;
-            s = "CONX_DW";
+            s = "USB_DW";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
         }else if(info == "BTR"){
             serialPortUSB->write("BTR\n");
         }else if(info == "LOFAR"){
             serialPortUSB->write("LOFAR\n");
-        } else if(info == "CONX"){
-            serialPortDB9->setPortName("/dev/ttyS0");
-            if(serialPortDB9->open(QIODevice::ReadWrite))
-                ui->view->appendPlainText("Puerto serial db9 abierto\n");
-            else
-                ui->view->appendPlainText("Error de conexion con el puerto serial db9\n");
-            serialPortDB9->setBaudRate(QSerialPort::Baud9600);
-            serialPortDB9->setDataBits(QSerialPort::Data8);
-            serialPortDB9->setStopBits(QSerialPort::OneStop);
-            serialPortDB9->setParity(QSerialPort::NoParity);
-            serialPortDB9->setFlowControl(QSerialPort::NoFlowControl);
-
-            serialPortGPS->setPortName("/dev/ttyS2");
-            if(serialPortGPS->open(QIODevice::ReadWrite))
-                ui->view->appendPlainText("Puerto serial GPS abierto\n");
-            else
-                ui->view->appendPlainText("Error de conexion con el puerto serial GPS\n");
-            serialPortGPS->setBaudRate(QSerialPort::Baud4800);
-            serialPortGPS->setDataBits(QSerialPort::Data8);
-            serialPortGPS->setStopBits(QSerialPort::OneStop);
-            serialPortGPS->setParity(QSerialPort::NoParity);
-            serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
-
+        } else if(info == "USB"){
             serialPortUSB->setPortName("/dev/ttyUSB1");
-            if(serialPortUSB->open(QIODevice::ReadWrite))
+            if(serialPortUSB->open(QIODevice::ReadWrite)){
+                s = "USB_UP";
+                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
                 ui->view->appendPlainText("Puerto serial abierto\n");
-            else
+                serialPortUSB->setBaudRate(QSerialPort::Baud115200);
+                serialPortUSB->setDataBits(QSerialPort::Data8);
+                serialPortUSB->setStopBits(QSerialPort::OneStop);
+                serialPortUSB->setParity(QSerialPort::NoParity);
+                serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+            }else{
+                s = "USB_DW";
+                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
                 ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
-            serialPortUSB->setBaudRate(QSerialPort::Baud115200);
-            serialPortUSB->setDataBits(QSerialPort::Data8);
-            serialPortUSB->setStopBits(QSerialPort::OneStop);
-            serialPortUSB->setParity(QSerialPort::NoParity);
-            serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
-
+            }
+        } else if(info == "CONX"){
             serialPortUSB->write("START COMMUNICATION\n");
             serialPortUSB->write("SPEED 1500\n");
         }
