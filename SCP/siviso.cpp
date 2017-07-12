@@ -329,8 +329,8 @@ void siviso::leerSocket()
             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
         } else if(info == "runConxPP"){
             puertoComPP = senderPort;
-            s = "runOK";
-            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
+            //s = "runOK";
+            //udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
         }else if(info == "BTR"){
             serialPortUSB->write("BTR\n");
         }else if(info == "LOFAR"){
@@ -346,13 +346,16 @@ void siviso::leerSocket()
                 serialPortUSB->setStopBits(QSerialPort::OneStop);
                 serialPortUSB->setParity(QSerialPort::NoParity);
                 serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
-                serialPortUSB->write("START COMMUNICATION\n");
-                serialPortUSB->write("SPEED 1500\n");
+                //serialPortUSB->write("START COMMUNICATION\n");
+                //serialPortUSB->write("SPEED 1500\n");
             }else{
                 s = "USB_DW";
                 udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
                 ui->view->appendPlainText("Error de coexion con el puerto USB serial\n");
             }
+        }else if(info == "START"){
+            serialPortUSB->write("START COMMUNICATION\n");
+            serialPortUSB->write("SPEED 1500\n");
         }
     }
 }
