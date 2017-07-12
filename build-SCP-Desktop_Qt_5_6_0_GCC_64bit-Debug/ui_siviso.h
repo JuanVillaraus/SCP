@@ -80,6 +80,7 @@ public:
     QPushButton *lf;
     QPushButton *btr;
     QPushButton *btg;
+    QToolButton *toolButton;
     QFrame *frame_4;
     QFrame *frame_5;
     QLabel *DespTac;
@@ -103,7 +104,6 @@ public:
     QLabel *label_38;
     QSlider *setColorDw;
     QSlider *setColorUp;
-    QToolButton *toolButton;
     QFrame *frame_8;
     QLabel *label_24;
     QLabel *label_25;
@@ -121,7 +121,7 @@ public:
     {
         if (siviso->objectName().isEmpty())
             siviso->setObjectName(QStringLiteral("siviso"));
-        siviso->resize(1024, 770);
+        siviso->resize(1024, 772);
         centralWidget = new QWidget(siviso);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         frame_3 = new QFrame(centralWidget);
@@ -304,6 +304,9 @@ public:
         btg->setObjectName(QStringLiteral("btg"));
         btg->setGeometry(QRect(20, 170, 51, 51));
         btg->setFont(font1);
+        toolButton = new QToolButton(frame_3);
+        toolButton->setObjectName(QStringLiteral("toolButton"));
+        toolButton->setGeometry(QRect(0, 0, 24, 25));
         frame_4 = new QFrame(centralWidget);
         frame_4->setObjectName(QStringLiteral("frame_4"));
         frame_4->setEnabled(true);
@@ -394,9 +397,6 @@ public:
         setColorUp->setMaximum(255);
         setColorUp->setValue(255);
         setColorUp->setOrientation(Qt::Vertical);
-        toolButton = new QToolButton(centralWidget);
-        toolButton->setObjectName(QStringLiteral("toolButton"));
-        toolButton->setGeometry(QRect(1000, 710, 24, 25));
         frame_8 = new QFrame(centralWidget);
         frame_8->setObjectName(QStringLiteral("frame_8"));
         frame_8->setGeometry(QRect(720, 90, 141, 151));
@@ -438,7 +438,6 @@ public:
         frame_4->raise();
         setColorDw->raise();
         setColorUp->raise();
-        toolButton->raise();
         frame_8->raise();
         menuBar = new QMenuBar(siviso);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -510,6 +509,7 @@ public:
         lf->setText(QApplication::translate("siviso", "LF", 0));
         btr->setText(QApplication::translate("siviso", "BTR", 0));
         btg->setText(QApplication::translate("siviso", "BTG", 0));
+        toolButton->setText(QApplication::translate("siviso", "...", 0));
         DespTac->setText(QString());
         send->setText(QApplication::translate("siviso", "Enviar", 0));
         closeJars->setText(QApplication::translate("siviso", "close Jars", 0));
@@ -524,7 +524,6 @@ public:
         label_34->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">id blanco:</span></p></body></html>", 0));
         label_36->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Etiqueta blanco:</span></p></body></html>", 0));
         label_38->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Clasificaci\303\263n de blanco:</span></p></body></html>", 0));
-        toolButton->setText(QApplication::translate("siviso", "...", 0));
         label_24->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt; font-weight:600;\">Plataforma</span></p></body></html>", 0));
         label_25->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Nombre:</span></p></body></html>", 0));
         label_26->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Profundidad:</span></p></body></html>", 0));
