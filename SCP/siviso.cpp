@@ -97,6 +97,8 @@ siviso::siviso(QWidget *parent) :
     ui->endCom->setVisible(false);
     ui->textSend->setVisible(false);
     ui->send->setVisible(false);
+    ui->OpenPort->setVisible(false);
+    ui->sendr->setVisible(false);
 
     serialPortUSB->write("GAIN 3\n");
 
@@ -194,6 +196,8 @@ void siviso::on_toolButton_clicked()
         ui->endCom->setVisible(false);
         ui->textSend->setVisible(false);
         ui->send->setVisible(false);
+        ui->OpenPort->setVisible(false);
+        ui->sendr->setVisible(false);
     }else{
         bToolButton=true;
         ui->textTestGrap->setVisible(true);
@@ -205,6 +209,8 @@ void siviso::on_toolButton_clicked()
         ui->endCom->setVisible(true);
         ui->textSend->setVisible(true);
         ui->send->setVisible(true);
+        ui->OpenPort->setVisible(true);
+        ui->sendr->setVisible(true);
     }
 }
 
@@ -838,6 +844,8 @@ void siviso::on_send_clicked()
     serialPortUSB->write(s.toLatin1());
     ui->textSend->clear();
     QByteArray datagram = "Broadcast message " + s.toLatin1();
+    s+="\n";
+    serialPortUSB->write(s.toLatin1());
     udpsocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, 5002);
 }
 
@@ -878,4 +886,15 @@ void siviso::on_OpenPort_clicked()
 
     serialPortUSB->write("START COMMUNICATION\n");
     serialPortUSB->write("SPEED 1500\n");
+}
+
+void siviso::on_sendr_clicked()
+{
+    QString s;
+    s = ui->textSend->text();
+    serialPortUSB->write(s.toLatin1());
+    ui->textSend->clear();
+    QByteArray datagram = "Broadcast message " + s.toLatin1();
+    s+="\n\r";
+    serialPortUSB->write(s.toLatin1());
 }

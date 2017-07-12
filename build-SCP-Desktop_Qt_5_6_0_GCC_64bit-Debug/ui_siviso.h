@@ -94,6 +94,7 @@ public:
     QLineEdit *textSend;
     QPushButton *openJars;
     QPushButton *OpenPort;
+    QPushButton *sendr;
     QFrame *frame_12;
     QLabel *label_61;
     QLabel *logo;
@@ -355,6 +356,9 @@ public:
         OpenPort = new QPushButton(frame_5);
         OpenPort->setObjectName(QStringLiteral("OpenPort"));
         OpenPort->setGeometry(QRect(130, 400, 99, 27));
+        sendr = new QPushButton(frame_5);
+        sendr->setObjectName(QStringLiteral("sendr"));
+        sendr->setGeometry(QRect(380, 380, 99, 27));
         frame_12 = new QFrame(centralWidget);
         frame_12->setObjectName(QStringLiteral("frame_12"));
         frame_12->setGeometry(QRect(730, 10, 271, 71));
@@ -522,6 +526,7 @@ public:
         startCom->setText(QApplication::translate("siviso", "startCom", 0));
         openJars->setText(QApplication::translate("siviso", "open Jars", 0));
         OpenPort->setText(QApplication::translate("siviso", "Open Port", 0));
+        sendr->setText(QApplication::translate("siviso", "Enviar /n /r", 0));
         label_61->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">SIVISO<br/>ARMADA DE M\303\211XICO</span></p></body></html>", 0));
         logo->setText(QString());
         logo_siviso->setText(QString());

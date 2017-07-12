@@ -909,6 +909,19 @@ Verdadero</string>
       <string>Open Port</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="sendr">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>380</y>
+       <width>99</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Enviar /n /r</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="frame_12">
     <property name="geometry">

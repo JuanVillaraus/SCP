@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_siviso_t {
-    QByteArrayData data[36];
-    char stringdata0[698];
+    QByteArrayData data[37];
+    char stringdata0[715];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -64,7 +64,8 @@ QT_MOC_LITERAL(31, 604, 19), // "on_openJars_clicked"
 QT_MOC_LITERAL(32, 624, 19), // "on_startCom_clicked"
 QT_MOC_LITERAL(33, 644, 17), // "on_endCom_clicked"
 QT_MOC_LITERAL(34, 662, 15), // "on_send_clicked"
-QT_MOC_LITERAL(35, 678, 19) // "on_OpenPort_clicked"
+QT_MOC_LITERAL(35, 678, 19), // "on_OpenPort_clicked"
+QT_MOC_LITERAL(36, 698, 16) // "on_sendr_clicked"
 
     },
     "siviso\0on_toolButton_clicked\0\0leerSocket\0"
@@ -87,7 +88,7 @@ QT_MOC_LITERAL(35, 678, 19) // "on_OpenPort_clicked"
     "on_setColorDw_valueChanged\0on_btg_clicked\0"
     "on_openJars_clicked\0on_startCom_clicked\0"
     "on_endCom_clicked\0on_send_clicked\0"
-    "on_OpenPort_clicked"
+    "on_OpenPort_clicked\0on_sendr_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,7 +98,7 @@ static const uint qt_meta_data_siviso[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      32,   14, // methods
+      33,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -105,38 +106,39 @@ static const uint qt_meta_data_siviso[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  174,    2, 0x08 /* Private */,
-       3,    0,  175,    2, 0x08 /* Private */,
-       4,    0,  176,    2, 0x08 /* Private */,
-       5,    0,  177,    2, 0x08 /* Private */,
-       6,    0,  178,    2, 0x08 /* Private */,
-       7,    0,  179,    2, 0x08 /* Private */,
-       8,    0,  180,    2, 0x08 /* Private */,
-       9,    0,  181,    2, 0x08 /* Private */,
-      10,    0,  182,    2, 0x08 /* Private */,
-      11,    0,  183,    2, 0x08 /* Private */,
-      12,    0,  184,    2, 0x08 /* Private */,
-      13,    1,  185,    2, 0x08 /* Private */,
-      15,    1,  188,    2, 0x08 /* Private */,
-      16,    1,  191,    2, 0x08 /* Private */,
-      17,    1,  194,    2, 0x08 /* Private */,
-      18,    1,  197,    2, 0x08 /* Private */,
-      19,    1,  200,    2, 0x08 /* Private */,
-      20,    1,  203,    2, 0x08 /* Private */,
-      21,    1,  206,    2, 0x08 /* Private */,
-      23,    0,  209,    2, 0x08 /* Private */,
-      24,    1,  210,    2, 0x08 /* Private */,
-      25,    0,  213,    2, 0x08 /* Private */,
-      26,    0,  214,    2, 0x08 /* Private */,
-      27,    0,  215,    2, 0x08 /* Private */,
-      28,    1,  216,    2, 0x08 /* Private */,
-      29,    1,  219,    2, 0x08 /* Private */,
-      30,    0,  222,    2, 0x08 /* Private */,
-      31,    0,  223,    2, 0x08 /* Private */,
-      32,    0,  224,    2, 0x08 /* Private */,
-      33,    0,  225,    2, 0x08 /* Private */,
-      34,    0,  226,    2, 0x08 /* Private */,
-      35,    0,  227,    2, 0x08 /* Private */,
+       1,    0,  179,    2, 0x08 /* Private */,
+       3,    0,  180,    2, 0x08 /* Private */,
+       4,    0,  181,    2, 0x08 /* Private */,
+       5,    0,  182,    2, 0x08 /* Private */,
+       6,    0,  183,    2, 0x08 /* Private */,
+       7,    0,  184,    2, 0x08 /* Private */,
+       8,    0,  185,    2, 0x08 /* Private */,
+       9,    0,  186,    2, 0x08 /* Private */,
+      10,    0,  187,    2, 0x08 /* Private */,
+      11,    0,  188,    2, 0x08 /* Private */,
+      12,    0,  189,    2, 0x08 /* Private */,
+      13,    1,  190,    2, 0x08 /* Private */,
+      15,    1,  193,    2, 0x08 /* Private */,
+      16,    1,  196,    2, 0x08 /* Private */,
+      17,    1,  199,    2, 0x08 /* Private */,
+      18,    1,  202,    2, 0x08 /* Private */,
+      19,    1,  205,    2, 0x08 /* Private */,
+      20,    1,  208,    2, 0x08 /* Private */,
+      21,    1,  211,    2, 0x08 /* Private */,
+      23,    0,  214,    2, 0x08 /* Private */,
+      24,    1,  215,    2, 0x08 /* Private */,
+      25,    0,  218,    2, 0x08 /* Private */,
+      26,    0,  219,    2, 0x08 /* Private */,
+      27,    0,  220,    2, 0x08 /* Private */,
+      28,    1,  221,    2, 0x08 /* Private */,
+      29,    1,  224,    2, 0x08 /* Private */,
+      30,    0,  227,    2, 0x08 /* Private */,
+      31,    0,  228,    2, 0x08 /* Private */,
+      32,    0,  229,    2, 0x08 /* Private */,
+      33,    0,  230,    2, 0x08 /* Private */,
+      34,    0,  231,    2, 0x08 /* Private */,
+      35,    0,  232,    2, 0x08 /* Private */,
+      36,    0,  233,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -165,6 +167,7 @@ static const uint qt_meta_data_siviso[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   22,
     QMetaType::Void, QMetaType::Int,   22,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -213,6 +216,7 @@ void siviso::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 29: _t->on_endCom_clicked(); break;
         case 30: _t->on_send_clicked(); break;
         case 31: _t->on_OpenPort_clicked(); break;
+        case 32: _t->on_sendr_clicked(); break;
         default: ;
         }
     }
@@ -243,13 +247,13 @@ int siviso::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 32)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 32;
+        _id -= 33;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 32)
+        if (_id < 33)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 32;
+        _id -= 33;
     }
     return _id;
 }

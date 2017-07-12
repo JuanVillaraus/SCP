@@ -147,6 +147,8 @@ private slots:
 
     void on_OpenPort_clicked();
 
+    void on_sendr_clicked();
+
 private:
     Ui::siviso *ui;
 
