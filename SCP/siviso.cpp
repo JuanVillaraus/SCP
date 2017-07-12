@@ -128,7 +128,7 @@ siviso::siviso(QWidget *parent) :
     proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
-    //ui->toolButton->setVisible(false);
+    ui->toolButton->setVisible(false);
     ui->btg->setDisabled(true);
 
 
