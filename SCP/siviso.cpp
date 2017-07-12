@@ -28,7 +28,7 @@ siviso::~siviso()
 #include <QtGui>
 
 //#define localdir QHostAddress("192.168.1.178")        //de donde nos comunicamos
-#define puertolocal 5001
+#define puertolocal 5002
 
 siviso::siviso(QWidget *parent) :
     QMainWindow(parent),
@@ -124,11 +124,12 @@ siviso::siviso(QWidget *parent) :
 
     proceso1->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
-    proceso3->startDetached("java -jar Btg.jar");
+    //proceso3->startDetached("java -jar Btg.jar");
     proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
     //ui->toolButton->setVisible(false);
+    ui->btg->setDisabled(true);
     serialPortUSB->setPortName("/dev/ttyUSB1");
     if(serialPortUSB->open(QIODevice::ReadWrite))
     {
@@ -328,6 +329,8 @@ void siviso::leerSocket()
             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
         } else if(info == "runConxPP"){
             puertoComPP = senderPort;
+            s = "runOK";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
         }else if(info == "BTR"){
             serialPortUSB->write("BTR\n");
         }else if(info == "LOFAR"){
@@ -823,7 +826,7 @@ void siviso::on_openJars_clicked()
 
     proceso1->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
-    proceso3->startDetached("java -jar Btg.jar");
+    //proceso3->startDetached("java -jar Btg.jar");
 }
 
 void siviso::on_startCom_clicked()

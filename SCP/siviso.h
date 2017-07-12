@@ -160,7 +160,7 @@ private:
     quint16 puertoBTR;
     quint16 puertoLF;
     quint16 puertoREC;
-    quint8 puertoComPP;
+    quint16 puertoComPP;
     QSerialPort *serialPortDB9;
     QSerialPort *serialPortGPS;
     QSerialPort *serialPortUSB;
