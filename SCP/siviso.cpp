@@ -122,10 +122,10 @@ siviso::siviso(QWidget *parent) :
     }
     file2.close();
 
-    /*proceso1->startDetached("java -jar Lofar.jar");
+    proceso1->startDetached("java -jar Lofar.jar");
     proceso2->startDetached("java -jar BTR.jar");
     //proceso3->startDetached("java -jar Btg.jar");
-    proceso4->startDetached("java -jar ConexionPP.jar");*/
+    proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
     //ui->toolButton->setVisible(false);
