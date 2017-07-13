@@ -947,3 +947,13 @@ void siviso::on_sendr_clicked()
     s+="\n\r";
     serialPortUSB->write(s.toLatin1());
 }
+
+void siviso::on_vol_dw_clicked()
+{
+    proceso3->startDetached("amixer sset Master 5%-");
+}
+
+void siviso::on_vol_up_clicked()
+{
+    proceso3->startDetached("amixer sset Master 5%+");
+}

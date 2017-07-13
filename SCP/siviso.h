@@ -149,6 +149,10 @@ private slots:
 
     void on_sendr_clicked();
 
+    void on_vol_dw_clicked();
+
+    void on_vol_up_clicked();
+
 private:
     Ui::siviso *ui;
 
