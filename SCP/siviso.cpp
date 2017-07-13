@@ -791,14 +791,14 @@ void siviso::on_play_clicked()
 {
     if(bPlay){
         bPlay=false;
-        ui->play->setText("Stop");
+        ui->play->setText("Reproducir");
+        proceso3->startDetached("pactl unload-module module-loopback");
+    }else{
+        bPlay=true;
+        ui->play->setText("Alto");
         proceso3->startDetached("pactl load-module module-loopback");
         //proceso3->startDetached("java -jar recSound.jar");
         //QSound::play("2016-09-14_14:27:16.wav");
-    }else{
-        bPlay=true;
-        ui->play->setText("Play");
-        proceso3->startDetached("pactl unload-module module-loopback");
     }
 }
 
