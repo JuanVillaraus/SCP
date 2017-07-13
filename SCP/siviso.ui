@@ -1068,7 +1068,7 @@ Verdadero</string>
      </rect>
     </property>
     <property name="maximum">
-     <number>255</number>
+     <number>254</number>
     </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
@@ -1082,6 +1082,9 @@ Verdadero</string>
       <width>29</width>
       <height>221</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
     </property>
     <property name="maximum">
      <number>255</number>

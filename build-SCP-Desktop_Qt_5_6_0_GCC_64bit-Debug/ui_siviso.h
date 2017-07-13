@@ -397,11 +397,12 @@ public:
         setColorDw = new QSlider(centralWidget);
         setColorDw->setObjectName(QStringLiteral("setColorDw"));
         setColorDw->setGeometry(QRect(0, 479, 29, 221));
-        setColorDw->setMaximum(255);
+        setColorDw->setMaximum(254);
         setColorDw->setOrientation(Qt::Vertical);
         setColorUp = new QSlider(centralWidget);
         setColorUp->setObjectName(QStringLiteral("setColorUp"));
         setColorUp->setGeometry(QRect(0, 250, 29, 221));
+        setColorUp->setMinimum(1);
         setColorUp->setMaximum(255);
         setColorUp->setValue(255);
         setColorUp->setOrientation(Qt::Vertical);
