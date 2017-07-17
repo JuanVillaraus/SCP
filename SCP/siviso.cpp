@@ -275,13 +275,15 @@ void siviso::changeStyleSheet(int iStyle)
 
 void siviso::on_btOpenPort_clicked()
 {
-    QString s = "OFF";
+    /*QString s = "OFF";
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
-    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);*/
     proceso6->startDetached("nautilus /home/siviso/repositorio/SCP/build-SCP-Desktop_Qt_5_6_0_GCC_64bit-Debug/resource/audio/");
+    proceso6->startDetached("wmctrl -r audio -e 0,50,100,800,500");
+    proceso6->startDetached("wmctrl -a audio");
 
-    this->close();
+    //this->close();
 
     //util = createUnoService("org.universolibre.util.EasyDev");
     //archivo = util.getSelectedFiles("/home/mau/docs", False, Array("*.pdf", "PDF"));
