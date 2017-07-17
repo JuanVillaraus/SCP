@@ -128,7 +128,7 @@ siviso::siviso(QWidget *parent) :
     proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
-    ui->toolButton->setVisible(false);
+    //ui->toolButton->setVisible(false);
     ui->btg->setDisabled(true);
 
 
@@ -393,6 +393,11 @@ void siviso::leerSocket()
         } else if(info == "CONX"){
             serialPortUSB->write("START COMMUNICATION\n");
             serialPortUSB->write("SPEED 1500\n");
+        } else if(info == "SENSOR"){
+            serialPortUSB->write("VOLTAJE\n");
+        }else if(info == "REC"){
+            ui->rec->setText("Grabar");
+            ui->rec->setDisabled(false);
         }
     }
 }
@@ -537,6 +542,7 @@ void siviso::leerSerialUSB()
 
     QString sCom;
     QString catchCmd;
+    double carga;
 
     buffer[nDatos] = '\0';
     ui->view->appendPlainText(buffer);
@@ -549,25 +555,40 @@ void siviso::leerSerialUSB()
 
     numCatchSend += n;
     for(int x=0;x<str.size();x++){
-        if(str[x]=='1'||str[x]=='2'||str[x]=='3'||str[x]=='4'||str[x]=='5'||str[x]=='6'||str[x]=='7'||str[x]=='8'||str[x]=='9'||str[x]=='0'||str[x]==','||str[x]==';'){
-            catchSend += str[x];
+        if(str[x]=='1'||str[x]=='2'||str[x]=='3'||str[x]=='4'||str[x]=='5'||str[x]=='6'||str[x]=='7'||str[x]=='8'||str[x]=='9'||str[x]=='0'||str[x]==','||str[x]=='.'){
+            if(!bSensor){
+                catchSend += str[x];
+            }else{
+                catchCarga += str[x];
+            }
         }
         if(str[x]==';'){
-            sCom="INFO";
-            udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
-            sCom="";
-            ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
-            if(compGraf=="BTR")
-                udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
-            if(compGraf=="LF")
-                udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoLF);
-
-            numCatchSend = 0;
-
-            ui->textTestGrap->appendPlainText(catchSend);
-            catchSend="";
-        }
-        if(str[x]=='!'||str[x]=='A'||str[x]=='C'||str[x]=='D'||str[x]=='E'||str[x]=='F'||str[x]=='H'||str[x]=='I'||str[x]=='K'||str[x]=='L'||str[x]=='M'||str[x]=='N'||str[x]=='O'||str[x]=='P'||str[x]=='R'||str[x]=='S'||str[x]=='T'||str[x]=='U'||str[x]=='V'){
+            if(bSensor){
+                carga = ((((catchCarga.toDouble()*100)/25.2)-80)*100)/20;
+                ui->textTestGrap->appendPlainText("el voltaje es:" + catchCarga);
+                ui->textTestGrap->appendPlainText("el % delvoltaje es:" + static_cast<int>(carga));
+                if(carga>0){
+                    ui->carga->setNum(carga);
+                }else{
+                    ui->carga->setNum(00.00);
+                }
+            } else {
+                sCom="INFO";
+                udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                sCom="";
+                catchCarga += str[x];
+                ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
+                if(compGraf=="BTR")
+                    udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
+                if(compGraf=="LF")
+                    udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoLF);
+                numCatchSend = 0;
+                catchSend="";
+            }
+        } else if(str[x]=='#'){
+            bSensor = true;
+            catchCarga = "";
+        } else if(str[x]=='!'||str[x]=='A'||str[x]=='C'||str[x]=='D'||str[x]=='E'||str[x]=='F'||str[x]=='H'||str[x]=='I'||str[x]=='K'||str[x]=='L'||str[x]=='M'||str[x]=='N'||str[x]=='O'||str[x]=='P'||str[x]=='R'||str[x]=='S'||str[x]=='T'||str[x]=='U'||str[x]=='V'){
             if(str[x]!='!'){
                 catchCmd += str[x];
             } else {
@@ -766,25 +787,10 @@ void siviso::on_it_valueChanged(int arg1)
 
 void siviso::on_rec_clicked()
 {
-    //ui->rec->setText("Grabando");
-    //QThread::msleep(1000);// .sleep(12);
-    proceso4->startDetached("java -jar rec10s.jar");
-    //QThread::msleep(12000);// .sleep(12);
-    //ui->rec->setText("Grabar");
-
-    /*QString s;
-    if(bRec){
-        bRec=false;
-        ui->rec->setText("Alto");
-        s = "REC_ON";
-        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoREC);
-
-    }else{
-        bRec=true;
-        ui->rec->setText("Grab");
-        s = "REC_OFF";
-        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoREC);
-    }*/
+    ui->rec->setText("Grabando");
+    ui->rec->setDisabled(true);
+    QString s = "REC";
+    udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
 }
 
 void siviso::on_play_clicked()

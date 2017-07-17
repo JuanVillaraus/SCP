@@ -57,27 +57,27 @@
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>440</x>
+       <x>420</x>
        <y>10</y>
-       <width>61</width>
-       <height>16</height>
+       <width>81</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Display time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Rango de despliegue&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>250</x>
        <y>10</y>
-       <width>51</width>
-       <height>16</height>
+       <width>61</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;bandwidth&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Ancho de banda&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QSpinBox" name="dt">
@@ -98,9 +98,9 @@
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>50</x>
        <y>30</y>
-       <width>61</width>
+       <width>41</width>
        <height>16</height>
       </rect>
      </property>
@@ -134,7 +134,7 @@
       <rect>
        <x>8</x>
        <y>50</y>
-       <width>231</width>
+       <width>151</width>
        <height>19</height>
       </rect>
      </property>
@@ -169,20 +169,20 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>330</x>
        <y>10</y>
-       <width>81</width>
-       <height>16</height>
+       <width>91</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Integration time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;tiempo de integración&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QDoubleSpinBox" name="prob_deteccion">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>236</x>
        <y>110</y>
        <width>81</width>
        <height>41</height>
@@ -203,7 +203,7 @@
     <widget class="QDoubleSpinBox" name="prob_falsa">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>143</x>
        <y>110</y>
        <width>81</width>
        <height>41</height>
@@ -224,7 +224,7 @@
     <widget class="QLabel" name="label_12">
      <property name="geometry">
       <rect>
-       <x>317</x>
+       <x>243</x>
        <y>90</y>
        <width>71</width>
        <height>21</height>
@@ -237,7 +237,7 @@
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>143</x>
        <y>90</y>
        <width>81</width>
        <height>21</height>
@@ -264,7 +264,7 @@ Verdadero</string>
     <widget class="QDoubleSpinBox" name="escala_ppi">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>331</x>
        <y>110</y>
        <width>81</width>
        <height>41</height>
@@ -279,7 +279,7 @@ Verdadero</string>
     <widget class="QLabel" name="label_15">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>331</x>
        <y>90</y>
        <width>71</width>
        <height>20</height>
@@ -292,7 +292,7 @@ Verdadero</string>
     <widget class="QLabel" name="label_16">
      <property name="geometry">
       <rect>
-       <x>497</x>
+       <x>414</x>
        <y>90</y>
        <width>101</width>
        <height>21</height>
@@ -305,7 +305,7 @@ Verdadero</string>
     <widget class="QDoubleSpinBox" name="escala_despliegue_tactico">
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>427</x>
        <y>110</y>
        <width>81</width>
        <height>41</height>
@@ -320,9 +320,9 @@ Verdadero</string>
     <widget class="QSpinBox" name="gan_sen">
      <property name="geometry">
       <rect>
-       <x>610</x>
+       <x>630</x>
        <y>110</y>
-       <width>81</width>
+       <width>61</width>
        <height>41</height>
       </rect>
      </property>
@@ -332,10 +332,10 @@ Verdadero</string>
       </font>
      </property>
      <property name="minimum">
-      <number>3</number>
+      <number>0</number>
      </property>
      <property name="maximum">
-      <number>62</number>
+      <number>100</number>
      </property>
      <property name="singleStep">
       <number>1</number>
@@ -357,8 +357,8 @@ Verdadero</string>
     <widget class="QSpinBox" name="edo_mar">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>110</y>
+       <x>180</x>
+       <y>30</y>
        <width>51</width>
        <height>41</height>
       </rect>
@@ -378,8 +378,8 @@ Verdadero</string>
     <widget class="QLabel" name="label_58">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>86</y>
+       <x>170</x>
+       <y>6</y>
        <width>71</width>
        <height>31</height>
       </rect>
@@ -725,6 +725,46 @@ Verdadero</string>
      </property>
      <property name="text">
       <string>...</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="gan_sen_2">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>110</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="minimum">
+      <number>1400</number>
+     </property>
+     <property name="maximum">
+      <number>1600</number>
+     </property>
+     <property name="singleStep">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>1500</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>90</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Velocidad del sonido&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -1181,7 +1221,7 @@ Verdadero</string>
       <rect>
        <x>10</x>
        <y>120</y>
-       <width>111</width>
+       <width>71</width>
        <height>16</height>
       </rect>
      </property>
@@ -1213,6 +1253,24 @@ Verdadero</string>
        <x>70</x>
        <y>96</y>
        <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="carga">
+     <property name="geometry">
+      <rect>
+       <x>86</x>
+       <y>120</y>
+       <width>51</width>
        <height>17</height>
       </rect>
      </property>

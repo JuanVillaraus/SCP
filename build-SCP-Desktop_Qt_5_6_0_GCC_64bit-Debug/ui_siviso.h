@@ -81,6 +81,8 @@ public:
     QPushButton *btr;
     QPushButton *btg;
     QToolButton *toolButton;
+    QSpinBox *gan_sen_2;
+    QLabel *label_18;
     QFrame *frame_4;
     QFrame *frame_5;
     QLabel *DespTac;
@@ -115,6 +117,7 @@ public:
     QLabel *label_32;
     QLabel *gpsLat;
     QLabel *gpsLong;
+    QLabel *carga;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -143,10 +146,10 @@ public:
         frame_3->setFrameShadow(QFrame::Raised);
         label_4 = new QLabel(frame_3);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(440, 10, 61, 16));
+        label_4->setGeometry(QRect(420, 10, 81, 20));
         label_2 = new QLabel(frame_3);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(260, 10, 51, 16));
+        label_2->setGeometry(QRect(250, 10, 61, 20));
         dt = new QSpinBox(frame_3);
         dt->setObjectName(QStringLiteral("dt"));
         dt->setGeometry(QRect(430, 30, 61, 41));
@@ -155,7 +158,7 @@ public:
         dt->setFont(font1);
         label = new QLabel(frame_3);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(100, 30, 61, 16));
+        label->setGeometry(QRect(50, 30, 41, 16));
         it = new QSpinBox(frame_3);
         it->setObjectName(QStringLiteral("it"));
         it->setGeometry(QRect(340, 30, 71, 41));
@@ -164,7 +167,7 @@ public:
         it->setMaximum(10);
         frecuencia = new QSlider(frame_3);
         frecuencia->setObjectName(QStringLiteral("frecuencia"));
-        frecuencia->setGeometry(QRect(8, 50, 231, 19));
+        frecuencia->setGeometry(QRect(8, 50, 151, 19));
         frecuencia->setOrientation(Qt::Horizontal);
         bw = new QDoubleSpinBox(frame_3);
         bw->setObjectName(QStringLiteral("bw"));
@@ -173,61 +176,61 @@ public:
         bw->setStyleSheet(QStringLiteral(""));
         label_3 = new QLabel(frame_3);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(340, 10, 81, 16));
+        label_3->setGeometry(QRect(330, 10, 91, 20));
         prob_deteccion = new QDoubleSpinBox(frame_3);
         prob_deteccion->setObjectName(QStringLiteral("prob_deteccion"));
-        prob_deteccion->setGeometry(QRect(310, 110, 81, 41));
+        prob_deteccion->setGeometry(QRect(236, 110, 81, 41));
         prob_deteccion->setFont(font1);
         prob_deteccion->setMaximum(1);
         prob_deteccion->setSingleStep(0.01);
         prob_falsa = new QDoubleSpinBox(frame_3);
         prob_falsa->setObjectName(QStringLiteral("prob_falsa"));
-        prob_falsa->setGeometry(QRect(210, 110, 81, 41));
+        prob_falsa->setGeometry(QRect(143, 110, 81, 41));
         prob_falsa->setFont(font1);
         prob_falsa->setMaximum(1);
         prob_falsa->setSingleStep(0.01);
         label_12 = new QLabel(frame_3);
         label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setGeometry(QRect(317, 90, 71, 21));
+        label_12->setGeometry(QRect(243, 90, 71, 21));
         label_13 = new QLabel(frame_3);
         label_13->setObjectName(QStringLiteral("label_13"));
-        label_13->setGeometry(QRect(210, 90, 81, 21));
+        label_13->setGeometry(QRect(143, 90, 81, 21));
         tipo_norte = new QPushButton(frame_3);
         tipo_norte->setObjectName(QStringLiteral("tipo_norte"));
         tipo_norte->setGeometry(QRect(505, 30, 101, 41));
         escala_ppi = new QDoubleSpinBox(frame_3);
         escala_ppi->setObjectName(QStringLiteral("escala_ppi"));
-        escala_ppi->setGeometry(QRect(410, 110, 81, 41));
+        escala_ppi->setGeometry(QRect(331, 110, 81, 41));
         escala_ppi->setFont(font1);
         label_15 = new QLabel(frame_3);
         label_15->setObjectName(QStringLiteral("label_15"));
-        label_15->setGeometry(QRect(410, 90, 71, 20));
+        label_15->setGeometry(QRect(331, 90, 71, 20));
         label_16 = new QLabel(frame_3);
         label_16->setObjectName(QStringLiteral("label_16"));
-        label_16->setGeometry(QRect(497, 90, 101, 21));
+        label_16->setGeometry(QRect(414, 90, 101, 21));
         escala_despliegue_tactico = new QDoubleSpinBox(frame_3);
         escala_despliegue_tactico->setObjectName(QStringLiteral("escala_despliegue_tactico"));
-        escala_despliegue_tactico->setGeometry(QRect(510, 110, 81, 41));
+        escala_despliegue_tactico->setGeometry(QRect(427, 110, 81, 41));
         escala_despliegue_tactico->setFont(font1);
         gan_sen = new QSpinBox(frame_3);
         gan_sen->setObjectName(QStringLiteral("gan_sen"));
-        gan_sen->setGeometry(QRect(610, 110, 81, 41));
+        gan_sen->setGeometry(QRect(630, 110, 61, 41));
         gan_sen->setFont(font1);
-        gan_sen->setMinimum(3);
-        gan_sen->setMaximum(62);
+        gan_sen->setMinimum(0);
+        gan_sen->setMaximum(100);
         gan_sen->setSingleStep(1);
         label_17 = new QLabel(frame_3);
         label_17->setObjectName(QStringLiteral("label_17"));
         label_17->setGeometry(QRect(606, 90, 81, 20));
         edo_mar = new QSpinBox(frame_3);
         edo_mar->setObjectName(QStringLiteral("edo_mar"));
-        edo_mar->setGeometry(QRect(140, 110, 51, 41));
+        edo_mar->setGeometry(QRect(180, 30, 51, 41));
         edo_mar->setFont(font1);
         edo_mar->setMinimum(1);
         edo_mar->setMaximum(9);
         label_58 = new QLabel(frame_3);
         label_58->setObjectName(QStringLiteral("label_58"));
-        label_58->setGeometry(QRect(130, 86, 71, 31));
+        label_58->setGeometry(QRect(170, 6, 71, 31));
         label_60 = new QLabel(frame_3);
         label_60->setObjectName(QStringLiteral("label_60"));
         label_60->setGeometry(QRect(485, 4, 141, 31));
@@ -309,6 +312,17 @@ public:
         toolButton = new QToolButton(frame_3);
         toolButton->setObjectName(QStringLiteral("toolButton"));
         toolButton->setGeometry(QRect(0, 0, 24, 25));
+        gan_sen_2 = new QSpinBox(frame_3);
+        gan_sen_2->setObjectName(QStringLiteral("gan_sen_2"));
+        gan_sen_2->setGeometry(QRect(520, 110, 81, 41));
+        gan_sen_2->setFont(font1);
+        gan_sen_2->setMinimum(1400);
+        gan_sen_2->setMaximum(1600);
+        gan_sen_2->setSingleStep(1);
+        gan_sen_2->setValue(1500);
+        label_18 = new QLabel(frame_3);
+        label_18->setObjectName(QStringLiteral("label_18"));
+        label_18->setGeometry(QRect(510, 90, 81, 20));
         frame_4 = new QFrame(centralWidget);
         frame_4->setObjectName(QStringLiteral("frame_4"));
         frame_4->setEnabled(true);
@@ -428,7 +442,7 @@ public:
         label_28->setGeometry(QRect(10, 97, 51, 16));
         label_32 = new QLabel(frame_8);
         label_32->setObjectName(QStringLiteral("label_32"));
-        label_32->setGeometry(QRect(10, 120, 111, 16));
+        label_32->setGeometry(QRect(10, 120, 71, 16));
         gpsLat = new QLabel(frame_8);
         gpsLat->setObjectName(QStringLiteral("gpsLat"));
         gpsLat->setGeometry(QRect(70, 72, 67, 17));
@@ -439,6 +453,10 @@ public:
         gpsLong->setObjectName(QStringLiteral("gpsLong"));
         gpsLong->setGeometry(QRect(70, 96, 67, 17));
         gpsLong->setFont(font4);
+        carga = new QLabel(frame_8);
+        carga->setObjectName(QStringLiteral("carga"));
+        carga->setGeometry(QRect(86, 120, 51, 17));
+        carga->setFont(font4);
         siviso->setCentralWidget(centralWidget);
         frame_3->raise();
         frame_5->raise();
@@ -479,14 +497,14 @@ public:
 #ifndef QT_NO_ACCESSIBILITY
         siviso->setAccessibleDescription(QString());
 #endif // QT_NO_ACCESSIBILITY
-        label_4->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Display time</span></p></body></html>", 0));
-        label_2->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">bandwidth</span></p></body></html>", 0));
+        label_4->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Rango de despliegue</span></p></body></html>", 0));
+        label_2->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Ancho de banda</span></p></body></html>", 0));
         label->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Frecuencia</span></p></body></html>", 0));
 #ifndef QT_NO_ACCESSIBILITY
         bw->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
         bw->setSpecialValueText(QString());
-        label_3->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Integration time</span></p></body></html>", 0));
+        label_3->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">tiempo de integraci\303\263n</span></p></body></html>", 0));
         label_12->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Probabilidad<br/>de detecci\303\263n</span></p></body></html>", 0));
         label_13->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Probabilidad<br/>de falsa alarma</span></p></body></html>", 0));
         tipo_norte->setText(QApplication::translate("siviso", "Norte\n"
@@ -519,6 +537,7 @@ public:
         btr->setText(QApplication::translate("siviso", "BTR", 0));
         btg->setText(QApplication::translate("siviso", "BTG", 0));
         toolButton->setText(QApplication::translate("siviso", "...", 0));
+        label_18->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Velocidad del sonido</span></p></body></html>", 0));
         DespTac->setText(QString());
         send->setText(QApplication::translate("siviso", "Enviar", 0));
         closeJars->setText(QApplication::translate("siviso", "close Jars", 0));
@@ -543,6 +562,7 @@ public:
         label_32->setText(QApplication::translate("siviso", "<html><head/><body><p><span style=\" font-size:6pt;\">Carga de la bateria:</span></p></body></html>", 0));
         gpsLat->setText(QString());
         gpsLong->setText(QString());
+        carga->setText(QString());
     } // retranslateUi
 
 };

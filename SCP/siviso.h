@@ -70,6 +70,7 @@ public:
     int nBati;
     QString catchSend;
     QString catchHeader;
+    QString catchCarga;
     QString GPSt, GPSn, GPSw;
     QString compGraf;
     QString batiP, batiT, batiS;
@@ -81,6 +82,7 @@ public:
     bool bPlay;
     bool bGPSt, bGPSn, bGPSw;
     bool bDecimal;
+    bool bSensor;
 
 private slots:
     void on_toolButton_clicked();
