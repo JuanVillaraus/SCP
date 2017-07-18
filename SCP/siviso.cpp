@@ -128,7 +128,7 @@ siviso::siviso(QWidget *parent) :
     proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
-    //ui->toolButton->setVisible(false);
+    ui->toolButton->setVisible(false);
     ui->btr->setDisabled(true);
     ui->lf->setDisabled(true);
     ui->btg->setDisabled(true);
@@ -140,6 +140,9 @@ siviso::siviso(QWidget *parent) :
     ui->escala_ppi->setDisabled(true);
     ui->escala_despliegue_tactico->setDisabled(true);
     ui->frecuencia->setDisabled(true);
+    ui->tipo_norte->setDisabled(true);
+    ui->origen_buque->setDisabled(true);
+    ui->origen_target->setDisabled(true);
 
     serialPortDB9->setPortName("/dev/ttyS0");
     if(serialPortDB9->open(QIODevice::ReadWrite))
