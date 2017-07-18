@@ -28,7 +28,7 @@ siviso::~siviso()
 #include <QtGui>
 
 //#define localdir QHostAddress("192.168.1.178")        //de donde nos comunicamos
-#define puertolocal 5002
+#define puertolocal 5001
 
 siviso::siviso(QWidget *parent) :
     QMainWindow(parent),
@@ -59,7 +59,7 @@ siviso::siviso(QWidget *parent) :
     udpsocket = new QUdpSocket(this);
     //udpsocket->bind(localdir,puertolocal);
     //udpsocket->bind(QHostAddress::LocalHost, puertolocal);
-    udpsocket->bind(5002, QUdpSocket::ShareAddress);
+    udpsocket->bind(5001, QUdpSocket::ShareAddress);
     serialPortDB9 = new QSerialPort();
     serialPortGPS = new QSerialPort();
     serialPortUSB = new QSerialPort();
@@ -379,14 +379,14 @@ void siviso::leerSocket()
         } else if(info == "USB"){
             serialPortUSB->setPortName("/dev/ttyUSB1");
             if(serialPortUSB->open(QIODevice::ReadWrite)){
-                s = "USB_UP";
-                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
                 ui->view->appendPlainText("Puerto serial abierto\n");
                 serialPortUSB->setBaudRate(QSerialPort::Baud115200);
                 serialPortUSB->setDataBits(QSerialPort::Data8);
                 serialPortUSB->setStopBits(QSerialPort::OneStop);
                 serialPortUSB->setParity(QSerialPort::NoParity);
                 serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
+                s = "USB_UP";
+                udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
             }else{
                 s = "USB_DW";
                 udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
@@ -565,20 +565,24 @@ void siviso::leerSerialUSB()
             }
         }
         if(str[x]==';'){
+            sCom="INFO";
+            udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+            sCom="";
             if(bSensor){
                 carga = ((((catchCarga.toDouble()*100)/25.2)-80)*100)/20;
                 ui->textTestGrap->appendPlainText("el voltaje es:" + catchCarga);
                 ui->textTestGrap->appendPlainText("el % delvoltaje es:" + static_cast<int>(carga));
                 if(carga>0){
-                    ui->carga->setNum(carga);
+                    ui->carga->setNum(static_cast<int>(carga));
                 }else{
-                    ui->carga->setNum(00.00);
+                    ui->carga->setNum(0);
                 }
+                bSensor = false;
             } else {
                 sCom="INFO";
                 udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
                 sCom="";
-                catchCarga += str[x];
+                catchSend += str[x];
                 ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
                 if(compGraf=="BTR")
                     udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
@@ -599,9 +603,9 @@ void siviso::leerSerialUSB()
                 sCom="";
                 ui->textTestGrap->appendPlainText("comando: " + catchCmd);
                 if(catchCmd == "STARTOK"){
-                    sCom="CONX_UP";
+                    /*sCom="CONX_UP";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
-                    sCom="";
+                    sCom="";*/
                 } else if(catchCmd == "OK"){
                     sCom="CONF";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
@@ -618,6 +622,10 @@ void siviso::leerSerialUSB()
 
                 } else if(catchCmd == "COMMUNICATIONERRORA"){
 
+                } else if(catchCmd == "ERRORDECOMUNICACION"){
+                    sCom="CONX_DW";
+                    udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                    sCom="";
                 }
                 catchCmd = "";
             }
@@ -767,7 +775,7 @@ void siviso::on_escala_despliegue_tactico_valueChanged(double arg1)
 
 void siviso::on_gan_sen_valueChanged(int arg1)
 {
-    mysignal->set_ganancia_sensor(arg1);
+    mysignal->set_ganancia_sensor((arg1*.59)+3);
 
     ui->view->appendPlainText("ganancia_sensor: ");
     QString s = QString::number(arg1);

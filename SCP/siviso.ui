@@ -1221,12 +1221,12 @@ Verdadero</string>
       <rect>
        <x>10</x>
        <y>120</y>
-       <width>71</width>
+       <width>91</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Carga de la bateria:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Carga de la bateria (%):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="gpsLat">
@@ -1268,10 +1268,10 @@ Verdadero</string>
     <widget class="QLabel" name="carga">
      <property name="geometry">
       <rect>
-       <x>86</x>
+       <x>106</x>
        <y>120</y>
-       <width>51</width>
-       <height>17</height>
+       <width>31</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="font">

@@ -8,3 +8,5 @@ dimensionY=440
 longBTR=11
 longLF=62
 timeSend=100
+timeConx=5000
+timeCarga=2000
