@@ -128,8 +128,16 @@ siviso::siviso(QWidget *parent) :
     proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
-    //ui->toolButton->setVisible(false);
+    ui->toolButton->setVisible(false);
     ui->btg->setDisabled(true);
+    ui->bw->setDisabled(true);
+    ui->it->setDisabled(true);
+    ui->dt->setDisabled(true);
+    ui->prob_falsa->setDisabled(true);
+    ui->prob_deteccion->setDisabled(true);
+    ui->escala_ppi->setDisabled(true);
+    ui->escala_despliegue_tactico->setDisabled(true);
+
 
 
     serialPortDB9->setPortName("/dev/ttyS0");
