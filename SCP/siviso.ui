@@ -344,14 +344,14 @@ Verdadero</string>
     <widget class="QLabel" name="label_17">
      <property name="geometry">
       <rect>
-       <x>606</x>
+       <x>616</x>
        <y>90</y>
-       <width>81</width>
+       <width>71</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Ganancia&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Ganancia (%)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QSpinBox" name="edo_mar">

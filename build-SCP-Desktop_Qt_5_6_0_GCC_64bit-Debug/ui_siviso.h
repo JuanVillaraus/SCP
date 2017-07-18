@@ -221,7 +221,7 @@ public:
         gan_sen->setSingleStep(1);
         label_17 = new QLabel(frame_3);
         label_17->setObjectName(QStringLiteral("label_17"));
-        label_17->setGeometry(QRect(606, 90, 81, 20));
+        label_17->setGeometry(QRect(616, 90, 71, 20));
         edo_mar = new QSpinBox(frame_3);
         edo_mar->setObjectName(QStringLiteral("edo_mar"));
         edo_mar->setGeometry(QRect(180, 30, 51, 41));
@@ -511,7 +511,7 @@ public:
 "Verdadero", 0));
         label_15->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Escala PPI</span></p></body></html>", 0));
         label_16->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Escala <br/>despliegue T\303\241ctico</span></p></body></html>", 0));
-        label_17->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Ganancia</span></p></body></html>", 0));
+        label_17->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Ganancia (%)</span></p></body></html>", 0));
         label_58->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">Estado <br/>de la mar</span></p></body></html>", 0));
         label_60->setText(QApplication::translate("siviso", "<html><head/><body><p align=\"center\"><span style=\" font-size:6pt;\">alternar Norte<br/>Verdadero/Relativo</span></p></body></html>", 0));
         groupBox->setTitle(QApplication::translate("siviso", "Origen", 0));
