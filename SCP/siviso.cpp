@@ -128,7 +128,9 @@ siviso::siviso(QWidget *parent) :
     proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
-    ui->toolButton->setVisible(false);
+    //ui->toolButton->setVisible(false);
+    ui->btr->setDisabled(true);
+    ui->lf->setDisabled(true);
     ui->btg->setDisabled(true);
     ui->bw->setDisabled(true);
     ui->it->setDisabled(true);
@@ -137,8 +139,7 @@ siviso::siviso(QWidget *parent) :
     ui->prob_deteccion->setDisabled(true);
     ui->escala_ppi->setDisabled(true);
     ui->escala_despliegue_tactico->setDisabled(true);
-
-
+    ui->frecuencia->setDisabled(true);
 
     serialPortDB9->setPortName("/dev/ttyS0");
     if(serialPortDB9->open(QIODevice::ReadWrite))
@@ -626,6 +627,8 @@ void siviso::leerSerialUSB()
                     sCom="CONX_UP";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
                     sCom="";
+                    ui->btr->setDisabled(false);
+                    ui->lf->setDisabled(false);
                 } else if(catchCmd == "COMMUNICATIONERRORP"){
 
                 } else if(catchCmd == "COMMUNICATIONERRORA"){

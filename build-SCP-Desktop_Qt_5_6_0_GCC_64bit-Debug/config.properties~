@@ -1,5 +1,5 @@
 #Tue Apr 12 08:46:23 CDT 2016
-modelo=SSF
+modelo=SSPP
 database=localhost
 posicionX=33
 posicionY=290
@@ -7,6 +7,6 @@ dimensionX=475
 dimensionY=440
 longBTR=11
 longLF=62
-timeSend=100
+timeSend=300
 timeConx=5000
 timeCarga=2000
