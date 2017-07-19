@@ -128,7 +128,7 @@ siviso::siviso(QWidget *parent) :
     proceso4->startDetached("java -jar ConexionPP.jar");
 
     //ui->btOpenPort->setVisible(false);
-    ui->toolButton->setVisible(false);
+    //ui->toolButton->setVisible(false);
     ui->btr->setDisabled(true);
     ui->lf->setDisabled(true);
     ui->btg->setDisabled(true);
@@ -555,7 +555,6 @@ void siviso::leerSerialUSB()
     nDatos = serialPortUSB->read(buffer,100);
 
     QString sCom;
-    QString catchCmd;
     double carga;
 
     buffer[nDatos] = '\0';
@@ -575,8 +574,7 @@ void siviso::leerSerialUSB()
             }else{
                 catchCarga += str[x];
             }
-        }
-        if(str[x]==';'){
+        }else if(str[x]==';'){
             sCom="INFO";
             udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
             sCom="";

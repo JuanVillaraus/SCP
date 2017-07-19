@@ -74,6 +74,7 @@ public:
     QString GPSt, GPSn, GPSw;
     QString compGraf;
     QString batiP, batiT, batiS;
+    QString catchCmd;
     PPI *myppi;
     Signal *mysignal;
     bool bCatchHeader;
@@ -83,6 +84,7 @@ public:
     bool bGPSt, bGPSn, bGPSw;
     bool bDecimal;
     bool bSensor;
+
 
 private slots:
     void on_toolButton_clicked();
