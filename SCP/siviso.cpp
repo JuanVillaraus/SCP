@@ -184,6 +184,9 @@ siviso::siviso(QWidget *parent) :
     {
         ui->view->appendPlainText("Error de conexion con el puerto serial USB\n");
     }*/
+    /*if(puertoLF==0){
+        proceso1->startDetached("java -jar Lofar.jar");
+    }*/
 
 
 //This use for TEST the class DBasePostgreSQL by Misael M Del Valle -- Status: Functional

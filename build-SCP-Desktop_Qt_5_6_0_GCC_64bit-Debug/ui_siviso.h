@@ -214,7 +214,7 @@ public:
         escala_despliegue_tactico->setFont(font1);
         gan_sen = new QSpinBox(frame_3);
         gan_sen->setObjectName(QStringLiteral("gan_sen"));
-        gan_sen->setGeometry(QRect(630, 110, 61, 41));
+        gan_sen->setGeometry(QRect(620, 110, 71, 41));
         gan_sen->setFont(font1);
         gan_sen->setMinimum(0);
         gan_sen->setMaximum(100);
