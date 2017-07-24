@@ -167,6 +167,8 @@ siviso::siviso(QWidget *parent) :
     serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
 
+    proceso3->startDetached("amixer -D pulse sset Master 10%");
+
     //serialPortUSB->setPortName("/dev/ttyUSB1");
     /*if(serialPortUSB->open(QIODevice::ReadWrite))
     {
@@ -295,7 +297,9 @@ void siviso::on_btOpenPort_clicked()
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
     udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
     proceso6->startDetached("nautilus /home/siviso/repositorio/SCP/build-SCP-Desktop_Qt_5_6_0_GCC_64bit-Debug/resource/audio/");
+    thread()->sleep(1);
     proceso6->startDetached("wmctrl -r audio -e 0,50,100,800,500");
+    thread()->sleep(1);
     proceso6->startDetached("wmctrl -a audio");
 
     //this->close();
@@ -982,6 +986,7 @@ void siviso::on_sendr_clicked()
 void siviso::on_vol_dw_clicked()
 {
     proceso3->startDetached("amixer sset Master 5%-");
+
 }
 
 void siviso::on_vol_up_clicked()
