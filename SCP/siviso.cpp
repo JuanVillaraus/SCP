@@ -167,7 +167,7 @@ siviso::siviso(QWidget *parent) :
     serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
 
-    proceso3->startDetached("amixer -D pulse sset Master 10%");
+    proceso3->startDetached("amixer -D pulse sset Master 25%");
 
     //serialPortUSB->setPortName("/dev/ttyUSB1");
     /*if(serialPortUSB->open(QIODevice::ReadWrite))
