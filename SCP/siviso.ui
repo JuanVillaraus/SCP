@@ -671,11 +671,11 @@ Verdadero</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>LF</string>
+      <string>LOFAR</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btr">
@@ -689,7 +689,7 @@ Verdadero</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
@@ -707,7 +707,7 @@ Verdadero</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">

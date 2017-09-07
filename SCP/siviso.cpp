@@ -367,16 +367,22 @@ void siviso::leerSocket()
 
         QString s;
         if(info == "runBTG"){
+            QString s = "EXIT";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
             puertoBTG = senderPort;
             s = "OFF";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
         }else if(info == "runBTR"){
+            QString s = "EXIT";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
             puertoBTR = senderPort;
             s = "LONG";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
             s = "OFF";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
         }else if(info == "runLF"){
+            QString s = "EXIT";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
             puertoLF = senderPort;
             s = "LONG";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
@@ -388,6 +394,8 @@ void siviso::leerSocket()
             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoBTR);
             udpsocket->writeDatagram(info.toLatin1(),direccionApp,puertoLF);
         } else if(info == "runConxPP"){
+            QString s = "EXIT";
+            udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
             puertoComPP = senderPort;
             s = "USB_DW";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoComPP);
