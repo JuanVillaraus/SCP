@@ -127,8 +127,8 @@ siviso::siviso(QWidget *parent) :
     thread()->sleep(1);
     proceso2->startDetached("java -jar BTR.jar");
     thread()->sleep(1);
-    //proceso4->startDetached("java -jar ConexionPP.jar");
-    //thread()->sleep(1);
+    proceso4->startDetached("java -jar ConexionPP.jar");
+    thread()->sleep(1);
     //proceso3->startDetached("java -jar Btg.jar");
 
     //ui->btOpenPort->setVisible(false);
