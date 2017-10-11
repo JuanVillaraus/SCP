@@ -127,8 +127,8 @@ siviso::siviso(QWidget *parent) :
     thread()->sleep(1);
     proceso2->startDetached("java -jar BTR.jar");
     thread()->sleep(1);
-    proceso4->startDetached("java -jar ConexionPP.jar");
-    thread()->sleep(1);
+    //proceso4->startDetached("java -jar ConexionPP.jar");
+    //thread()->sleep(1);
     //proceso3->startDetached("java -jar Btg.jar");
 
     //ui->btOpenPort->setVisible(false);
@@ -608,9 +608,9 @@ void siviso::leerSerialUSB()
                 }
                 bSensor = false;
             } else {
-                sCom="INFO";
-                udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
-                sCom="";
+                //sCom="INFO";
+                //udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                //sCom="";
                 catchSend += str[x];
                 ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
                 if(compGraf=="BTR")
@@ -627,9 +627,9 @@ void siviso::leerSerialUSB()
             if(str[x]!='!'){
                 catchCmd += str[x];
             } else {
-                sCom="INFO";
-                udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
-                sCom="";
+                //sCom="INFO";
+                //udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
+                //sCom="";
                 ui->textTestGrap->appendPlainText("comando: " + catchCmd);
                 if(catchCmd == "STARTOK"){
                     /*sCom="CONX_UP";
