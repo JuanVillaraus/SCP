@@ -81,7 +81,7 @@ siviso::siviso(QWidget *parent) :
     ui->bw->setValue(mysignal->get_bw());
     ui->it->setValue(mysignal->get_it());
     ui->dt->setValue(mysignal->get_dt());
-    ui->gan_sen->setValue(mysignal->get_ganancia_sensor());
+    //ui->gan_sen->setValue(mysignal->get_ganancia_sensor());
     ui->dt->setValue(mysignal->get_dt());
     ui->prob_falsa->setValue(mysignal->get_prob_falsa());
     ui->prob_deteccion->setValue(mysignal->get_prob_deteccion());
@@ -100,7 +100,7 @@ siviso::siviso(QWidget *parent) :
     ui->OpenPort->setVisible(false);
     ui->sendr->setVisible(false);
 
-    serialPortUSB->write("GAIN 3\n");
+    //serialPortUSB->write("GAIN 3\n");
 
     colorUp=255;
     colorDw=0;
