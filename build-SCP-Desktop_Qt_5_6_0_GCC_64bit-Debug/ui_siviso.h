@@ -219,6 +219,7 @@ public:
         gan_sen->setMinimum(0);
         gan_sen->setMaximum(100);
         gan_sen->setSingleStep(1);
+        gan_sen->setValue(50);
         label_17 = new QLabel(frame_3);
         label_17->setObjectName(QStringLiteral("label_17"));
         label_17->setGeometry(QRect(616, 90, 71, 20));
