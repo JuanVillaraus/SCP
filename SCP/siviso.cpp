@@ -171,7 +171,8 @@ siviso::siviso(QWidget *parent) :
     serialPortGPS->setFlowControl(QSerialPort::NoFlowControl);
     serialPortUSB->setFlowControl(QSerialPort::NoFlowControl);
 
-    proceso3->startDetached("amixer -D pulse sset Master 25%");
+    proceso3->startDetached("amixer -D pulse sset Master 50%");
+    ui->volumen->setValue(49);
 
     //serialPortUSB->setPortName("/dev/ttyUSB1");
     /*if(serialPortUSB->open(QIODevice::ReadWrite))
@@ -279,7 +280,6 @@ void siviso::changeStyleSheet(int iStyle)
 
             if(iStyle == NIGHT_STYLE)
                 strFilePath.append("siviso_night.css");
-
             QFile file(strFilePath);
 
             if(!file.open( QIODevice::ReadOnly | QIODevice::Text ))
@@ -995,7 +995,7 @@ void siviso::on_sendr_clicked()
     serialPortUSB->write(s.toLatin1());
 }
 
-void siviso::on_vol_dw_clicked()
+/*void siviso::on_vol_dw_clicked()
 {
     proceso3->startDetached("amixer sset Master 5%-");
 
@@ -1004,4 +1004,31 @@ void siviso::on_vol_dw_clicked()
 void siviso::on_vol_up_clicked()
 {
     proceso3->startDetached("amixer sset Master 5%+");
+}*/
+
+void siviso::on_volumen_valueChanged(int value)
+{
+    //ui->view->appendPlainText(QString::number(value));
+    if(value<10){
+        proceso3->startDetached("amixer sset Master 10%");
+    }else if(value<20){
+        proceso3->startDetached("amixer sset Master 20%");
+    }else if(value<30){
+        proceso3->startDetached("amixer sset Master 30%");
+    }else if(value<40){
+        proceso3->startDetached("amixer sset Master 40%");
+    }else if(value<50){
+        proceso3->startDetached("amixer sset Master 50%");
+    }else if(value<60){
+        proceso3->startDetached("amixer sset Master 60%");
+    }else if(value<70){
+        proceso3->startDetached("amixer sset Master 70%");
+    }else if(value<80){
+        proceso3->startDetached("amixer sset Master 80%");
+    }else if(value<90){
+        proceso3->startDetached("amixer sset Master 90%");
+    }else{
+        proceso3->startDetached("amixer sset Master 100%");
+    }
 }
+

@@ -446,7 +446,7 @@ Verdadero</string>
     <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>80</x>
        <y>160</y>
        <width>211</width>
        <height>61</height>
@@ -516,9 +516,9 @@ Verdadero</string>
     <widget class="QFrame" name="frame_10">
      <property name="geometry">
       <rect>
-       <x>460</x>
+       <x>490</x>
        <y>160</y>
-       <width>231</width>
+       <width>201</width>
        <height>61</height>
       </rect>
      </property>
@@ -533,7 +533,7 @@ Verdadero</string>
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>91</width>
+        <width>81</width>
         <height>23</height>
        </rect>
       </property>
@@ -544,11 +544,16 @@ Verdadero</string>
      <widget class="QComboBox" name="Clasificar_blanco">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>100</x>
         <y>30</y>
-        <width>111</width>
+        <width>91</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
       </property>
       <item>
        <property name="text">
@@ -574,7 +579,7 @@ Verdadero</string>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>120</x>
         <y>10</y>
         <width>71</width>
         <height>20</height>
@@ -587,7 +592,7 @@ Verdadero</string>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>66</x>
+        <x>56</x>
         <y>0</y>
         <width>71</width>
         <height>20</height>
@@ -601,9 +606,9 @@ Verdadero</string>
     <widget class="QFrame" name="frame_2">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>300</x>
        <y>160</y>
-       <width>131</width>
+       <width>181</width>
        <height>61</height>
       </rect>
      </property>
@@ -613,42 +618,6 @@ Verdadero</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QPushButton" name="vol_dw">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>51</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>-</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="vol_up">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>20</y>
-        <width>51</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>+</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_57">
       <property name="geometry">
        <rect>
@@ -660,6 +629,19 @@ Verdadero</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:6pt;&quot;&gt;Volumen&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="volumen">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>160</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </widget>

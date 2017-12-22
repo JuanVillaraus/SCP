@@ -83,7 +83,7 @@ public:
     bool bPlay;
     bool bGPSt, bGPSn, bGPSw;
     bool bDecimal;
-    bool bSensor;
+    bool bSensor;;
 
 
 private slots:
@@ -153,9 +153,11 @@ private slots:
 
     void on_sendr_clicked();
 
-    void on_vol_dw_clicked();
+    //void on_vol_dw_clicked();
 
-    void on_vol_up_clicked();
+    //void on_vol_up_clicked();
+
+    void on_volumen_valueChanged(int value);
 
 private:
     Ui::siviso *ui;

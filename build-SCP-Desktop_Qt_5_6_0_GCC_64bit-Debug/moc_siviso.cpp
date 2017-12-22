@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_siviso_t {
-    QByteArrayData data[39];
-    char stringdata0[751];
+    QByteArrayData data[38];
+    char stringdata0[739];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -66,8 +66,7 @@ QT_MOC_LITERAL(33, 644, 17), // "on_endCom_clicked"
 QT_MOC_LITERAL(34, 662, 15), // "on_send_clicked"
 QT_MOC_LITERAL(35, 678, 19), // "on_OpenPort_clicked"
 QT_MOC_LITERAL(36, 698, 16), // "on_sendr_clicked"
-QT_MOC_LITERAL(37, 715, 17), // "on_vol_dw_clicked"
-QT_MOC_LITERAL(38, 733, 17) // "on_vol_up_clicked"
+QT_MOC_LITERAL(37, 715, 23) // "on_volumen_valueChanged"
 
     },
     "siviso\0on_toolButton_clicked\0\0leerSocket\0"
@@ -91,7 +90,7 @@ QT_MOC_LITERAL(38, 733, 17) // "on_vol_up_clicked"
     "on_openJars_clicked\0on_startCom_clicked\0"
     "on_endCom_clicked\0on_send_clicked\0"
     "on_OpenPort_clicked\0on_sendr_clicked\0"
-    "on_vol_dw_clicked\0on_vol_up_clicked"
+    "on_volumen_valueChanged"
 };
 #undef QT_MOC_LITERAL
 
@@ -101,7 +100,7 @@ static const uint qt_meta_data_siviso[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      35,   14, // methods
+      34,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -109,41 +108,40 @@ static const uint qt_meta_data_siviso[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  189,    2, 0x08 /* Private */,
-       3,    0,  190,    2, 0x08 /* Private */,
-       4,    0,  191,    2, 0x08 /* Private */,
-       5,    0,  192,    2, 0x08 /* Private */,
-       6,    0,  193,    2, 0x08 /* Private */,
-       7,    0,  194,    2, 0x08 /* Private */,
-       8,    0,  195,    2, 0x08 /* Private */,
-       9,    0,  196,    2, 0x08 /* Private */,
-      10,    0,  197,    2, 0x08 /* Private */,
-      11,    0,  198,    2, 0x08 /* Private */,
-      12,    0,  199,    2, 0x08 /* Private */,
-      13,    1,  200,    2, 0x08 /* Private */,
-      15,    1,  203,    2, 0x08 /* Private */,
-      16,    1,  206,    2, 0x08 /* Private */,
-      17,    1,  209,    2, 0x08 /* Private */,
-      18,    1,  212,    2, 0x08 /* Private */,
-      19,    1,  215,    2, 0x08 /* Private */,
-      20,    1,  218,    2, 0x08 /* Private */,
-      21,    1,  221,    2, 0x08 /* Private */,
-      23,    0,  224,    2, 0x08 /* Private */,
-      24,    1,  225,    2, 0x08 /* Private */,
-      25,    0,  228,    2, 0x08 /* Private */,
-      26,    0,  229,    2, 0x08 /* Private */,
-      27,    0,  230,    2, 0x08 /* Private */,
-      28,    1,  231,    2, 0x08 /* Private */,
-      29,    1,  234,    2, 0x08 /* Private */,
-      30,    0,  237,    2, 0x08 /* Private */,
-      31,    0,  238,    2, 0x08 /* Private */,
-      32,    0,  239,    2, 0x08 /* Private */,
-      33,    0,  240,    2, 0x08 /* Private */,
-      34,    0,  241,    2, 0x08 /* Private */,
-      35,    0,  242,    2, 0x08 /* Private */,
-      36,    0,  243,    2, 0x08 /* Private */,
-      37,    0,  244,    2, 0x08 /* Private */,
-      38,    0,  245,    2, 0x08 /* Private */,
+       1,    0,  184,    2, 0x08 /* Private */,
+       3,    0,  185,    2, 0x08 /* Private */,
+       4,    0,  186,    2, 0x08 /* Private */,
+       5,    0,  187,    2, 0x08 /* Private */,
+       6,    0,  188,    2, 0x08 /* Private */,
+       7,    0,  189,    2, 0x08 /* Private */,
+       8,    0,  190,    2, 0x08 /* Private */,
+       9,    0,  191,    2, 0x08 /* Private */,
+      10,    0,  192,    2, 0x08 /* Private */,
+      11,    0,  193,    2, 0x08 /* Private */,
+      12,    0,  194,    2, 0x08 /* Private */,
+      13,    1,  195,    2, 0x08 /* Private */,
+      15,    1,  198,    2, 0x08 /* Private */,
+      16,    1,  201,    2, 0x08 /* Private */,
+      17,    1,  204,    2, 0x08 /* Private */,
+      18,    1,  207,    2, 0x08 /* Private */,
+      19,    1,  210,    2, 0x08 /* Private */,
+      20,    1,  213,    2, 0x08 /* Private */,
+      21,    1,  216,    2, 0x08 /* Private */,
+      23,    0,  219,    2, 0x08 /* Private */,
+      24,    1,  220,    2, 0x08 /* Private */,
+      25,    0,  223,    2, 0x08 /* Private */,
+      26,    0,  224,    2, 0x08 /* Private */,
+      27,    0,  225,    2, 0x08 /* Private */,
+      28,    1,  226,    2, 0x08 /* Private */,
+      29,    1,  229,    2, 0x08 /* Private */,
+      30,    0,  232,    2, 0x08 /* Private */,
+      31,    0,  233,    2, 0x08 /* Private */,
+      32,    0,  234,    2, 0x08 /* Private */,
+      33,    0,  235,    2, 0x08 /* Private */,
+      34,    0,  236,    2, 0x08 /* Private */,
+      35,    0,  237,    2, 0x08 /* Private */,
+      36,    0,  238,    2, 0x08 /* Private */,
+      37,    1,  239,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -179,8 +177,7 @@ static const uint qt_meta_data_siviso[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   22,
 
        0        // eod
 };
@@ -224,8 +221,7 @@ void siviso::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 30: _t->on_send_clicked(); break;
         case 31: _t->on_OpenPort_clicked(); break;
         case 32: _t->on_sendr_clicked(); break;
-        case 33: _t->on_vol_dw_clicked(); break;
-        case 34: _t->on_vol_up_clicked(); break;
+        case 33: _t->on_volumen_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -256,13 +252,13 @@ int siviso::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 35)
+        if (_id < 34)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 35;
+        _id -= 34;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 35)
+        if (_id < 34)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 35;
+        _id -= 34;
     }
     return _id;
 }
