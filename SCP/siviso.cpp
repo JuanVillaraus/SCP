@@ -99,6 +99,7 @@ siviso::siviso(QWidget *parent) :
     ui->send->setVisible(false);
     ui->OpenPort->setVisible(false);
     ui->sendr->setVisible(false);
+    ui->Alert->setVisible(false);
 
     //serialPortUSB->write("GAIN 3\n");
 
@@ -598,11 +599,18 @@ void siviso::leerSerialUSB()
             udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
             sCom="";
             if(bSensor){
+                ui->carga->setNum(catchCarga.toDouble());
                 carga = ((((catchCarga.toDouble()*100)/25.2)-80)*100)/20;
                 ui->textTestGrap->appendPlainText("el voltaje es:" + catchCarga);
                 ui->textTestGrap->appendPlainText("el % delvoltaje es:" + static_cast<int>(carga));
                 if(carga>0){
                     ui->carga->setNum(static_cast<int>(carga));
+                    if(carga>20){
+                        QString s = "OFF";
+                        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
+                        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
+                        udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+                    }
                 }else{
                     ui->carga->setNum(0);
                 }
