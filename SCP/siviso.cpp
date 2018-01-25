@@ -603,7 +603,7 @@ void siviso::leerSerialUSB()
                 carga = ((((catchCarga.toDouble()*100)/25.2)-80)*100)/20;
                 ui->textTestGrap->appendPlainText("el voltaje es:" + catchCarga);
                 ui->textTestGrap->appendPlainText("el % delvoltaje es:" + static_cast<int>(carga));
-                ui->volt->setNum(static_cast<int>(catchCarga.toDouble()));
+                ui->volt->setNum(catchCarga.toDouble());
                 if(carga>0){
                     ui->carga->setNum(static_cast<int>(carga));
                     if(carga>20){
