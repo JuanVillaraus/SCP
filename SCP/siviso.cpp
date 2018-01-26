@@ -606,11 +606,14 @@ void siviso::leerSerialUSB()
                 ui->volt->setNum(catchCarga.toDouble());
                 if(carga>0){
                     ui->carga->setNum(static_cast<int>(carga));
-                    if(carga>20){
+                    if(carga<20){
                         QString s = "OFF";
                         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTR);
                         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
                         udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoLF);
+                        ui->Alert->setVisible(true);
+                    } else {
+                        ui->Alert->setVisible(false);
                     }
                 }else{
                     ui->carga->setNum(0);
