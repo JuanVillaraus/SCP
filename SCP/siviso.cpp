@@ -366,8 +366,8 @@ void siviso::leerSocket()
         quint16 senderPort;
         udpsocket->readDatagram(datagram.data(),datagram.size(), &sender, &senderPort);
         QString info = datagram.data();
-        ui->textTestGrap->appendPlainText(" port-> " + QString("%1").arg(senderPort));
-        ui->textTestGrap->appendPlainText(info);
+        //ui->textTestGrap->appendPlainText(" port-> " + QString("%1").arg(senderPort));
+        //ui->textTestGrap->appendPlainText(info);
         //s = " ";
 
         QString s;
@@ -443,7 +443,7 @@ void siviso::leerSerialDB9()
 
     nDatos = serialPortDB9->read(buffer,100);
     buffer[nDatos] = '\0';
-    ui->textTestGrap->appendPlainText(buffer);
+    //ui->textTestGrap->appendPlainText(buffer);
 
     QString str;
     str=QString(buffer);
@@ -484,7 +484,7 @@ void siviso::leerSerialDB9()
             d *= 10;
             batiT = QString::number(d);
             catchSend = batiP + "," + batiT + "," + batiS + ";";
-            ui->textTestGrap->appendPlainText("esto enviaré a BTG: " + catchSend);
+            //ui->textTestGrap->appendPlainText("esto enviaré a BTG: " + catchSend);
             udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTG);
             s = "RP";
             udpsocket->writeDatagram(s.toLatin1(),direccionApp,puertoBTG);
@@ -578,7 +578,7 @@ void siviso::leerSerialUSB()
     double carga;
 
     buffer[nDatos] = '\0';
-    ui->view->appendPlainText(buffer);
+    //ui->view->appendPlainText(buffer);
 
     QString str;
     str=QString(buffer);
@@ -601,8 +601,8 @@ void siviso::leerSerialUSB()
             if(bSensor){
                 ui->carga->setNum(catchCarga.toDouble());
                 carga = ((((catchCarga.toDouble()*100)/25.2)-80)*100)/20;
-                ui->textTestGrap->appendPlainText("el voltaje es:" + catchCarga);
-                ui->textTestGrap->appendPlainText("el % delvoltaje es:" + static_cast<int>(carga));
+                //ui->textTestGrap->appendPlainText("el voltaje es:" + catchCarga);
+                //ui->textTestGrap->appendPlainText("el % delvoltaje es:" + static_cast<int>(carga));
                 ui->volt->setNum(catchCarga.toDouble());
                 if(carga>0){
                     ui->carga->setNum(static_cast<int>(carga));
@@ -624,7 +624,7 @@ void siviso::leerSerialUSB()
                 //udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
                 //sCom="";
                 catchSend += str[x];
-                ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
+                //ui->textTestGrap->appendPlainText("esto enviare: "+catchSend);
                 if(compGraf=="BTR")
                     udpsocket->writeDatagram(catchSend.toLatin1(),direccionApp,puertoBTR);
                 if(compGraf=="LF")
@@ -642,7 +642,7 @@ void siviso::leerSerialUSB()
                 //sCom="INFO";
                 //udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
                 //sCom="";
-                ui->textTestGrap->appendPlainText("comando: " + catchCmd);
+                //ui->textTestGrap->appendPlainText("comando: " + catchCmd);
                 if(catchCmd == "STARTOK"){
                     /*sCom="CONX_UP";
                     udpsocket->writeDatagram(sCom.toLatin1(),direccionApp,puertoComPP);
@@ -679,7 +679,7 @@ void siviso::leerSerialUSB()
 void siviso::on_tipo_norte_clicked()
 {
     //PPI *myppi = new PPI();
-    ui->textTestGrap->appendPlainText("clic");
+    //ui->textTestGrap->appendPlainText("clic");
     if(myppi->get_tipo_norte())
     {
         ui->tipo_norte->setText("Norte\nRelativo");
@@ -739,12 +739,12 @@ void siviso::on_btg_clicked()
 
 void siviso::on_origen_buque_clicked()
 {
-    ui->textTestGrap->appendPlainText("se cambio el origen a buque");
+    //ui->textTestGrap->appendPlainText("se cambio el origen a buque");
 }
 
 void siviso::on_origen_target_clicked()
 {
-    ui->textTestGrap->appendPlainText("se cambio el origen a blanco");
+    //ui->textTestGrap->appendPlainText("se cambio el origen a blanco");
 }
 
 void siviso::on_pushButton_info_clicked()
@@ -761,68 +761,68 @@ void siviso::on_frecuencia_valueChanged(int value)
 {
     mysignal->set_frec(value);
 
-    ui->textTestGrap->appendPlainText("frec: ");
+    //ui->textTestGrap->appendPlainText("frec: ");
     QString s = QString::number(value);
-    ui->textTestGrap->appendPlainText(s);
+    //ui->textTestGrap->appendPlainText(s);
 }
 
 void siviso::on_bw_valueChanged(double arg1)
 {
     mysignal->set_bw(arg1);
 
-    ui->textTestGrap->appendPlainText("bw: ");
+    //ui->textTestGrap->appendPlainText("bw: ");
     QString s = QString::number(arg1);
-    ui->textTestGrap->appendPlainText(s);
+    //ui->textTestGrap->appendPlainText(s);
 }
 
 void siviso::on_edo_mar_valueChanged(int arg1)
 {
     mysignal->set_edo_mar(arg1);
 
-    ui->view->appendPlainText("edo_mar: ");
+    //ui->view->appendPlainText("edo_mar: ");
     QString s = QString::number(arg1);
-    ui->view->appendPlainText(s);
+    //ui->view->appendPlainText(s);
 }
 
 void siviso::on_prob_falsa_valueChanged(double arg1)
 {
     mysignal->set_prob_falsa(arg1);
 
-    ui->view->appendPlainText("prob_falsa: ");
+    //ui->view->appendPlainText("prob_falsa: ");
     QString s = QString::number(arg1);
-    ui->view->appendPlainText(s);
+    //ui->view->appendPlainText(s);
 }
 
 void siviso::on_prob_deteccion_valueChanged(double arg1)
 {
     mysignal->set_prob_deteccion(arg1);
 
-    ui->view->appendPlainText("prob_deteccion: ");
+    //ui->view->appendPlainText("prob_deteccion: ");
     QString s = QString::number(arg1);
-    ui->view->appendPlainText(s);
+    //ui->view->appendPlainText(s);
 }
 
 void siviso::on_escala_ppi_valueChanged(double arg1)
 {
-    ui->textTestGrap->appendPlainText("escala PPI: ");
+    //ui->textTestGrap->appendPlainText("escala PPI: ");
     QString s = QString::number(arg1);
-    ui->textTestGrap->appendPlainText(s);
+    //ui->textTestGrap->appendPlainText(s);
 }
 
 void siviso::on_escala_despliegue_tactico_valueChanged(double arg1)
 {
-    ui->textTestGrap->appendPlainText("desp_tact: ");
+    //ui->textTestGrap->appendPlainText("desp_tact: ");
     QString s = QString::number(arg1);
-    ui->textTestGrap->appendPlainText(s);\
+    //ui->textTestGrap->appendPlainText(s);
 }
 
 void siviso::on_gan_sen_valueChanged(int arg1)
 {
     mysignal->set_ganancia_sensor((arg1*.59)+3);
 
-    ui->view->appendPlainText("ganancia_sensor: ");
+    //ui->view->appendPlainText("ganancia_sensor: ");
     QString s = QString::number(arg1);
-    ui->view->appendPlainText(s);
+    //ui->view->appendPlainText(s);
     QByteArray ba ="GAIN "+s.toLatin1()+"\n";
     serialPortUSB->write(ba);
 }
@@ -831,9 +831,9 @@ void siviso::on_it_valueChanged(int arg1)
 {
     mysignal->set_it(arg1);
 
-    ui->view->appendPlainText("It: ");
+    //ui->view->appendPlainText("It: ");
     QString s = QString::number(arg1);
-    ui->view->appendPlainText(s);
+    //ui->view->appendPlainText(s);
 }
 
 
